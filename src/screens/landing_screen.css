@@ -1,0 +1,28 @@
+.landing_screen {
+    position: relative;
+    width: 100%;
+}
+
+.landing_screen_navbar {
+    width: 100%;
+    position: fixed;
+}
+
+.section {
+    height: 100vh;
+}
+
+.first {
+    background-image: url('../images/landscape/landing_background_02.jpg');
+    background-size: 100vw;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 500px) {
+    .first {
+        background-image: url('../images/portrait/landing_background_portrait.jpg');
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
