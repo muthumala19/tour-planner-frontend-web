@@ -10,26 +10,26 @@ export default function Footer() {
                        src={require('../images/journeysync-high-resolution-logo-white-on-transparent-background.png')}/>
             </div>
             <div>
-                <h2>Contact us</h2>
-                <h5>JourneySync Inc.</h5>
-                <h5>123 Main Street, Suite 456</h5>
-                <h5>City, State, ZIP</h5>
-                <h5>Email: info@journeysync.com</h5>
-                <h5>Phone: +1 (123) 456-7890</h5>
+                <h3>Contact us</h3>
+                <h6>JourneySync Inc.</h6>
+                <h6>123 Main Street, Suite 456</h6>
+                <h6>City, State, ZIP</h6>
+                <h6>Email: info@journeysync.com</h6>
+                <h6>Phone: +1 (123) 456-7890</h6>
             </div>
             <div>
-                <h2>Quick Links</h2>
-                <h5>Home</h5>
-                <h5>Tours</h5>
-                <h5>About Us</h5>
-                <h5>Contact Us</h5>
+                <h3>Quick Links</h3>
+                <h6>Home</h6>
+                <h6>Tours</h6>
+                <h6>About Us</h6>
+                <h6>Contact Us</h6>
             </div>
             <div>
-                <h2>Connect With Us</h2>
+                <h3>Connect With Us</h3>
             </div>
         </div>
         <div className={'follow_us'}>
-            <div><h4>Follow us on : </h4></div>
+            <div><h5>Follow us on : </h5></div>
             <div><FaFacebook/></div>
             <div>
                 <FaInstagram/>
