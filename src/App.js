@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import LoginPage from './login';
+import Footer from "./components/Footer";
+import LandingScreen from "./screens/landing_screen";
+
 
 function App() {
-  return (
-    <div className="App">
-      <LoginPage />
-    </div>
-  );
+    return (<div className="App">
+        <LandingScreen/>
+        <Footer/></div>);
 }
 
 export default App;
