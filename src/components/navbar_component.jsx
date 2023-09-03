@@ -1,7 +1,8 @@
 import './navbar_component.css'
 import {Container, Image, Nav, Navbar} from "react-bootstrap";
 
-export default function NavBarComponent() {
+export default function NavBarComponent({items}) {
+
     return (
         <Navbar expand="lg" className="navbar-custom navbar-light navbar-fixed-top">
             <Container fluid>
@@ -14,11 +15,11 @@ export default function NavBarComponent() {
                         className="me-5 my-2 my-lg-1 ms-auto"
                         style={{maxHeight: '50vh', fontWeight: 'bold'}}
                         navbarScroll
-                    >
-                        <Nav.Link href="#home" className="me-5">Home</Nav.Link>
-                        <Nav.Link href="#sign_up" className="me-5">Sign Up</Nav.Link>
-                        <Nav.Link href="#about_us" className="me-5">About Us</Nav.Link>
-                        <Nav.Link href="#contact_us" className="me-5">Contact Us</Nav.Link>
+                    >{items.map((item) => {
+                        return <Nav.Link href={item.href} className="me-5">{item.label}</Nav.Link>
+                    })}
+
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
