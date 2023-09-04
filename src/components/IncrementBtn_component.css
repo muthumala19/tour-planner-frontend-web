@@ -1,0 +1,24 @@
+.quantity-grp {
+  display: flex;
+  justify-content: center;
+  width: 185px;
+  border:2px solid #000000;
+  border-radius: 20px;
+  outline: none;
+}
+
+.btn2 {
+  width: 40px;
+  outline: none;
+  border-radius: 20px;
+}
+
+.input-btn {
+  outline: none;
+  width:100px;
+}
+h5 {
+  display: flex;
+  justify-content: center;
+
+}
