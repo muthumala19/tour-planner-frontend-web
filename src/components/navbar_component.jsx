@@ -6,7 +6,7 @@ export default function NavBarComponent({items}) {
     return (
         <Navbar expand="lg" className="navbar-custom navbar-light navbar-fixed-top">
             <Container fluid>
-                <Navbar.Brand href="#home" className={'ms-3'}><Image
+                <Navbar.Brand href="/" className={'ms-3'}><Image
                     src={require('../images/journeysync-high-resolution-logo-black-on-transparent-background .png')}
                     width={'200'}/></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll"/>
