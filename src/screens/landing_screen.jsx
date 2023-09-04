@@ -1,5 +1,5 @@
 import './landing_screen.css'
-import Footer from "../components/Footer";
+import Footer_component from "../components/Footer_component";
 import NavBarComponent from "../components/navbar_component";
 
 export default function LandingScreen() {
@@ -16,6 +16,6 @@ export default function LandingScreen() {
             <div id='sign_up' className={'section'}>sign up</div>
             <div id='about_us' className={'section'}>about us</div>
             <div id='contact_us' className={'section'}>contact us</div>
-            <div><Footer/></div>
+            <div><Footer_component/></div>
         </div>);
 }
