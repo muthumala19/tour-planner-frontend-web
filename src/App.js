@@ -1,12 +1,14 @@
 import './App.css';
-import Footer from "./components/Footer";
-import LandingScreen from "./screens/landing_screen";
+import '../src/screens/auth_screen'
+import AuthScreen from "./screens/auth_screen";
 
 
 function App() {
-    return (<div className="App">
-        <LandingScreen/>
-        <Footer/></div>);
+    return (
+        <div className="App">
+            <AuthScreen isSignIn={false}/>
+        </div>
+    );
 }
 
 export default App;
