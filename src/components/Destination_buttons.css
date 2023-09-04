@@ -1,0 +1,22 @@
+.row{
+    margin:auto;
+    padding-bottom: 10px;
+    padding-top:10px ;
+}  
+.col{
+    margin:20px;
+    padding-bottom: 2px;
+    padding-top:10px ;
+    justify-content: center;
+    text-align: center;
+} 
+
+h2{
+    text-align: center;
+}
+.btn1{
+    background-color: gold;
+    border-radius: 20px;
+    font-size: larger;
+}
+
