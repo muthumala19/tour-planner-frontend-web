@@ -1,12 +1,8 @@
 .landing_screen {
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 
-.landing_screen_navbar {
-    width: 100%;
-    position: fixed;
-}
 
 .section {
     height: 100vh;
