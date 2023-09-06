@@ -16,9 +16,8 @@ export default function App() {
     };
   
     return (
-      <div className="App1">
-        <h4><b>Destination Town</b></h4>
-  
+      <div className="LocationBtn">
+        <h4 style={{textAlign:"center"}}>Destination Town</h4>
         <div className="search-container">
           <div className="search-inner">
             <input type="text" value={value} onChange={onChange} />

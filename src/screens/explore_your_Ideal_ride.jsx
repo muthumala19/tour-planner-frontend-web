@@ -5,7 +5,7 @@ import Footer from "../components/Footer.jsx";
 
 
 
-export default function Accomodation(){
+export default function Vehicle_data_enert(){
     return(
       <div>
         <div><NavBarComponent/></div>

@@ -4,25 +4,31 @@
     text-align: center;
     justify-content: center;
   } 
-  .App1 {
-    font-family: sans-serif;
+  .LocationBtn {
+
     text-align: center;
-    display: flex;
-    flex-direction: column;
+    
     align-items: center;
+    
+    width: 20vw;
+    justify-content: center;
+    margin: auto;
+    padding-top: 4px;
+   
   }
   
   .search-container {
-    width: 300px;
     display: flex;
     flex-direction: column;
     background-color: #E7E5DF;
-    color: brown;
+    /* dropdown search color */
+    color: rgb(0, 0, 0);  
     border-radius: 20px;
     
-    
   }
-  
+  .dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center{
+    position: absolute;
+  }
   .dropdown {
     background-color: white;
     display: flex;
@@ -38,10 +44,12 @@
     cursor: pointer;
     text-align: start;
     margin: 2px 0;
+    background-color: rgb(124, 124, 124);
+    display: flex;
   }
   
   input {
-    width: 220px;
+    width: 60%;
     color: black;
     outline: none;
   }
@@ -54,8 +62,27 @@
   }
 
   .button1{
-    border-radius: 30px;
+    border-radius: 40px;
     background-color: #E7E5DF;
-    width: 30px;
+    width: auto;
+    height: 10px;
+
+
   }
+
+
   
+@media screen and (max-width: 760px) {
+  .LocationBtn{
+    width: 160px;
+  }
+}
+
+@media screen and (min-height: 720px) {
+  .button1{
+    height: 10px;
+  }
+  .search-inner{
+    height: 58px;
+  }
+}

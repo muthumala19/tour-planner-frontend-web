@@ -5,6 +5,7 @@ import "./IncrementBtn_component.css";
 
 export default function Inc_Dec_btn(props){
     let [num, setNum]= useState(0);
+    
     let incNum =()=>{
       if(num<20)
       {
@@ -22,18 +23,19 @@ export default function Inc_Dec_btn(props){
     }
      return(
       <>
-        <div className="col-6">
+        <div className="row">
         <h5>{props.text}</h5>
-            <div className="quantity-grp">
-                
-                <div className="input-group-prepend">
-                    <button className="btn2" type="button" onClick={decNum}>-</button>
+          <div className="col-5 mx-auto col-lg-3" >
+                <div className="incr-btn">
+                    <div className="input-group-prepend">
+                        <button className="btn2" type="button" onClick={decNum}>-</button>
+                    </div>
+                    <input type="text" className="input-btn" value={num} onChange={handleChange}/>
+                    <div className="input-group-prepend">
+                        <button className="btn2" type="button" onClick={incNum}>+</button>
+                    </div>
                 </div>
-                <input type="text" className="input-btn" value={num} onChange={handleChange}/>
-                <div className="input-group-prepend">
-                    <button className="btn2" type="button" onClick={incNum}>+</button>
-                </div>
-            </div>
+          </div>
         </div>
      </>
     );

@@ -1,24 +1,28 @@
-.quantity-grp {
-  display: flex;
-  justify-content: center;
-  width: 185px;
-  border:2px solid #000000;
-  border-radius: 20px;
-  outline: none;
-}
+
 
 .btn2 {
-  width: 40px;
+  width: 5%;
   outline: none;
   border-radius: 20px;
+  background-color:#E7E5DF ;
 }
 
 .input-btn {
   outline: none;
-  width:100px;
+  width:70%;
+  background-color: #E7E5DF;
+
 }
 h5 {
   display: flex;
   justify-content: center;
 
+}
+
+.incr-btn {
+  border:2px solid rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  outline: none;
 }
