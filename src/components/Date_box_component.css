@@ -1,8 +1,8 @@
 .box {
-    height: 50px;
+    height: 8vh;
     justify-content: center;
     text-align: center;
-    width: 280px;
+    width: 20vw;
     margin: auto;
     border:2px solid #000000;
     color:rgb(0, 0, 0);
@@ -13,8 +13,20 @@
   .grp {
     text-align: center;
     justify-content: center;
+    height: 20vh;
   }
   
+@media screen and (max-width: 760px) {
+  .box{
+    width: 160px;
+  }
+}
+
+@media screen and (min-height: 720px) {
+  .box{
+    height: 58px;
+  }
+}
 
   
 
