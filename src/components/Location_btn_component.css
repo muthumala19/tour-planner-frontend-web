@@ -1,0 +1,61 @@
+
+
+.grp {
+    text-align: center;
+    justify-content: center;
+  } 
+  .App1 {
+    font-family: sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    background-color: #E7E5DF;
+    color: brown;
+    border-radius: 20px;
+    
+    
+  }
+  
+  .dropdown {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+  }
+  
+  .dropdown:empty {
+    border: none;
+  }
+  
+  .dropdown-row {
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+  }
+  
+  input {
+    width: 220px;
+    color: black;
+    outline: none;
+  }
+  
+  .search-inner {
+    display: flex;
+    color: black;
+    border:2px solid #000000;
+    border-radius: 20px;
+  }
+
+  .button1{
+    border-radius: 30px;
+    background-color: #E7E5DF;
+    width: 30px;
+  }
+  

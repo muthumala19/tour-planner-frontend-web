@@ -1,0 +1,21 @@
+.box {
+    height: 50px;
+    justify-content: center;
+    text-align: center;
+    width: 280px;
+    margin: auto;
+    border:2px solid #000000;
+    color:rgb(0, 0, 0);
+    border-radius: 20px;
+    background-color: #E7E5DF;
+  }
+
+  .grp {
+    text-align: center;
+    justify-content: center;
+  }
+  
+
+  
+
+  
