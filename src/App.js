@@ -1,8 +1,8 @@
 import './App.css';
 import '../src/screens/auth_screen'
-import {BrowserRouter, Route, Routes,} from "react-router-dom";
-import AuthScreen from "./screens/auth_screen";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LandingScreen from "./screens/landing_screen";
+import AuthScreen from "./screens/auth_screen";
 
 function App() {
     return (

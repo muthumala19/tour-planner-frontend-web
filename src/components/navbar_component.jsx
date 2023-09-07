@@ -1,5 +1,6 @@
 import './navbar_component.css'
 import {Container, Image, Nav, Navbar} from "react-bootstrap";
+import AvatarMenu from "./profile_avatar_component";
 
 export default function NavBarComponent({items}) {
 
@@ -18,8 +19,7 @@ export default function NavBarComponent({items}) {
                     >{items.map((item) => {
                         return <Nav.Link key={item.label} href={item.href} className="me-5">{item.label}</Nav.Link>
                     })}
-
-
+                        <AvatarMenu/>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
