@@ -50,11 +50,12 @@
 }
 
 .paragraphs {
-    /*margin: auto 1vw;*/
     margin-top: 20vh;
     overflow-y: auto;
     height: auto;
     width: auto;
+    justify-content: center; /* Center align content vertically */
+    align-items: flex-start; /* Align content horizontally to the left */
 }
 
 .paragraphs p {
@@ -69,10 +70,10 @@
     position: relative;
     font-weight: bold;
     font-size: 3vh;
-    letter-spacing: 0.5vw;
+    letter-spacing: 0.2vw;
     color: white;
-    height: 10vh;
-    width: 20vw;
+    height: auto;
+    width: auto;
     background-color: rgba(0, 0, 0, 0.4);
     border-radius: 5vh;
     border: 0.2vh solid white;
@@ -88,8 +89,8 @@
     }
 
     .get_started_button Button {
-        width: 50vw;
-        height: 8vh;
+        width: auto;
+        height: auto;
     }
 
     .welcome_note {
