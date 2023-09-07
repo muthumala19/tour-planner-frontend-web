@@ -29,7 +29,24 @@
 .FindYourPerfectStay {
     text-align: center;
     color:#0C356A;
-    font-size: 70px;
+    font-size: 50px;
     font-style: italic;
     width:fit-content
+}
+
+.CFormCheck {
+    justify-content: center;   
+    display: flex;
+}
+
+.form-check-input {
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+@media screen and (max-width: 760px) {
+    .FindYourPerfectStay {
+        font-size: 8vw;
+    }
 }

@@ -5,8 +5,11 @@ import Location_btn_component from "../components/Location_btn_component.jsx";
 import PriceRange_component from '../components/PriceRange_component.jsx';
 import Inc_Dec_btn from "./IncrementBtn_component.jsx";
 import "./accomodation_pge_component.css";
+import "./explore_your_Ideal_ride_components.css";
+import Ride_choose_component from "./Ride_choose_component.jsx";
 
-export default function Accomodation_page_btns(){
+
+export default function Explore_your_Ideal_ride(){
 
   // Explore button
   function exploreClick(){
@@ -19,9 +22,9 @@ export default function Accomodation_page_btns(){
   }
 
   return(
-    <div>
+    <div >
       <div className="row">
-        <h1 className="FindYourPerfectStay" style={{}}>Find your Perfect stay</h1>
+        <h1 className="FindYourPerfectStay">Explore Your Ideal Ride</h1>
       </div>
       
       {/* Date, Location, Accomodation, Price Range, Explore, Skip Accomodation buttons */}
@@ -35,6 +38,11 @@ export default function Accomodation_page_btns(){
         <div className="col" ><Inc_Dec_btn text="No. of Adults"/></div>
         <div className="col"><Inc_Dec_btn text="No. of Childs"/></div>    
       </div>
+    
+
+      {/* Ride Choose Component */}
+      <Ride_choose_component />
+
 
       {/* Price Range Slider */}
       <div className="row">
@@ -51,7 +59,7 @@ export default function Accomodation_page_btns(){
       {/* Skip Accomodation button */}
       <div className="row">
         <div className="d-flex justify-content-center">
-          <button className="Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
+          <button className="Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Transport</button>
         </div>   
       </div>
     </div>

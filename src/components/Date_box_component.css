@@ -13,7 +13,6 @@
   .grp {
     text-align: center;
     justify-content: center;
-    height: 20vh;
   }
   
 @media screen and (max-width: 760px) {

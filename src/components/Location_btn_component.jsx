@@ -21,7 +21,7 @@ export default function App() {
         <div className="search-container">
           <div className="search-inner">
             <input type="text" value={value} onChange={onChange} />
-            <button className="button1" onClick={() => onSearch(value)}> Search </button>
+            <button className="search-btn" onClick={() => onSearch(value)}> Search </button>
           </div>
           <div className="dropdown">
             {data

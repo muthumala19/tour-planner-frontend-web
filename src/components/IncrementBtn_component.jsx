@@ -24,9 +24,12 @@ export default function Inc_Dec_btn(props){
      return(
       <>
         <div className="row">
-        <h5>{props.text}</h5>
-          <div className="col-5 mx-auto col-lg-3" >
-                <div className="incr-btn">
+        
+          <div className="inc-btn-component" >
+            
+            <div className="inc-btn-withHeader">
+            <div><h5>{props.text}</h5></div>
+            <div className="incr-btn">
                     <div className="input-group-prepend">
                         <button className="btn2" type="button" onClick={decNum}>-</button>
                     </div>
@@ -35,6 +38,8 @@ export default function Inc_Dec_btn(props){
                         <button className="btn2" type="button" onClick={incNum}>+</button>
                     </div>
                 </div>
+            </div>
+
           </div>
         </div>
      </>
