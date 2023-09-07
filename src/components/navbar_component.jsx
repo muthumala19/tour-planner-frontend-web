@@ -16,7 +16,7 @@ export default function NavBarComponent({items}) {
                         style={{maxHeight: '50vh', fontWeight: 'bold'}}
                         navbarScroll
                     >{items.map((item) => {
-                        return <Nav.Link href={item.href} className="me-5">{item.label}</Nav.Link>
+                        return <Nav.Link key={item.label} href={item.href} className="me-5">{item.label}</Nav.Link>
                     })}
 
 

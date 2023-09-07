@@ -7,7 +7,7 @@ export default function LandingScreen() {
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
         {label: 'Contact Us', href: '#contact_us'},
-        {label: 'Sign Up', href: '/sign_up'},
+        {label: 'Register', href: '/register'},
         {label: 'Sign In', href: '/sign_in'},
     ];
     return (
