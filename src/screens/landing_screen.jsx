@@ -1,5 +1,5 @@
 import './landing_screen.css'
-import Footer_component from "../components/Footer_component";
+import Footer from "../components/footer_component";
 import NavBarComponent from "../components/navbar_component";
 import Button from "@mui/material/Button";
 
@@ -52,6 +52,6 @@ export default function LandingScreen() {
             </div>
             <div id='about_us' className={'section about_us'}>about us</div>
             <div id='contact_us' className={'section'}>contact us</div>
-            <div><Footer_component/></div>
+            <div><Footer/></div>
         </div>);
 }

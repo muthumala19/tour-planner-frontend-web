@@ -2,7 +2,7 @@ import './footer_component.css'
 import {Image} from "react-bootstrap";
 import {FaFacebook, FaInstagram, FaLinkedin, FaTwitter} from "react-icons/fa";
 
-export default function Footer_component() {
+export default function Footer() {
     return (<div className={'footer_settings'}>
         <div className={'footer'}>
             <div className={'logo'}>
