@@ -7,11 +7,8 @@ import {useState} from "react";
 export default function AuthScreen({activeScreen}) {
     const navbarItems = [
         {label: 'Home', href: '/'},
-
     ];
     let [screen, setScreen] = useState(activeScreen);
-
-
     switch (activeScreen) {
         case 'sign_in':
             screen = <SignIn/>;
@@ -21,6 +18,8 @@ export default function AuthScreen({activeScreen}) {
             break;
         case 'register':
             screen = <Register/>;
+            break;
+        default:
             break;
     }
     return (<div>
