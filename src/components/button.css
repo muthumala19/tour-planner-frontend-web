@@ -16,6 +16,6 @@
 
 .button-container:hover {
     background: #FFA500;
-    color: aliceblue;
+    color: black;
     transform: scale(1.05);
 }

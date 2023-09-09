@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     font-family: Arial, sans-serif;
-    margin-top: 20px;
 }
 
 .pagination-data {
@@ -38,9 +37,4 @@
 .page-button.disabled {
     background-color: #ccc;
     cursor: not-allowed;
-}
-
-
-.p-btn-container {
-    margin-top: 10px;
 }

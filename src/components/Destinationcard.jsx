@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { FaMapMarkedAlt } from 'react-icons/fa';
 import Button from './button';
-import "./card.css"
+import "./DestinationCard.css"
 import { Link } from 'react-router-dom';
 
-const Card = ({id, title, location, image, tags, tagLabel, onClick}) => {
+const DestinationCard = ({id, title, location, image, tags, tagLabel, onClick}) => {
     return (
         <div className='crd-containter'>
             <img className='crd-image' src={image} placeholder={title}></img>
@@ -33,4 +33,4 @@ const Card = ({id, title, location, image, tags, tagLabel, onClick}) => {
     );
 }
  
-export default Card;
+export default DestinationCard;
