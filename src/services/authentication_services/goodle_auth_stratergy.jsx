@@ -10,9 +10,7 @@ export default class GoogleAuthStrategy extends AuthStrategy {
 
     async signIn() {
         try {
-            const provider = new GoogleAuthProvider();
-            await signInWithPopup(auth, provider);
-            console.log("Signed in with Google");
+            await signInWithPopup(auth, new GoogleAuthProvider());
         } catch (error) {
             console.error("Google authentication error:", error);
         }
@@ -20,9 +18,7 @@ export default class GoogleAuthStrategy extends AuthStrategy {
 
     async signUp() {
         try {
-            const provider = new GoogleAuthProvider();
-            await signInWithPopup(auth, provider);
-            console.log("Signed up with Google");
+            await signInWithPopup(auth, new GoogleAuthProvider());
         } catch (error) {
             console.error("Google authentication error:", error);
         }

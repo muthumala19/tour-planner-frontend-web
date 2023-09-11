@@ -10,23 +10,26 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import '../screens/auth_screen.css'
 import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
 import AuthContext from "../services/authentication_services/auth_context";
+import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
 
 
 async function signUpWithGoogle() {
-    const userWithGoogleAuth = new AuthContext(new GoogleAuthStrategy());
-    await userWithGoogleAuth.signUp();
+    const context = new AuthContext(new GoogleAuthStrategy());
+    await context.signUp();
+}
+
+async function signUpWithEmailPassword(email, password) {
+    const context = new AuthContext(new EmailAuthStrategy(email, password));
+    await context.signUp();
 }
 
 export default function SignUp() {
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
-    };
 
+        const data = new FormData(event.currentTarget);
+        await signUpWithEmailPassword(data.get('email'), data.get('password'));
+    };
 
     return (
 
