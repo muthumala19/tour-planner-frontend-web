@@ -5,9 +5,12 @@ import DestinationCard from '../components/Destinationcard';
 import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
 import { FaHotel } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Summary = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
+
+    const navigate = useNavigate();
 
     const handleClick = (key) => {
         console.log("working", key);
@@ -22,13 +25,25 @@ const Summary = () => {
         <DestinationCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
     ];
 
+    const handlePlaceChange = () => {
+        navigate("/destinations");
+    }
+
+    const handleHotelChange = () => {
+        navigate("/accommodations");
+
+    }
+
+    const handleVehicleChange = () => {
+        navigate("/vehicles");
+    }
 
     return (
         <React.Fragment>
             <div className='smr'>
                 <h1 className='smr-heading'>Journey Preview</h1>
                 <div className='smr-btn'>
-                    <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
+                    <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}} onClick={handleClick}></Button>
                 </div>
 
                 <h2 className='smr-sub-heading smr-sub-heading-first'>Picked Places</h2>
@@ -36,17 +51,17 @@ const Summary = () => {
                     <Pagination data={cardComponents} itemsPerPage={3}/>
                 </div>
                 <div className='smr-btn'>
-                    <Button text="Change Selection" style={{backgroundColor: "#0C356A", padding:"6px 18px 6px 18px"}}></Button>
+                    <button className='smr-btn-item' onClick={handlePlaceChange}>Change Selection</button>
                 </div>
 
                 <div className='smr-divider'></div>
 
-                <h2 className='smr-sub-heading'>Picket Hotels</h2>
+                <h2 className='smr-sub-heading'>Picked Hotels</h2>
                 <div className='smr-cards'>
                     <Pagination data={cardComponents} itemsPerPage={3}/>
                 </div>
                 <div className='smr-btn'>
-                    <Button text="Change Selection" style={{backgroundColor: "#0C356A", padding:"6px 18px 6px 18px"}}></Button>
+                    <button className='smr-btn-item' onClick={handleHotelChange}>Change Selection</button>
                 </div>
 
                 <div className='smr-divider'></div>
@@ -56,7 +71,7 @@ const Summary = () => {
                     <Pagination data={cardComponents} itemsPerPage={3}/>
                 </div>
                 <div className='smr-btn'>
-                    <Button text="Change Selection" style={{backgroundColor: "#0C356A", padding:"6px 18px 6px 18px"}}></Button>
+                    <button className='smr-btn-item' onClick={handleVehicleChange}>Change Selection</button>
                 </div>
 
                 <div className='smr-divider'></div>

@@ -2,7 +2,7 @@ import axios from "axios";
 
 const options = {
   method: 'GET',
-//   url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
+  url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
   params: {
     units: 'metric',
     room_number: '1',

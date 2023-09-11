@@ -6,12 +6,15 @@ import Pic from "../images/hotel.jpg"
 import Pagination from '../components/pagination';
 import HotelCard from '../components/hotelCard';
 import { getHotels } from '../backend/hotelGeneration';
+import { useNavigate } from 'react-router-dom';
 
 const Accommodation = () => {
     const [hotels, setHotels] = useState([]);
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
     const tags = ['Wifi', 'Pool', 'A/C', 'Archer'];
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -20,7 +23,6 @@ const Accommodation = () => {
                 const data = await getHotels();
                 setHotels(data);
                 setLoading(false);
-                console.log(data);
                 const cards = data.map((item, index) => (
                     <HotelCard
                         key={index}
@@ -47,18 +49,8 @@ const Accommodation = () => {
 
 
     const handleClick = (id, hotel_id) => {
-        console.log(id);
-        console.log(hotel_id);;
-        console.log(hotels[id])
+        navigate("/room-selection")
     };
-
-    const handleNextStep = async () => {
-        console.log("Works")
-        const data = await getHotels();
-        setHotels(data);
-        console.log(data);
-        console.log("Not Fetched");
-    }
 
     const cardComponents = [
         <HotelCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
@@ -79,11 +71,11 @@ const Accommodation = () => {
                     <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
                 </div>
                 <div className='acmd-cards'>
-                    <Pagination data={cards} itemsPerPage={3}/>
+                    <Pagination data={cards} itemsPerPage={6}/>
                 </div>
-                <div className='acmd-btn'>
+                {/* <div className='acmd-btn'>
                     <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNextStep}></Button>
-                </div>
+                </div> */}
             </div>
         </React.Fragment>
     );

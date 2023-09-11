@@ -1,0 +1,171 @@
+default_language:"en"
+ufi:-2214877
+hotel_has_vb_boost:1
+id:"property_card_799911"
+main_photo_url:"https://cf.bstatic.com/xdata/images/hotel/square60/114106389.jpg?k=a9e5fcbcc89b2906910760192cd7612b0cf517e30e14d6cbac0642a314332a96&o="
+districts:"11673"
+longitude:79.8585864901542
+price_is_final:1
+timezone:"Asia/Colombo"
+genius_discount_percentage:0
+city_in_trans:"in Colombo"
+children_not_allowed:0
+distance_to_cc:"7.15"
+class:4
+price_breakdown:
+wishlist_count:0
+is_smart_deal:0
+cc_required:1
+review_recommendation:""
+composite_price_breakdown:
+address:"MIRAGE COLOMBO NO 61,Marine Drive, COLOMBO 06"
+mobile_discount_percentage:18.6732
+hotel_id:799911
+main_photo_id:114106389
+unit_configuration_label:"<b>Hotel room</b>: 3 beds"
+currencycode:"USD"
+bwallet:
+review_nr:252
+preferred:1
+is_geo_rate:""
+currency_code:"USD"
+type:"property_card"
+latitude:6.87068931228233
+distances:
+soldout:0
+updated_checkin:null
+is_mobile_deal:1
+country_trans:"Sri Lanka"
+city_trans:"Colombo"
+updated_checkout:null
+matching_units_configuration:
+in_best_district:0
+extended:0
+review_score_word:"Good"
+accommodation_type_name:"Hotel"
+is_city_center:0
+checkout:
+countrycode:"lk"
+preferred_plus:0
+distance:"6.28"
+has_swimming_pool:1
+url:"https://www.booking.com/hotel/lk/mirage-colombo.html"
+badges:
+hotel_name:"Mirage Colombo"
+hotel_name_trans:"Mirage Colombo"
+hotel_facilities:"459,51,5,3,209,462,231,163,421,28,484,73,53,305,47,117,487,134,467,433,49,7,492,193,494,91,411,181,233,161,423,124,110,27,52,46,72,48,11,486,458,6,445,107,500,143,442,444,506,15,253,125,418,219,419,304,502,440,302,203,453,44,439,75,446,465,485,174,226,493,449,194,96,111,422,461,232,424,160,22,43,234,109,186,158,145,16,2,81,121,8,420,230,21,184,159,108,205,210,23,222,176,448,455,426,17,435,454,25,441,140,457,64,146,14,129,499,443,142,301,407,450,147,241,103,20,425,235"
+address_trans:"MIRAGE COLOMBO NO 61,Marine Drive, COLOMBO 06"
+accommodation_type:204
+hotel_include_breakfast:0
+zip:"00600"
+is_free_cancellable:1
+is_genius_deal:0
+review_score:7.3
+min_total_price:79.6068
+is_beach_front:1
+is_no_prepayment_block:0
+city_name_en:"Colombo 06"
+native_ad_id:""
+has_free_parking:1
+checkin:
+block_ids:
+default_wishlist_name:"Colombo"
+district_id:11673
+selected_review_topic:null
+class_is_estimated:0
+district:"Wellawatte"
+native_ads_cpc:0
+native_ads_tracking:""
+cc1:"lk"
+cant_book:0
+city:"Colombo 06"
+max_photo_url:"https://cf.bstatic.com/xdata/images/hotel/max1280x900/114106389.jpg?k=a9e5fcbcc89b2906910760192cd7612b0cf517e30e14d6cbac0642a314332a96&o="
+max_1440_photo_url:"https://cf.bstatic.com/xdata/images/hotel/1440x1440/114106389.jpg?k=a9e5fcbcc89b2906910760192cd7612b0cf517e30e14d6cbac0642a314332a96&o="
+
+
+
+accommodation_type:216
+address_trans:"Lionel Edirisinghe Mawatha Kirrulapone"
+zip:"00500"
+hotel_include_breakfast:0
+has_swimming_pool:1
+preferred_plus:0
+distance:"5.56"
+hotel_facilities:"442,143,500,107,451,418,15,506,104,453,419,55,304,141,440,502,75,446,485,465,44,198,439,490,163,183,462,484,73,28,464,459,470,3,408,5,209,467,134,487,433,49,53,305,505,47,496,472,492,494,91,161,423,181,411,110,460,124,409,486,458,445,127,46,497,489,119,406,441,503,140,435,452,454,14,498,457,400,450,129,499,443,501,301,456,468,118,488,493,449,192,96,461,43,424,22,160,174,436,220,16,109,158,177,159,170,491,2,184,8,426,17,210,78,205,224,222,133,176,448,455"
+hotel_name_trans:"55TG Boutique Suites"
+hotel_name:"55TG Boutique Suites"
+url:"https://www.booking.com/hotel/lk/55tg-39-s.html"
+badges:
+is_city_center:0
+countrycode:"lk"
+checkout:
+review_score_word:"Superb"
+accommodation_type_name:"Guest house"
+city_trans:"Colombo"
+updated_checkout:null
+updated_checkin:null
+country_trans:"Sri Lanka"
+is_mobile_deal:0
+matching_units_configuration:
+in_best_district:0
+extended:0
+external_reviews:
+class_is_estimated:0
+native_ads_cpc:0
+district:""
+native_ads_tracking:""
+selected_review_topic:null
+cant_book:0
+cc1:"lk"
+city:"Colombo"
+block_ids:
+district_id:0
+default_wishlist_name:"Colombo"
+native_ad_id:""
+has_free_parking:1
+is_beach_front:0
+is_no_prepayment_block:0
+city_name_en:"Colombo"
+checkin:
+is_genius_deal:0
+is_free_cancellable:1
+min_total_price:159.39
+review_score:9
+timezone:"Asia/Colombo"
+price_is_final:1
+booking_home:
+longitude:79.8785980735413
+districts:""
+main_photo_url:"https://cf.bstatic.com/xdata/images/hotel/square60/326991367.jpg?k=5087420833a9dad46d9cd184298cd20d057c1978e6d3594df631b25a08267f20&o="
+ufi:-2214877
+id:"property_card_2033024"
+hotel_has_vb_boost:0
+default_language:"en"
+review_nr:111
+is_geo_rate:""
+preferred:1
+bwallet:
+distances:
+soldout:0
+type:"property_card"
+currency_code:"USD"
+latitude:6.8801526410728
+hotel_id:2033024
+currencycode:"USD"
+main_photo_id:326991367
+unit_configuration_label:"<b>Private room</b>: 2 beds"
+review_recommendation:""
+address:"Lionel Edirisinghe Mawatha Kirrulapone"
+mobile_discount_percentage:0
+composite_price_breakdown:
+class:4
+wishlist_count:0
+price_breakdown:
+city_in_trans:"in Colombo"
+genius_discount_percentage:0
+children_not_allowed:0
+distance_to_cc:"7.00"
+is_smart_deal:0
+cc_required:1
+max_photo_url:"https://cf.bstatic.com/xdata/images/hotel/max1280x900/326991367.jpg?k=5087420833a9dad46d9cd184298cd20d057c1978e6d3594df631b25a08267f20&o="
+max_1440_photo_url:"https://cf.bstatic.com/xdata/images/hotel/1440x1440/326991367.jpg?k=5087420833a9dad46d9cd184298cd20d057c1978e6d3594df631b25a08267f20&o="

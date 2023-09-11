@@ -34,6 +34,28 @@
     margin-top: 40px;
 }
 
+.smr-btn-item {
+    background: #0C356A;
+    border: 0.5px solid black;
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120%;
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    padding: 4px 16px 4px 16px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.smr-btn-item:hover {
+    background: #FFA500;
+    color: black;
+    transform: scale(1.05);
+}
+
 .smr-btn {
     width: 100%;
     display: flex;

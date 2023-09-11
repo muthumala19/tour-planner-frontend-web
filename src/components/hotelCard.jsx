@@ -29,7 +29,7 @@ const HotelCard = ({id, title, location,  hotel_id, image, cost, ratings, onClic
 
             <Link className='hotel-crd-maplink' to="https://www.google.com/maps/place/University+of+Moratuwa">explore location on map</Link>
 
-            <button className='hotel-crd-btn' onClick={() => onClick(id, hotel_id)}>Save</button>
+            <button className='hotel-crd-btn' onClick={() => onClick(id, hotel_id)}>View</button>
             
         </div>
     );

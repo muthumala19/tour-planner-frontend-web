@@ -5,19 +5,19 @@ import DestinationCard from '../components/Destinationcard';
 import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
 import { getHotels } from '../backend/hotelGeneration';
+import { useNavigate } from 'react-router-dom';
 
 const Destinations = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
+    const navigate = useNavigate();
 
-    
+    const handleClick = (key) => {
 
-    console.log()
-
-    const handleClick = async (key) => {
-        console.log("working", key);
-        const data = await getHotels();
-        console.log(data);
     };
+
+    const handleNexStep = () => {
+        navigate("/accommodations");
+    }
 
     const cardComponents = [
         <DestinationCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
@@ -40,7 +40,7 @@ const Destinations = () => {
                     <Pagination data={cardComponents} itemsPerPage={6}/>
                 </div>
                 <div className='dst-btn'>
-                    <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}}></Button>
+                    <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNexStep}></Button>
                 </div>
             </div>
         </React.Fragment>

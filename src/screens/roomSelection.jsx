@@ -1,16 +1,16 @@
 import React, { Component, useEffect, useState } from 'react'
 import Button from '../components/button';
 import "./roomSelection.css"
-import Pagination from '../components/pagination';
-import HotelCard from '../components/hotelCard';
-import { getHotels } from '../backend/hotelGeneration';
 import RoomCard from '../components/roomCard';
 import { getRooms } from '../backend/roomGeneration';
 import Pic from "../images/hotel.jpg"
+import { useNavigate } from 'react-router-dom';
 
 const RoomSelection = ({hotel, hotel_id}) => {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -18,9 +18,7 @@ const RoomSelection = ({hotel, hotel_id}) => {
             try {
                 const data = await getRooms();
                 setLoading(false);
-                console.log(data);
                 const cards = Object.values(data).map((item, index) => {
-                    console.log(item.photos);
                     return <RoomCard
                         key={index}
                         id={index}
@@ -41,11 +39,14 @@ const RoomSelection = ({hotel, hotel_id}) => {
         }, []);
 
 
-    const handleClick = () => {
+    const handleClick = (key) => {
+        // Put to database {user:user_id, data:cards[key]} under Selected room
     };
 
-    const handleNextStep = async () => {
+    const handleNextStep = () => {
+        navigate("/vehicles");
     }
+    
 
     return (
         <React.Fragment>
