@@ -4,14 +4,19 @@ import "./destinations.css"
 import DestinationCard from '../components/Destinationcard';
 import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
+import { getHotels } from '../backend/hotelGeneration';
 
 const Destinations = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
 
+    
+
     console.log()
 
-    const handleClick = (key) => {
+    const handleClick = async (key) => {
         console.log("working", key);
+        const data = await getHotels();
+        console.log(data);
     };
 
     const cardComponents = [

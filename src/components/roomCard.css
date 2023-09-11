@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+.room-crd-container {
+    margin: 2% 3% 2% 3%;
+    display: flex;
+    border-top: 2px solid black;
+    padding-top: 20px;
+}
+
+.room-crd-picture {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 20px;
+    border-radius: 20px;
+    border: none;
+}
+
+.room-crd-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.room-crd-description {
+    margin-left: 40px;
+    margin-right: 40px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 120%;
+    margin-top: 40px;
+    background-color: rgb(166, 236, 255);
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    transform: scale(1);
+}
+
+.room-crd-description:hover {
+    transform: scale(1.05);
+    background-color: rgb(144, 222, 255);
+}
+
+.room-crd-btn {
+    background: #0C356A;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 130%;
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    padding: 2px 26px 2px 26px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    /* Add transition properties */
+    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-left: 35%;
+    transform: scale(1);
+
+}
+
+.room-crd-btn:hover {
+    background: #FFA500;
+    color: black;
+    transform: scale(1.1);
+}
+
+@keyframes scrollEffect {
+    from {
+        transform: translateY(20px);
+    }
+
+    to {
+        transform: translateY(40px);
+    }
+}
+
+.room-crd-description {
+    animation: scrollEffect 0.5s ease-in-out;
+}
+.room-crd-tags-container {}
+
+.room-crd-tags-title {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 150%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.room-crd-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 120%;
+    margin-top: 2%;
+    margin-right: 6%;
+    margin-left: 10%;
+    
+}
+
+.room-crd-tag {
+    margin-right: 4%;
+    margin-top: 10px;
+}
