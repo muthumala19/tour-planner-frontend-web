@@ -2,6 +2,7 @@ import './landing_screen.css'
 import Footer from "../components/footer_component";
 import NavBarComponent from "../components/navbar_component";
 import Button from "@mui/material/Button";
+import AboutUs from "../components/about_us_component";
 
 export default function LandingScreen() {
     const navbarItems = [
@@ -21,8 +22,6 @@ export default function LandingScreen() {
                     </h1>
                         <div className={'get_started_button'}>
                             <Button
-
-
                                 onClick={() => {
                                 }}
                             >
@@ -50,7 +49,7 @@ export default function LandingScreen() {
                 </div>
 
             </div>
-            <div id='about_us' className={'section about_us'}>about us</div>
+            <div id='about_us' className={'section about_us'}><AboutUs/></div>
             <div id='contact_us' className={'section'}>contact us</div>
             <div><Footer/></div>
         </div>);
