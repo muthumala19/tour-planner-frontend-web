@@ -1,4 +1,4 @@
-class AuthContext {
+export default class AuthContext {
     constructor(authStrategy) {
         this.authStrategy = authStrategy;
     }
@@ -7,7 +7,7 @@ class AuthContext {
         await this.authStrategy.signIn();
     }
 
-    async signUp(email, password) {
-        await this.authStrategy.signUp(email, password);
+    async signUp() {
+        await this.authStrategy.signUp();
     }
 }

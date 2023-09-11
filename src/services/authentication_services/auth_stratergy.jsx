@@ -1,4 +1,4 @@
-class AuthStrategy {
+export default class AuthStrategy {
     constructor() {
     }
 

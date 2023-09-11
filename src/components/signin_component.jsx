@@ -10,6 +10,13 @@ import Container from "@mui/material/Container";
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import '../screens/auth_screen.css'
+import AuthContext from "../services/authentication_services/auth_context";
+import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
+
+async function signInWithGoogle() {
+    const userWithGoogleAuth = new AuthContext(new GoogleAuthStrategy());
+    await userWithGoogleAuth.signIn();
+}
 
 export default function SignIn() {
     const handleSubmit = (event) => {
@@ -109,7 +116,8 @@ export default function SignIn() {
                 </Box>
                 <div className={'sign_in_options'}>
                     <div><h6>Sign In With :</h6></div>
-                    <div><GoogleIcon className={'sign_in_option'} sx={{color: "#0C356A", ml: 1, mr: 1}}/></div>
+                    <div><GoogleIcon className={'sign_in_option'} sx={{color: "#0C356A", ml: 1, mr: 1}}
+                                     onClick={signInWithGoogle}/></div>
                     <div><FacebookIcon className={'sign_in_option'} sx={{color: "#0C356A", ml: 1, mr: 1}}/></div>
                     <div></div>
                 </div>
