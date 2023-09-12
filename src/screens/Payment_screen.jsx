@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Payment_screen.css'; // Import your CSS file
+import NavBarComponent from '../components/navbar_component.jsx';
+import  Footer_component from "../components/Footer_component.jsx";
 
 function PaymentPage() {
   const [cardNumber, setCardNumber] = useState('');
@@ -7,13 +9,20 @@ function PaymentPage() {
   const [expiry, setExpiry] = useState('');
   const [cvv, setCVV] = useState('');
 
+  const navbarItems = [
+    {label: 'Home', href: '#home'},
+  ];
+
   const handlePayment = () => {
     // Perform payment processing here (e.g., using a payment gateway)
     alert('Payment Successful!');
   };
 
   return (
-    <div className="container payment-container">
+
+    <div>
+      <NavBarComponent items={navbarItems} />
+      <div className="container payment-container">
       <div className="row" style={{display:"flex",justifyContent:"center"}}>
         <div className="col-md-12" style={{display:"flex",justifyContent:"center"}}>
           <div className="payment-card">
@@ -78,6 +87,9 @@ function PaymentPage() {
         </div>
       </div>
     </div>
+    <Footer_component />
+    </div>
+    
   );
 }
 
