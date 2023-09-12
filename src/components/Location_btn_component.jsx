@@ -27,22 +27,22 @@ export default function App() {
             {data
               .filter((item) => {
                 const searchTerm = value.toLowerCase();
-                const fullName = item.full_name.toLowerCase();
+                const cityName = item.city_name.toLowerCase();
   
                 return (
                   searchTerm &&
-                  fullName.startsWith(searchTerm) &&
-                  fullName !== searchTerm
+                  cityName.startsWith(searchTerm) &&
+                  cityName !== searchTerm
                 );
               })
               .slice(0, 10)
               .map((item) => (
                 <div
-                  onClick={() => onSearch(item.full_name)}
+                  onClick={() => onSearch(item.city_name)}
                   className="dropdown-row"
-                  key={item.full_name}
+                  key={item.city_name}
                 >
-                  {item.full_name}
+                  {item.city_name}
                 </div>
               ))}
           </div>

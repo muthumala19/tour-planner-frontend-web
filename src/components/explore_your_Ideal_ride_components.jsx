@@ -35,7 +35,7 @@ export default function Explore_your_Ideal_ride(){
         <div className="col-12 col-sm-12 col-lg-4"><Location_btn_component/></div> 
       </div>
       <div className="row accomodation" >
-        <div className="col" ><Inc_Dec_btn text="No. of Adults"/></div>
+        <div className="col"><Inc_Dec_btn text="No. of Adults"/></div>
         <div className="col"><Inc_Dec_btn text="No. of Childs"/></div>    
       </div>
     
