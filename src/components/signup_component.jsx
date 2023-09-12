@@ -11,22 +11,42 @@ import '../screens/auth_screen.css'
 import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
 import AuthContext from "../services/authentication_services/auth_context";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
+import {CircularProgress} from "@mui/joy";
+import {useContext} from "react";
+import {Auth} from "../contexts/auth_context";
 
-
-async function signUpWithGoogle() {
-    const context = new AuthContext(new GoogleAuthStrategy());
-    await context.signUp();
-}
-
-async function signUpWithEmailPassword(email, password) {
-    const context = new AuthContext(new EmailAuthStrategy(email, password));
-    await context.signUp();
-}
 
 export default function SignUp() {
+    const [user, setUser, authenticating, setAuthenticating] = useContext(Auth);
+
+    async function signUpWithGoogle() {
+        try {
+            setAuthenticating(true);
+            const context = new AuthContext(new GoogleAuthStrategy());
+            await context.signUp();
+            // window.location.href = '/';
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setAuthenticating(false);
+        }
+    }
+
+    async function signUpWithEmailPassword(email, password) {
+        try {
+            setAuthenticating(true);
+            const context = new AuthContext(new EmailAuthStrategy(email, password));
+            await context.signUp();
+            window.location.href = '/';
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setAuthenticating(false);
+        }
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const data = new FormData(event.currentTarget);
         await signUpWithEmailPassword(data.get('email'), data.get('password'));
     };
@@ -85,21 +105,22 @@ export default function SignUp() {
                                 borderRadius: 20,
                             }
                         }}
-                    /><TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="confirm_password"
-                    label="Confirm Password"
-                    type="confirm_password"
-                    id="confirm_password"
-                    // autoComplete="current-password"
-                    InputProps={{
-                        style: {
-                            borderRadius: 20,
-                        }
-                    }}
-                />
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="confirm_password"
+                        label="Confirm Password"
+                        type="password"
+                        id="confirm_password"
+                        // autoComplete="current-password"
+                        InputProps={{
+                            style: {
+                                borderRadius: 20,
+                            }
+                        }}
+                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -113,7 +134,7 @@ export default function SignUp() {
                         }}
 
                     >
-                        Sign Up
+                        {authenticating ? <CircularProgress/> : "Sign Up"}
                     </Button>
                     <Grid container>
                         <Grid item>

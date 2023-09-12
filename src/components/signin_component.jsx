@@ -13,24 +13,47 @@ import '../screens/auth_screen.css'
 import AuthContext from "../services/authentication_services/auth_context";
 import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
+import {useContext} from "react";
+import {Auth} from "../contexts/auth_context";
+import {CircularProgress} from "@mui/joy";
 
-async function signInWithGoogle() {
-    const context = new AuthContext(new GoogleAuthStrategy());
-    await context.signIn();
-}
-
-async function signInWithEmailPassword(email, password) {
-    const context = new AuthContext(new EmailAuthStrategy(email, password));
-    await context.signIn();
-}
 
 export default function SignIn() {
+    const [authenticating, isAuthenticating, setUser] = useContext(Auth);
+
+    async function signInWithGoogle() {
+        try {
+            isAuthenticating(true);
+            const context = new AuthContext(new GoogleAuthStrategy());
+            await context.signIn();
+            setUser(context.getUser());
+            window.location.href = '/';
+        } catch (e) {
+            console.log(e);
+        } finally {
+            isAuthenticating(false);
+        }
+    }
+
+    async function signInWithEmailPassword(email, password) {
+        try {
+            isAuthenticating(true);
+            const context = new AuthContext(new EmailAuthStrategy(email, password));
+            await context.signIn();
+            setUser(context.getUser());
+            window.location.href = '/';
+        } catch (e) {
+            console.log(e);
+        } finally {
+            isAuthenticating(false);
+        }
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         await signInWithEmailPassword(data.get('email'), data.get('password'));
     };
-
 
     return (
 
@@ -102,7 +125,7 @@ export default function SignIn() {
                         }}
 
                     >
-                        Sign In
+                        {authenticating ? <CircularProgress/> : "Sign In"}
                     </Button>
                     <Grid container>
                         <Grid item xs>

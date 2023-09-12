@@ -163,7 +163,10 @@ export default function User(props: Props) {
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         <Image width={240}
-                               src={require('../images/journeysync-high-resolution-logo-white-on-transparent-background.png')}></Image>
+                               src={require('../images/journeysync-high-resolution-logo-white-on-transparent-background.png')}
+                               onClick={() => {
+                                   navigate('/')
+                               }}></Image>
                     </Typography>
                 </Toolbar>
             </AppBar>

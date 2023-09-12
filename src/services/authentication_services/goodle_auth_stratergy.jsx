@@ -23,4 +23,8 @@ export default class GoogleAuthStrategy extends AuthStrategy {
             console.error("Google authentication error:", error);
         }
     }
+
+    getUser() {
+        return auth.currentUser;
+    }
 }

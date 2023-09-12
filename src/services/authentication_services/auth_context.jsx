@@ -10,4 +10,8 @@ export default class AuthContext {
     async signUp() {
         await this.authStrategy.signUp();
     }
+
+    getUser() {
+        return this.authStrategy.getUser();
+    }
 }

@@ -19,11 +19,14 @@ export default class EmailAuthStrategy extends AuthStrategy {
     }
 
     async signUp() {
-        console.log(this.email, this.password);
         try {
             await createUserWithEmailAndPassword(auth, this.email, this.password)
         } catch (error) {
             console.error("Email sign-up error:", error);
         }
+    }
+
+    getUser() {
+        return auth.currentUser;
     }
 }

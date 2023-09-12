@@ -3,11 +3,9 @@
     width: 100%;
     height: 100%;
     background-image: url('../images/landscape/landing_background_01.jpg');
-    background-size: 100vw;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-
 }
-
 
 .sign_in_options {
     display: flex;
