@@ -14,9 +14,14 @@
 h2{
     text-align: center;
 }
-.btn1{
-    background-color: gold;
+.explore-btn{
+    background-color: #E7BB41;
     border-radius: 20px;
     font-size: larger;
+    color: black;
+    margin-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 30px;
 }
 

@@ -16,34 +16,33 @@ export default function App() {
     };
   
     return (
-      <div className="App1">
-        <h4><b>Destination Town</b></h4>
-  
+      <div className="LocationBtn">
+        <h4 style={{textAlign:"center"}}>Destination Town</h4>
         <div className="search-container">
           <div className="search-inner">
             <input type="text" value={value} onChange={onChange} />
-            <button className="button1" onClick={() => onSearch(value)}> Search </button>
+            <button className="search-btn" onClick={() => onSearch(value)}> Search </button>
           </div>
           <div className="dropdown">
             {data
               .filter((item) => {
                 const searchTerm = value.toLowerCase();
-                const fullName = item.full_name.toLowerCase();
+                const cityName = item.city_name.toLowerCase();
   
                 return (
                   searchTerm &&
-                  fullName.startsWith(searchTerm) &&
-                  fullName !== searchTerm
+                  cityName.startsWith(searchTerm) &&
+                  cityName !== searchTerm
                 );
               })
               .slice(0, 10)
               .map((item) => (
                 <div
-                  onClick={() => onSearch(item.full_name)}
+                  onClick={() => onSearch(item.city_name)}
                   className="dropdown-row"
-                  key={item.full_name}
+                  key={item.city_name}
                 >
-                  {item.full_name}
+                  {item.city_name}
                 </div>
               ))}
           </div>

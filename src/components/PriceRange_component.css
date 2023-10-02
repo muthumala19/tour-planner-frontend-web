@@ -1,10 +1,14 @@
 /* Styles for the slider component */
 .slider {
     height: 10px;
-    width: 100%;
-    background-color: #ddd;
+    max-width: 100%;
+    background-color: #0C356A;
     border-radius: 5px;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 /* Styles for the slider thumb */
@@ -13,8 +17,7 @@
     width: 10px;
     border-radius: 20%;
     background-color: #000000;
-    cursor: grab;
-    
+    cursor: grab;   
 }
 
 /* Styles for the slider active state */
@@ -23,13 +26,37 @@
 }
 
 .SliderDiv{
-    width:400px;
-    margin-top:20px;
-    display:flex;
-    flex-direction:column;
+    width:600px;
+    margin-top:auto;
     justify-content:center;
     align-items:center;
-    text-align:center;
     padding:20px;
-    border-radius: 5px
+    border-radius: 5px;
 }
+
+.test1 {
+    display: flex;
+    justify-content: center;
+    
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  @media screen and (max-width: 600px) {
+    .SliderDiv {
+      width: 400px;
+    }
+  }
+  
+
+  @media screen and (max-width: 1000px) {
+    .SliderDiv {
+      width: 450px;
+    }
+  }
+  /* This code sets the width of the div to 700px when the screen is less than 1000px wide */
+
+  
+  
+  
+  
