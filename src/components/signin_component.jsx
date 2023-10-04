@@ -96,13 +96,13 @@ export default function SignIn() {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="src/components/signin_component#" variant="body2" style={{color: '#0C356A'}}>
+                            <Link href="" variant="body2" style={{color: '#0C356A'}}>
                                 Forgot password?
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="/sign_up" variant="body2" style={{color: '#0C356A'}}>
-                                {"Don't have an account? Sign Up"}
+                            <Link href="/register" variant="body2" style={{color: '#0C356A'}}>
+                                {"Don't have an account? Register"}
                             </Link>
                         </Grid>
                     </Grid>
