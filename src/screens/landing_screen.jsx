@@ -10,14 +10,14 @@ export default function LandingScreen() {
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Contact Us', href: '#contact_us'},
+        {label: 'Explore', href: '#explore'},
         {label: 'Register', href: '/register'},
         {label: 'Sign In', href: '/sign_in'},
     ];
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Contact Us', href: '#contact_us'},
+        {label: 'Explore', href: '#explore'},
     ];
 
     const [user] = useContext(Auth);
@@ -66,7 +66,7 @@ export default function LandingScreen() {
 
                 </div>
                 <div id='about_us' className={'section about_us'}><AboutUs/></div>
-                <div id='contact_us' className={'section'}>contact us</div>
+                <div id='explore' className={'section'}>Explore</div>
                 <div><Footer/></div>
             </div>);
 }
