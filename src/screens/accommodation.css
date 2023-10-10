@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+.acmd {
+    margin-top: 1%;
+    margin-bottom: 4%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.acmd-heading {
+    color: #0C356A;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 250%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.acmd-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.acmd-cards {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .acmd-btn {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}

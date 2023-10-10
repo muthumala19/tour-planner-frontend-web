@@ -1,9 +1,11 @@
+import { Button } from 'react-bootstrap';
 import './App.css';
 import '../src/screens/auth_screen'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AuthScreen from "./screens/auth_screen";
 import User from "./screens/user_screen";
 import LandingScreen from "./screens/landing_screen";
+
 
 function App() {
     return (
@@ -19,9 +21,9 @@ function App() {
                     <Route exact path='sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
                     <Route exact path='register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
                     <Route exact path='register/sign_up' element={<AuthScreen activeScreen={'sign_up'}/>}></Route>
-
                 </Routes>
             </BrowserRouter>
+
         </div>
     );
 }
