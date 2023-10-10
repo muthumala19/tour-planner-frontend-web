@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Payment_screen.css'; // Import your CSS file
 import NavBarComponent from '../components/navbar_component.jsx';
-import  Footer_component from "../components/Footer_component.jsx";
+import  Footer_component from "../components/footer_component.jsx";
 
 function PaymentPage() {
   const [cardNumber, setCardNumber] = useState('');

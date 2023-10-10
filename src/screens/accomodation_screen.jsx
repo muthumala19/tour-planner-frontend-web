@@ -1,7 +1,7 @@
 import NavBarComponent from '../components/navbar_component.jsx';
 import Accomodation_page_btns from '../components/accomodation_pge_component.jsx'
 import "../components/Date_box_component.css";
-import Footer_component from "../components/Footer_component.jsx";
+import Footer_component from "../components/footer_component.jsx";
 
 
 

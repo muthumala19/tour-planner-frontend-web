@@ -2,9 +2,13 @@ import React,{useState} from "react";
 import ReactSlider from 'react-slider';
 import "./PriceRange_component.css"
 
-const PriceRange_component = () => {
-    const [values, setValues] = useState([10000, 100000]);
-    const handleChange = (newValues) => setValues(newValues);
+const PriceRange_component = (props) => {
+
+  const [values, setValues] = useState([10000, 100000]);
+  const handleChange = (newValues) => {
+    setValues(newValues)
+    props.onPriceChange(newValues)
+  };
   
     return (
       <div className="test1">

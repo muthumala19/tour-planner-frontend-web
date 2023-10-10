@@ -1,8 +1,7 @@
 import NavBarComponent from '../components/navbar_component.jsx';
 import Destination_buttons from '../components/Destination_buttons.jsx'
 import "../components/Date_box_component.css";
-import Footer_component from "../components/Footer_component.jsx";
-
+import Footer_component from "../components/footer_component.jsx";
 
 
 function Destination(){
