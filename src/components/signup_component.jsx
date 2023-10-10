@@ -12,12 +12,11 @@ import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_
 import AuthContext from "../services/authentication_services/auth_context";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
 import {CircularProgress} from "@mui/joy";
-import {useContext} from "react";
-import {Auth} from "../contexts/auth_context";
+import {useState} from "react";
 
 
 export default function SignUp() {
-    const [user, setUser, authenticating, setAuthenticating] = useContext(Auth);
+    const [authenticating, setAuthenticating] = useState(false);
 
     async function signUpWithGoogle() {
         try {

@@ -13,39 +13,39 @@ import '../screens/auth_screen.css'
 import AuthContext from "../services/authentication_services/auth_context";
 import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
-import {useContext} from "react";
-import {Auth} from "../contexts/auth_context";
+
 import {CircularProgress} from "@mui/joy";
+import {useState} from "react";
 
 
 export default function SignIn() {
-    const [authenticating, isAuthenticating, setUser] = useContext(Auth);
+
+    const [authenticating, setAuthenticating] = useState(false);
 
     async function signInWithGoogle() {
         try {
-            isAuthenticating(true);
+            setAuthenticating(true);
             const context = new AuthContext(new GoogleAuthStrategy());
             await context.signIn();
-            setUser(context.getUser());
             window.location.href = '/';
         } catch (e) {
             console.log(e);
         } finally {
-            isAuthenticating(false);
+            setAuthenticating(false);
         }
     }
 
     async function signInWithEmailPassword(email, password) {
         try {
-            isAuthenticating(true);
+            setAuthenticating(true);
             const context = new AuthContext(new EmailAuthStrategy(email, password));
             await context.signIn();
-            setUser(context.getUser());
+
             window.location.href = '/';
         } catch (e) {
             console.log(e);
         } finally {
-            isAuthenticating(false);
+            setAuthenticating(false);
         }
     }
 
