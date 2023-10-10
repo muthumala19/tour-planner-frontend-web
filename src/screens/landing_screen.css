@@ -1,28 +1,125 @@
 .landing_screen {
-    position: relative;
+    position: absolute;
     width: 100%;
 }
 
-.landing_screen_navbar {
-    width: 100%;
-    position: fixed;
-}
 
 .section {
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
+
+}
+
+.about_us {
+    background-color: #0C356A;
+    justify-content: center;
+    text-align: center;
 }
 
 .first {
-    background-image: url('../images/landscape/landing_background_02.jpg');
-    background-size: 100vw;
+    background-image: url('../images/landscape/landing_background_01.jpg');
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+
+.welcome_note {
+    padding: 2vw;
+    height: 100vh;
+    display: flex;
+    /*padding: 2vh;*/
+    color: white;
+    width: 100%;
+    /*margin: auto auto auto auto;*/
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    position: absolute;
+}
+
+.welcome_note h1 {
+    margin-top: 20vh;
+    margin-bottom: 5vh;
+    width: 50%;
+    letter-spacing: 0.5vw;
+    font-weight: bold;
+    font-size: 10vh;
+    font-style: italic;
+}
+
+.welcome_note h5 {
+    margin-top: 3vh;
+    width: 50%;
+}
+
+.paragraphs {
+    margin-top: 20vh;
+    overflow-y: auto;
+    height: auto;
+    width: auto;
+    justify-content: center; /* Center align content vertically */
+    align-items: flex-start; /* Align content horizontally to the left */
+}
+
+.paragraphs p {
+    margin: 5vh 1vw;
+    padding: 2vh;
+    border-radius: 2vh;
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.get_started_button Button {
+    position: relative;
+    font-weight: bold;
+    font-size: 3vh;
+    letter-spacing: 0.2vw;
+    color: white;
+    height: auto;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5vh;
+    border: 0.2vh solid white;
+}
+
 
 @media screen and (max-width: 500px) {
     .first {
         background-image: url('../images/portrait/landing_background_portrait.jpg');
         height: 100vh;
-        background-size: cover;
+        background-size: 100% 100%;
         background-repeat: no-repeat;
+    }
+
+    .get_started_button Button {
+        width: auto;
+        height: auto;
+    }
+
+    .welcome_note {
+        display: block;
+        width: 100%;
+        margin: 0 0;
+
+    }
+
+    .welcome_note h1 {
+        margin-top: 8vh;
+        font-size: 5vh;
+        width: 100%;
+        margin-bottom: 1vh;
+
+    }
+
+
+    .paragraphs {
+        margin: 1vh auto auto; /* Set the maximum height for scrolling */
+
+    }
+
+    .paragraphs p {
+        width: 100%;
+        margin: 0 0 1vh 0;
+        padding: 1vh;
+
     }
 }

@@ -1,0 +1,16 @@
+.sliding_section {
+    justify-content: flex-start;
+    margin: auto;
+    border-radius: 3vh;
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 60vh;
+    width: 80vw;
+}
+
+.sliding_section h2 {
+    position: absolute;
+}
+
+.sliding_section p {
+    text-align: left;
+}
