@@ -9,9 +9,7 @@ function Destination(){
   const navbarItems = [
     {label: 'Home', href: '#home'},
     {label: 'About Us', href: '#about_us'},
-    {label: 'Contact Us', href: '#contact_us'},
-    {label: 'Register', href: '/register'},
-    {label: 'Sign In', href: '/sign_in'},
+    {label: 'Contact Us', href: '#contact_us'}
   ];
     return(
       <div>

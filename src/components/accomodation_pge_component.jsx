@@ -5,6 +5,7 @@ import Location_btn_component from "../components/Location_btn_component.jsx";
 import PriceRange_component from '../components/PriceRange_component.jsx';
 import Inc_Dec_btn from "./IncrementBtn_component.jsx";
 import "./accomodation_pge_component.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Accomodation_page_btns(){
 
@@ -12,6 +13,8 @@ export default function Accomodation_page_btns(){
   const [endDate, setEndDate] = useState(""); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
+  const navigation = useNavigate();
+
 
 
   const rideData = {
@@ -52,6 +55,7 @@ export default function Accomodation_page_btns(){
     // axios.post("http://localhost:5000/destination/api/tour/location", destinationData)
     // .then(res => console.log(res.data))
     console.log(priceRange)
+    navigation("/accomodation")
   }
 
   // Skip Accomodation button
