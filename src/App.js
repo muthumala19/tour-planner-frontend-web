@@ -1,6 +1,6 @@
 import './App.css';
 import '../src/screens/auth_screen'
-import Destination from './screens/Destinations.jsx';
+import Destination from './screens/DestinationForm.jsx';
 import AccomodationForm from './screens/accomodation_screen.jsx';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AuthScreen from "./screens/auth_screen";
