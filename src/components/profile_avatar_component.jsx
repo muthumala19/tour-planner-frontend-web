@@ -9,6 +9,8 @@ import {MdManageAccounts} from "react-icons/md";
 import {AiFillSetting, AiOutlineLogout} from "react-icons/ai";
 import {Divider} from "@mui/joy";
 import {useNavigate} from "react-router-dom";
+import {auth} from "../configurations/firebase_configurations";
+import {signOut} from "firebase/auth";
 
 export default function AvatarMenu() {
     const navigate = useNavigate();
@@ -17,7 +19,7 @@ export default function AvatarMenu() {
             <MenuButton variant={'plain'}>User</MenuButton>
             <Menu>
                 <MenuItem onClick={() => {
-                    navigate('user/profile')
+                    navigate('/user/profile')
                 }}>
                     <ListItemIcon>
                         <BiUserCircle size={'3vh'}/>
@@ -25,7 +27,7 @@ export default function AvatarMenu() {
                     <ListItemText>Profile</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={() => {
-                    navigate('user/account')
+                    navigate('/user/account')
                 }}>
                     <ListItemIcon>
                         <MdManageAccounts size={'3vh'}/>
@@ -41,7 +43,16 @@ export default function AvatarMenu() {
                     <ListItemText>Settings</ListItemText>
                 </MenuItem>
                 <Divider/>
-                <MenuItem>
+                <MenuItem onClick={
+                    () => {
+                        signOut(auth).then(() => {
+                            navigate('/')
+                        }).catch((error) => {
+                            console.log(error)
+                        });
+                        console.log('logout')
+                    }
+                }>
                     <ListItemIcon>
                         <AiOutlineLogout size={'3vh'}/>
                     </ListItemIcon>

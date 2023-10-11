@@ -3,8 +3,12 @@ import Footer from "../components/footer_component";
 import NavBarComponent from "../components/navbar_component";
 import Button from "@mui/material/Button";
 import AboutUs from "../components/about_us_component";
+import {useEffect, useState} from "react";
+import {onAuthStateChanged} from "firebase/auth";
+import {auth} from "../configurations/firebase_configurations";
 
 export default function LandingScreen() {
+    const [authUser, setAuthUser] = useState(null);
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
@@ -18,13 +22,22 @@ export default function LandingScreen() {
         {label: 'Explore', href: '#explore'},
     ];
 
-//this is a temp user object until real user object is created and store when logged in
-    const user = null;
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthUser(user);
+            } else {
+                setAuthUser(null);
+            }
+            console.log(user)
+        });
+    }, []);
+
 
     return (
         <div className={"landing_screen"}>
             <div className={'navbar_position'}><NavBarComponent
-                items={user ? navbarItemsForLoggedInUser : navbarItemsForNotLoggedInUser}/></div>
+                items={authUser ? navbarItemsForLoggedInUser : navbarItemsForNotLoggedInUser}/></div>
             <div id='home' className={'section first'}>
                 <div className={'welcome_note'}>
                     <div><h1>
