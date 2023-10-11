@@ -11,8 +11,6 @@ function PhotoTransition({ photos }) {
       );
     }, 5000);
 
-    console.log("working it", currentPhotoIndex);
-
     return () => {
       clearInterval(interval); // Clear the interval when the component unmounts
     };

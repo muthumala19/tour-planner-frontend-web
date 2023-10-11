@@ -3,7 +3,7 @@ import "./roomCard.css"
 import { FaCalendar, FaCheck } from 'react-icons/fa';
 import PhotoTransition from './photoTransition';
 
-const RoomCard = ({image, description, highlights, photos, onClick}) => {
+const RoomCard = ({id, image, isSelected, description, highlights, photos, onClick}) => {
     console.log(photos)
     return ( 
         <React.Fragment>
@@ -22,7 +22,7 @@ const RoomCard = ({image, description, highlights, photos, onClick}) => {
                             })}
                         </div>
 
-                        <button className='room-crd-btn' onClick={onClick}>Select</button>
+                        <button className={isSelected ? 'room-crd-btn room-crd-btn-active': 'room-crd-btn'} onClick={() => onClick(id)}>{isSelected ? "Selected": "Select"}</button>
 
                     </div>
                 </div>

@@ -7,11 +7,11 @@ const options = {
     currency: 'USD',
     drop_off_latitude: '6.9271',
     sort_by: 'recommended',
-    drop_off_datetime: '2023-09-18 14:00:00',
+    drop_off_datetime: '2023-09-30 14:00:00',
     from_country: 'it',
     pick_up_latitude: '6.9271',
     locale: 'en-gb',
-    pick_up_datetime: '2023-09-16 16:00:00',
+    pick_up_datetime: '2023-09-29 16:00:00',
     drop_off_longitude: '79.8612',
     pick_up_longitude: '79.8612'
   },

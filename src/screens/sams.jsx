@@ -21,18 +21,22 @@ const Accommodation = () => {
         const fetchData = async () => {
             try {
                 const data = await getHotels();
+                setHotels(data);
                 setLoading(false);
-                const cards = data.map((item, index) => {
-                    return {
-                        hotel_id: item.hotel_id,
-                        hotel_name: item.hotel_name,
-                        city: item.city,
-                        review_score: item.review_score,
-                        review_score_word: item.review_score_word,
-                        min_total_price: item.min_total_price,
-                        max_photo_url: item.max_photo_url,
-                    }
-                });
+                const cards = data.map((item, index) => (
+                    <HotelCard
+                        key={index}
+                        id={index}
+                        hotel_id={item.hotel_id}
+                        title={item.hotel_name}
+                        location={item.city}
+                        ratings={[item.review_score, item.review_score_word]}
+                        cost={Math.ceil(item.min_total_price * 320)}
+                        tagLabel="Location tags"
+                        image={item.max_photo_url}
+                        onClick={handleClick}
+                    />
+                ));
                 setCards(cards);
             } catch (error) {
                 console.error('Error fetching hotel data:', error);
@@ -42,32 +46,22 @@ const Accommodation = () => {
 
         fetchData();
         }, []);
-    
-    const generateHotelCards = (cards, handleClick) => (
-        cards.map((item, index) => (
-            <HotelCard
-                key={index}
-                id={index}
-                hotel_id={item.hotel_id}
-                title={item.hotel_name}
-                location={item.city}
-                ratings={[item.review_score, item.review_score_word]}
-                cost={Math.ceil(item.min_total_price * 320)}
-                tagLabel="Location tags"
-                image={item.max_photo_url}
-                onClick={handleClick}
-            />
-        ))
-    );
+
 
     const handleClick = (id, hotel_id) => {
-        navigate(`/room-selection/?hotel_id=${hotel_id}`);
+        navigate("/room-selection")
     };
 
+    const cardComponents = [
+        <HotelCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+        <HotelCard key={2} id={2} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+        <HotelCard key={3} id={3} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+        <HotelCard key={4} id={4} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+        <HotelCard key={5} id={5} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+        <HotelCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+    ];
 
-    useEffect(() => {
-        setHotels(generateHotelCards(cards, handleClick));
-  }, [cards]);
+
 
     return (
         <React.Fragment>
@@ -77,7 +71,7 @@ const Accommodation = () => {
                     <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
                 </div>
                 <div className='acmd-cards'>
-                    <Pagination data={hotels} itemsPerPage={6}/>
+                    <Pagination data={cards} itemsPerPage={6}/>
                 </div>
                 {/* <div className='acmd-btn'>
                     <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNextStep}></Button>

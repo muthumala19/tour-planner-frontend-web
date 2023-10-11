@@ -1,10 +1,12 @@
 import axios from "axios";
 
+
+export const getRooms = async (hotel_id) => {
 const options = {
   method: 'GET',
   url: 'https://booking-com.p.rapidapi.com/v1/hotels/room-list',
   params: {
-    hotel_id: '1115841',
+    hotel_id: hotel_id,
     currency: 'USD',
     checkout_date: '2023-09-24',
     locale: 'en-gb',
@@ -18,9 +20,9 @@ const options = {
   }
 };
 
-export const getRooms = async () => {
     try {
 	const response = await axios.request(options);
+  console.log(response.data[0].rooms);
     return response.data[0].rooms;
 } catch (error) {
 	console.error(error);

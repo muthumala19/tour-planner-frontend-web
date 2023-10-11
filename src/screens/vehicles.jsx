@@ -4,13 +4,14 @@ import "./vehicles.css"
 import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
 import { useNavigate } from 'react-router-dom';
-import VehicleCard from '../components/vehicleCard';
 import { getVehicles } from '../backend/vehicleGeneration';
+import VehicleCard from '../components/vehicleCard';
 
 const Vehicles = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
 
     const [cards, setCards] = useState([]);
+    const [vehicleCards, setVehicleCards] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
@@ -22,17 +23,15 @@ const Vehicles = () => {
                 const data = await getVehicles();
                 setLoading(false);
                 const cards = Object.values(data).map((item, index) => {
-                    return  <VehicleCard
-                        key={index}
-                        id={index}
-                        vh_id={item.vehicle_info.v_id}
-                        title={item.supplier_info.name}
-                        car={item.vehicle_info.v_name}
-                        ratings={item.rating_info.average}
-                        cost={Math.ceil(item.pricing_info.price * 320)}
-                        image={item.vehicle_info.image_thumbnail_url}
-                        onClick={handleClick}
-                    />
+                    return  {
+                        isSelected:false,
+                        vh_id:item.vehicle_info.v_id,
+                        title:item.supplier_info.name,
+                        car:item.vehicle_info.v_name,
+                        ratings:item.rating_info.average,
+                        cost:Math.ceil(item.pricing_info.price * 320),
+                        image:item.vehicle_info.image_thumbnail_url,
+                    }
             });
                 setCards(cards);
             } catch (error) {
@@ -44,24 +43,38 @@ const Vehicles = () => {
         fetchData();
         }, []);
 
+        
+        const handleClick = (key) => {
+            console.log("working", key);
+            const ncards = cards;
+            ncards[key].isSelected = !ncards[key].isSelected;
+            setVehicleCards(generateVehicleCards(ncards, handleClick));
+        };
 
+        const generateVehicleCards = (cards, handleClick) => (
+            cards.map((item, index) => (
+                <VehicleCard
+                    key={index}
+                    id={index}
+                    isSelected={item.isSelected}
+                    vh_id={item.vh_id}
+                    title={item.title}
+                    car={item.car}
+                    ratings={item.ratings}
+                    cost={item.cost}
+                    image={item.image}
+                    onClick={handleClick}
+                />
+            ))
+        );
 
-    const handleClick = (key) => {
-        console.log("working", key);
-    };
+        useEffect(() => {
+            setVehicleCards(generateVehicleCards(cards, handleClick));
+    }, [cards]);
 
-    const cardComponents = [
-        <VehicleCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={2} id={2} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={3} id={3} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={4} id={4} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={5} id={5} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-    ];
-
-    const handleNextStep = () => {
-        navigate("/summary");
-    }
+        const handleNextStep = () => {
+            navigate("/summary");
+        }
 
 
 
@@ -74,7 +87,7 @@ const Vehicles = () => {
                     <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
                 </div>
                 <div className='vh-cards'>
-                    <Pagination data={cards} itemsPerPage={6}/>
+                    <Pagination data={vehicleCards} itemsPerPage={6}/>
                 </div>
                 <div className='vh-btn'>
                     <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNextStep}></Button>

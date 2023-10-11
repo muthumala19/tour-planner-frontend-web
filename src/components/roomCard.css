@@ -59,6 +59,11 @@
 
 }
 
+.room-crd-btn-active {
+    background: #FFA500;
+    color: white;
+}
+
 .room-crd-btn:hover {
     background: #FFA500;
     color: black;

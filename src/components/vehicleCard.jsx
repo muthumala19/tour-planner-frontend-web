@@ -4,7 +4,7 @@ import Button from './button';
 import "./vehicleCard.css"
 import { Link } from 'react-router-dom';
 
-const VehicleCard = ({id, title, car,  vh_id, image, cost, ratings, onClick}) => {
+const VehicleCard = ({id, isSelected, title, car,  vh_id, image, cost, ratings, onClick}) => {
     return (
         <div className='vh-crd-containter'>
             <img className='vh-crd-image' src={image} placeholder={title}></img>
@@ -29,7 +29,7 @@ const VehicleCard = ({id, title, car,  vh_id, image, cost, ratings, onClick}) =>
 
             <Link className='vh-crd-maplink' to="https://www.google.com/maps/place/University+of+Moratuwa">explore location on map</Link>
 
-            <button className='vh-crd-btn' onClick={() => onClick(id, vh_id)}>Select</button>
+            <button className={isSelected ? 'vh-crd-btn vh-crd-btn-active':'vh-crd-btn'} onClick={() => onClick(id, vh_id)}>{isSelected ? "Selected": "Select"}</button>
             
         </div>
     );

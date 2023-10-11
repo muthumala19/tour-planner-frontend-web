@@ -126,6 +126,11 @@
     margin-bottom: 10px;
 }
 
+.vh-crd-btn-active {
+    background: #FFA500;
+    color: white;
+}
+
 .vh-crd-btn:hover {
     background: #FFA500;
     color: black;

@@ -1,5 +1,6 @@
 import axios from "axios";
-
+// 7.2906
+// 80.6337
 const options = {
   method: 'GET',
   url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
@@ -8,6 +9,8 @@ const options = {
     room_number: '1',
     longitude: '79.8612',
     latitude: '6.9271',
+    // longitude: '80.6337',
+    // latitude: '7.2906',
     filter_by_currency: 'AED',
     order_by: 'class_descending',
     locale: 'en-gb',

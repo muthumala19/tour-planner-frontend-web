@@ -4,6 +4,10 @@ import "./pagination.css"
 const Pagination = ({ data, itemsPerPage }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
+  if (data === null) {
+    return null;
+  }
+
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
