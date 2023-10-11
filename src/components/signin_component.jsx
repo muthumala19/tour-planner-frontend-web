@@ -14,6 +14,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import AuthContext from "../services/authentication_services/auth_context";
 import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
 import {validateEmail, validatePassword} from "../validators/form_validators";
+import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
 
 
 export default function SignIn() {
@@ -47,7 +48,7 @@ export default function SignIn() {
     async function signInWithEmailPassword(email, password) {
         try {
             setAuthenticating(true);
-            const context = new AuthContext(new GoogleAuthStrategy());
+            const context = new AuthContext(new EmailAuthStrategy(email, password));
             await context.signIn();
             resetForm(); // Reset the form after successful sign-in
             window.location.href = '/';
