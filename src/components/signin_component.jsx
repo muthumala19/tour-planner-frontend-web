@@ -1,29 +1,76 @@
+import React, {useState} from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
+import CircularProgress from "@mui/material/CircularProgress";
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import '../screens/auth_screen.css'
+import AuthContext from "../services/authentication_services/auth_context";
+import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
+import {validateEmail, validatePassword} from "../validators/form_validators";
+import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
+
 
 export default function SignIn() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
+    const [authenticating, setAuthenticating] = useState(false);
+
+    const initialFormState = {
+        email: "",
+        password: "",
+        rememberMe: false,
     };
 
+    const [formData, setFormData] = useState(initialFormState);
 
+    const resetForm = () => {
+        setFormData(initialFormState);
+    };
+
+    async function signInWithGoogle() {
+        try {
+            setAuthenticating(true);
+            const context = new AuthContext(new GoogleAuthStrategy());
+            await context.signIn();
+            window.location.href = '/';
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setAuthenticating(false);
+        }
+    }
+
+    async function signInWithEmailPassword(email, password) {
+        try {
+            setAuthenticating(true);
+            const context = new AuthContext(new EmailAuthStrategy(email, password));
+            await context.signIn();
+            resetForm(); // Reset the form after successful sign-in
+            window.location.href = '/';
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setAuthenticating(false);
+        }
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const emailValidationResults = validateEmail(formData.email);
+        const passwordValidationResults = validatePassword(formData.password);
+        if (emailValidationResults.error || passwordValidationResults.error) {
+            alert(`${emailValidationResults.error ? emailValidationResults.error.details[0].message : ''} ${passwordValidationResults.error ? passwordValidationResults.error.details[0].message : ''}`)
+            resetForm();
+            return;
+        }
+        await signInWithEmailPassword(formData.email, formData.password);
+    };
     return (
-
         <Container component="main" maxWidth="sm">
             <Box
                 sx={{
@@ -37,8 +84,7 @@ export default function SignIn() {
                     flexDirection: "column",
                     alignItems: "center",
                     backgroundColor: '#D9D9D9',
-                    opacity: '0.85'
-
+                    opacity: '0.85',
                 }}
             >
                 <Typography component="h1" variant="h4" style={{color: '#0C356A', fontWeight: 'bold'}}>
@@ -51,7 +97,7 @@ export default function SignIn() {
                         InputProps={{
                             style: {
                                 borderRadius: 20,
-                            }
+                            },
                         }}
                         fullWidth
                         id="email"
@@ -59,6 +105,8 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                     <TextField
                         margin="normal"
@@ -72,27 +120,29 @@ export default function SignIn() {
                         InputProps={{
                             style: {
                                 borderRadius: 20,
-                            }
+                            },
                         }}
+                        value={formData.password}
+                        onChange={(e) => setFormData({...formData, password: e.target.value})}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary"/>}
                         label="Remember me"
+                        checked={formData.rememberMe}
+                        onChange={(e) => setFormData({...formData, rememberMe: e.target.checked})}
                     />
                     <Button
                         type="submit"
                         fullWidth
-                        // variant="contained"
                         sx={{mt: 3, mb: 2}}
                         style={{
                             borderRadius: '2vh',
                             backgroundColor: '#0C356A',
                             color: '#D9D9D9',
-                            fontWeight: 'bold'
+                            fontWeight: 'bold',
                         }}
-
                     >
-                        Sign In
+                        {authenticating ? <CircularProgress/> : "Sign In"}
                     </Button>
                     <Grid container>
                         <Grid item xs>
@@ -109,7 +159,8 @@ export default function SignIn() {
                 </Box>
                 <div className={'sign_in_options'}>
                     <div><h6>Sign In With :</h6></div>
-                    <div><GoogleIcon className={'sign_in_option'} sx={{color: "#0C356A", ml: 1, mr: 1}}/></div>
+                    <div><GoogleIcon className={'sign_in_option'} sx={{color: "#0C356A", ml: 1, mr: 1}}
+                                     onClick={signInWithGoogle}/></div>
                     <div><FacebookIcon className={'sign_in_option'} sx={{color: "#0C356A", ml: 1, mr: 1}}/></div>
                     <div></div>
                 </div>

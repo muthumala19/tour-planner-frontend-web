@@ -12,6 +12,8 @@
 
 .about_us {
     background-color: #0C356A;
+    justify-content: center;
+    text-align: center;
 }
 
 .first {

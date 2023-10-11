@@ -8,6 +8,8 @@ import Choose_ride from "./screens/explore_your_Ideal_ride.jsx";
 import PaymentPage from "./screens/Payment_screen.jsx";
 import User from "./screens/user_screen";
 import LandingScreen from "./screens/landing_screen";
+import User from "./screens/user_screen";
+import AuthScreen from "./screens/auth_screen";
 
 function App() {
     return (

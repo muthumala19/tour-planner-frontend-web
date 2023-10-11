@@ -1,4 +1,4 @@
-class AuthStrategy {
+export default class AuthStrategy {
     constructor() {
     }
 
@@ -8,5 +8,9 @@ class AuthStrategy {
 
     async signUp() {
         throw new Error("Subclasses must implement the signUp method.");
+    }
+
+    getUser() {
+        throw new Error("Subclasses must implement the getUser method.");
     }
 }

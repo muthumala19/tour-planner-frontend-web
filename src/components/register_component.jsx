@@ -1,3 +1,4 @@
+import React, {useRef} from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -7,21 +8,36 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import '../screens/auth_screen.css'
 import {useNavigate} from "react-router-dom";
+import {validateUserData} from "../validators/form_validators";
 
 export default function Register() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get("email"),
-            password: data.get("password"),
-        });
-        navigate('/register/sign_up');
-    };
+    const formRef = useRef(null);
     const navigate = useNavigate();
 
-    return (
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(formRef.current);
+        const userDataValidationResults = validateUserData({
+            first_name: data.get('first_name'),
+            last_name: data.get('last_name'),
+            age: data.get('age'),
+            username: data.get('username'),
+        })
+        if (userDataValidationResults.error) {
+            const errorDetails = userDataValidationResults.error.details.map((error) => error.message).join(', ');
+            alert(errorDetails);
+            resetForm();
+            return;
+        }
+        navigate('/register/sign_up');
+        resetForm(); // Reset the form after submission
+    };
 
+    const resetForm = () => {
+        formRef.current.reset();
+    };
+
+    return (
         <Container component="main" maxWidth="sm">
             <Box
                 sx={{
@@ -38,13 +54,12 @@ export default function Register() {
                     alignItems: "center",
                     backgroundColor: '#D9D9D9',
                     opacity: '0.85'
-
                 }}
             >
                 <Typography component="h1" variant="h4" style={{color: '#0C356A', fontWeight: 'bold'}}>
                     Register
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
+                <form ref={formRef} onSubmit={handleSubmit} noValidate>
                     <TextField
                         margin="normal"
                         sx={{mr: 2}}
@@ -60,7 +75,6 @@ export default function Register() {
                         autoComplete="first_name"
                         autoFocus
                         fullWidth={true}
-
                     />
                     <TextField
                         margin="normal"
@@ -71,13 +85,11 @@ export default function Register() {
                                 borderRadius: 20,
                             }
                         }}
-
                         id="last_name"
                         label="Last Name"
                         name="last_name"
                         autoComplete="last_name"
                         autoFocus fullWidth={true}
-
                     />
                     <TextField
                         margin="normal"
@@ -87,7 +99,6 @@ export default function Register() {
                                 borderRadius: 20,
                             }
                         }}
-
                         id="age"
                         sx={{mr: 2}}
                         label="Age"
@@ -95,7 +106,6 @@ export default function Register() {
                         autoComplete="age"
                         autoFocus
                         fullWidth={true}
-
                     />
                     <TextField
                         margin="normal"
@@ -112,7 +122,6 @@ export default function Register() {
                         autoComplete="username"
                         autoFocus
                     />
-
                     <Grid container>
                         <Grid item>
                             <Link href="/sign_in" variant="body2" style={{color: '#0C356A'}}>
@@ -133,7 +142,7 @@ export default function Register() {
                     >
                         Next
                     </Button>
-                </Box>
+                </form>
             </Box>
         </Container>
     );

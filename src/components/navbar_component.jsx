@@ -1,8 +1,22 @@
 import './navbar_component.css'
 import {Container, Image, Nav, Navbar} from "react-bootstrap";
 import AvatarMenu from "./profile_avatar_component";
+import {useEffect, useState} from "react";
+import {onAuthStateChanged} from "firebase/auth";
+import {auth} from "../configurations/firebase_configurations";
 
 export default function NavBarComponent({items}) {
+    const [authUser, setAuthUser] = useState(null);
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthUser(user);
+            } else {
+                setAuthUser(null);
+            }
+            console.log(user)
+        });
+    }, []);
 
     return (
         <Navbar expand="lg" className="navbar-custom navbar-light navbar-fixed-top">
@@ -19,7 +33,7 @@ export default function NavBarComponent({items}) {
                     >{items.map((item) => {
                         return <Nav.Link key={item.label} href={item.href} className="me-5">{item.label}</Nav.Link>
                     })}
-                        <AvatarMenu/>
+                        {authUser ? <AvatarMenu/> : null}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
