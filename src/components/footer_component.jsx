@@ -1,4 +1,4 @@
-import './footer.css'
+import './footer_component.css'
 import {Image} from "react-bootstrap";
 import {FaFacebook, FaInstagram, FaLinkedin, FaTwitter} from "react-icons/fa";
 
