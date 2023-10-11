@@ -12,6 +12,7 @@ import AuthScreen from "./screens/auth_screen";
 import Accommodation from './screens/sams';
 import Vehicles from './screens/vehicles';
 import Destinations from './screens/destination';
+import Destination from './screens/destinations';
 
 function App() {
     return (
