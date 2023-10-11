@@ -65,7 +65,8 @@ export default function SignUp() {
             confirmPassword: formData.confirm_password
         });
         if (emailValidationResults.error || confirmPasswordValidationResults.error) {
-            alert(`${emailValidationResults.error ? emailValidationResults.error.details[0].message : ''} ${confirmPasswordValidationResults.error ? confirmPasswordValidationResults.error.details[0].message : ''}`)
+            const errorDetails = confirmPasswordValidationResults.error.details.map((error) => error.message).join(', ');
+            alert(errorDetails);
             resetForm()
             return;
         }
