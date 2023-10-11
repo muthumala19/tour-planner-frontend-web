@@ -1,29 +1,26 @@
-import { Button } from 'react-bootstrap';
 import './App.css';
-import Footer from "./components/Footer";
-import NavBarComponent from './components/navbar_component';
+import '../src/screens/auth_screen'
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LandingScreen from "./screens/landing_screen";
-import Destinations from './screens/destinations';
-import Accommodation from './screens/accommodation';
-import Summary from './screens/summary';
-import SavedJourneys from './screens/savedJourneys';
-import RoomSelection from './screens/roomSelection';
-import { Route, Routes } from 'react-router-dom';
-import Vehicles from './screens/vehicles';
+import User from "./screens/user_screen";
+import AuthScreen from "./screens/auth_screen";
 
 function App() {
     return (
         <div className="App">
-            <NavBarComponent/>
+            <BrowserRouter>
                 <Routes>
-                    <Route path='/destinations' element={<Destinations/>}/>
-                    <Route path='/accommodations' element={<Accommodation/>}/>
-                    <Route path='/room-selection' element={<RoomSelection/>}/>
-                    <Route path='/saved-journeys' element={<SavedJourneys/>}/>
-                    <Route path='/summary' element={<Summary/>}/>
-                    <Route path='/vehicles' element={<Vehicles/>}/>
+                    <Route index element={<LandingScreen/>}></Route>
+                    <Route exact path='user' element={<User activeScreen={'Profile'}/>}>
+                        <Route path={'profile'} element={<User activeScreen='Profile'/>}></Route>
+                        <Route path={'account'} element={<User activeScreen={'Account'}/>}></Route>
+                        <Route path={'settings'} element={<User activeScreen={'Settings'}/>}></Route>
+                    </Route>
+                    <Route exact path='sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
+                    <Route exact path='register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
+                    <Route exact path='register/sign_up' element={<AuthScreen activeScreen={'sign_up'}/>}></Route>
                 </Routes>
-            <Footer/>
+            </BrowserRouter>
         </div>
     );
 }
