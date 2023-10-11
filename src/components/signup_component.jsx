@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -12,19 +13,29 @@ import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_
 import AuthContext from "../services/authentication_services/auth_context";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
 import {CircularProgress} from "@mui/joy";
-import {useContext} from "react";
-import {Auth} from "../contexts/auth_context";
-
+import {validateConfirmPassword, validateEmail} from "../validators/form_validators";
 
 export default function SignUp() {
-    const [user, setUser, authenticating, setAuthenticating] = useContext(Auth);
+    const [authenticating, setAuthenticating] = useState(false);
+
+    const initialFormState = {
+        email: "",
+        password: "",
+        confirm_password: "",
+    };
+
+    const [formData, setFormData] = useState(initialFormState);
+
+    const resetForm = () => {
+        setFormData(initialFormState);
+    };
 
     async function signUpWithGoogle() {
         try {
             setAuthenticating(true);
             const context = new AuthContext(new GoogleAuthStrategy());
             await context.signUp();
-            // window.location.href = '/';
+            resetForm(); // Reset the form after successful sign-up
         } catch (e) {
             console.log(e);
         } finally {
@@ -47,12 +58,22 @@ export default function SignUp() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        await signUpWithEmailPassword(data.get('email'), data.get('password'));
+        // const data = new FormData(event.currentTarget);
+        const emailValidationResults = validateEmail(formData.email);
+        const confirmPasswordValidationResults = validateConfirmPassword({
+            password: formData.password,
+            confirmPassword: formData.confirm_password
+        });
+        if (emailValidationResults.error || confirmPasswordValidationResults.error) {
+            const errorDetails = confirmPasswordValidationResults.error.details.map((error) => error.message).join(', ');
+            alert(errorDetails);
+            resetForm()
+            return;
+        }
+        await signUpWithEmailPassword(formData.get('email'), formData.get('password'));
     };
 
     return (
-
         <Container component="main" maxWidth="sm">
             <Box
                 sx={{
@@ -69,7 +90,6 @@ export default function SignUp() {
                     alignItems: "center",
                     backgroundColor: '#D9D9D9',
                     opacity: '0.85'
-
                 }}
             >
                 <Typography component="h1" variant="h4" style={{color: '#0C356A', fontWeight: 'bold'}}>
@@ -90,6 +110,8 @@ export default function SignUp() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        value={formData.email}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
                     />
                     <TextField
                         margin="normal"
@@ -99,12 +121,13 @@ export default function SignUp() {
                         label="Password"
                         type="password"
                         id="password"
-                        // autoComplete="current-password"
                         InputProps={{
                             style: {
                                 borderRadius: 20,
                             }
                         }}
+                        value={formData.password}
+                        onChange={(e) => setFormData({...formData, password: e.target.value})}
                     />
                     <TextField
                         margin="normal"
@@ -114,17 +137,17 @@ export default function SignUp() {
                         label="Confirm Password"
                         type="password"
                         id="confirm_password"
-                        // autoComplete="current-password"
                         InputProps={{
                             style: {
                                 borderRadius: 20,
                             }
                         }}
+                        value={formData.confirm_password}
+                        onChange={(e) => setFormData({...formData, confirm_password: e.target.value})}
                     />
                     <Button
                         type="submit"
                         fullWidth
-                        // variant="contained"
                         sx={{mt: 3, mb: 2}}
                         style={{
                             borderRadius: '2vh',
@@ -132,7 +155,6 @@ export default function SignUp() {
                             color: '#D9D9D9',
                             fontWeight: 'bold'
                         }}
-
                     >
                         {authenticating ? <CircularProgress/> : "Sign Up"}
                     </Button>
@@ -144,7 +166,6 @@ export default function SignUp() {
                         </Grid>
                     </Grid>
                     <Button
-                        // variant="contained"
                         sx={{mt: 3, mb: 2,}}
                         style={{
                             borderRadius: '2vh',
@@ -153,12 +174,10 @@ export default function SignUp() {
                             fontWeight: 'bold',
                             fontStyle: 'italic',
                         }}
-                        onClick={
-                            () => {
-                                window.history.back()
-                            }
-                        }
-
+                        onClick={() => {
+                            window.history.back();
+                            resetForm(); // Reset the form when navigating back
+                        }}
                     >
                         Back
                     </Button>
