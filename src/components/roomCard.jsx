@@ -3,7 +3,7 @@ import "./roomCard.css"
 import { FaCalendar, FaCheck } from 'react-icons/fa';
 import PhotoTransition from './photoTransition';
 
-const RoomCard = ({id, image, isSelected, description, highlights, photos, onClick}) => {
+const RoomCard = ({id, isSelected, description, highlights, photos, onClick}) => {
     console.log(photos)
     return ( 
         <React.Fragment>

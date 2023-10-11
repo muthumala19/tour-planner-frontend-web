@@ -1,6 +1,5 @@
 import './App.css';
 import '../src/screens/auth_screen'
-import Destination from './screens/Destinations.jsx';
 import Accomodation from './screens/accomodation_screen.jsx';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AuthScreen from "./screens/auth_screen";
@@ -10,6 +9,9 @@ import User from "./screens/user_screen";
 import LandingScreen from "./screens/landing_screen";
 import User from "./screens/user_screen";
 import AuthScreen from "./screens/auth_screen";
+import Accommodation from './screens/sams';
+import Vehicles from './screens/vehicles';
+import Destinations from './screens/destination';
 
 function App() {
     return (
@@ -31,6 +33,13 @@ function App() {
                     <Route exact path='/explore_your_ideal_ride' element={<Choose_ride/>}></Route>
                     <Route exact path='/sign_in' element={<AuthScreen isSignIn={true}/>}></Route>
                     <Route exact path='/sign_up' element={<AuthScreen isSignIn={false}/>}></Route>
+
+                    <Route path='/destinations' element={<Destinations/>}/>
+                    <Route path='/accommodations' element={<Accommodation/>}/>
+                    <Route path='/room-selection' element={<RoomSelection/>}/>
+                    <Route path='/saved-journeys' element={<SavedJourneys/>}/>
+                    <Route path='/summary' element={<Summary/>}/>
+                    <Route path='/vehicles' element={<Vehicles/>}/>
 
                 </Routes>
             </BrowserRouter>
