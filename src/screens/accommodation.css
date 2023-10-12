@@ -5,6 +5,9 @@
     margin-bottom: 4%;
     margin-left: 5%;
     margin-right: 5%;
+    background-image: url("../images/background_nil.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .acmd-heading {
