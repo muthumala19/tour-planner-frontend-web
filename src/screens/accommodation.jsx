@@ -1,7 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
 import Button from '../components/button';
 import "./accommodation.css"
-import DestinationCard from '../components/Destinationcard';
 import Pic from "../images/hotel.jpg"
 import Pagination from '../components/pagination';
 import HotelCard from '../components/hotelCard';
