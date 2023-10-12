@@ -72,7 +72,7 @@ export default function Destination_buttons(){
         
         <div>  
             <div className="d-flex justify-content-center">
-              <button className="explore-btn" onClick={onClick}><b>Explore</b></button>
+              <button className="lbtn explore-btn" onClick={onClick}><b>Explore</b></button>
             </div>
         </div>
       </div>  

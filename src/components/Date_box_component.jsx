@@ -13,7 +13,7 @@ export default function Date_box_component(props) {
     <>
       <div className="grp">
         <h4>{props.text}</h4>
-        <input className="box" type="date" onChange={handleDateChange} />
+        <input className="linput box" type="date" onChange={handleDateChange} />
       </div>
     </>
   );

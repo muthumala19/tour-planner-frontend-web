@@ -89,14 +89,14 @@ export default function Accomodation_page_btns(){
       {/* Explore button */}
       <div className="row">
         <div className="d-flex justify-content-center">
-          <button className="explore-btn" onClick={exploreClick}>Explore</button>
+          <button className="lbtn explore-btn" onClick={exploreClick}>Explore</button>
         </div>  
       </div>
 
       {/* Skip Accomodation button */}
       <div className="row">
         <div className="d-flex justify-content-center">
-          <button className="Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
+          <button className="lbtn Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
         </div>   
       </div>
     </div>

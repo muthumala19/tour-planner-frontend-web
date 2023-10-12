@@ -29,8 +29,8 @@ export default function Location_btn_component(props) {
       <h4 style={{ textAlign: "center" }}>Destination Town</h4>
       <div className="search-container">
         <div className="search-inner">
-          <input type="text" value={value} onChange={onChange} />
-          <button className="search-btn" onClick={() => onSearch(value)}>
+          <input className="linput" type="text" value={value} onChange={onChange} />
+          <button className="lbtn search-btn" onClick={() => onSearch(value)}>
             Search
           </button>
         </div>
