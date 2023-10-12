@@ -13,6 +13,9 @@ export default function Accomodation_page_btns(){
   const [endDate, setEndDate] = useState(""); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
+
+  const [adult, setAdult] = useState("");
+  const [child, set] = useState("");
   const navigation = useNavigate();
 
 
@@ -52,10 +55,8 @@ export default function Accomodation_page_btns(){
     console.log(startDate)
     console.log(endDate)
     console.log(location)
-    // axios.post("http://localhost:5000/destination/api/tour/location", destinationData)
-    // .then(res => console.log(res.data))
     console.log(priceRange)
-    navigation("/accomodation")
+    navigation(`/accommodations?cin=${startDate}&cout=${endDate}`)
   }
 
   // Skip Accomodation button
@@ -77,8 +78,8 @@ export default function Accomodation_page_btns(){
         <div className="col-12 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
       </div>
       <div className="row accomodation" >
-        <div className="col" ><Inc_Dec_btn text="No. of Adults"/></div>
-        <div className="col"><Inc_Dec_btn text="No. of Childs"/></div>    
+        <div className="col" ><Inc_Dec_btn value={adult} text="No. of Adults"/></div>
+        <div className="col"><Inc_Dec_btn value={child} text="No. of Childs"/></div>    
       </div>
 
       {/* Price Range Slider */}
