@@ -15,7 +15,7 @@ export default function Accomodation_page_btns(){
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
 
   const [adult, setAdult] = useState("");
-  const [child, set] = useState("");
+  const [child, setChild] = useState("");
   const navigation = useNavigate();
 
 
@@ -48,6 +48,14 @@ export default function Accomodation_page_btns(){
     setPriceRange(selectedPrice);
   };
 
+  const handleAdultChange = (val) => {
+    setAdult(val);
+  }
+
+  const handleChildChange = (val) => {
+    setChild(val);
+  }
+
 
   // Explore button
   function exploreClick(){
@@ -56,7 +64,7 @@ export default function Accomodation_page_btns(){
     console.log(endDate)
     console.log(location)
     console.log(priceRange)
-    navigation(`/accommodations?cin=${startDate}&cout=${endDate}`)
+    navigation(`/accommodations?cin=${startDate}&cout=${endDate}&adult=${adult}&child=${child}`)
   }
 
   // Skip Accomodation button
@@ -78,8 +86,8 @@ export default function Accomodation_page_btns(){
         <div className="col-12 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
       </div>
       <div className="row accomodation" >
-        <div className="col" ><Inc_Dec_btn value={adult} text="No. of Adults"/></div>
-        <div className="col"><Inc_Dec_btn value={child} text="No. of Childs"/></div>    
+        <div className="col" ><Inc_Dec_btn onChange={handleAdultChange} text="No. of Adults"/></div>
+        <div className="col"><Inc_Dec_btn onChange={handleChildChange} text="No. of Childs"/></div>    
       </div>
 
       {/* Price Range Slider */}
