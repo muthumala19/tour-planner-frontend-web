@@ -2,8 +2,8 @@
 
 .dst {
     background-image: url("../images/background_nil2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: repeat;
 }
 
 .dst {
