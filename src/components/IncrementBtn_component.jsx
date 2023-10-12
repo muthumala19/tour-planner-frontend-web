@@ -6,17 +6,20 @@ import "./IncrementBtn_component.css";
 export default function Inc_Dec_btn(props){
     let [num, setNum]= useState(0);
     
-    let incNum =()=>{
+    let incNum =()=> {
       if(num<20)
       {
       setNum(Number(num)+1);
       }
+
+      props.onChange(num);
     };
     let decNum = () => {
        if(num>0)
        {
         setNum(num - 1);
        }
+       props.onChange(num);
     }
    let handleChange = (e)=>{
      setNum(e.target.value);
