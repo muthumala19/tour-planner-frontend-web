@@ -5,7 +5,7 @@ import Pic from "../images/hotel.jpg"
 import Pagination from '../components/pagination';
 import HotelCard from '../components/hotelCard';
 import { getHotels } from '../backend/hotelGeneration';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const Accommodation = () => {
     const [hotels, setHotels] = useState([]);
@@ -14,12 +14,17 @@ const Accommodation = () => {
     const tags = ['Wifi', 'Pool', 'A/C', 'Archer'];
 
     const navigate = useNavigate();
+    const [ searchParams ] = useSearchParams();
 
 
     useEffect(() => {
         const fetchData = async () => {
+            const cin = searchParams.get("cin");
+            const cout = searchParams.get("cout");
+            const adult = searchParams.get("adult");
+            const child = searchParams.get("child");
             try {
-                const data = await getHotels();
+                const data = await getHotels(cin, cout, adult, child);
                 setHotels(data);
                 setLoading(false);
                 const cards = data.map((item, index) => (
