@@ -9,6 +9,11 @@ import PaymentPage from "./screens/Payment_screen.jsx";
 import User from "./screens/user_screen";
 import LandingScreen from "./screens/landing_screen";
 import Accommodation from './screens/accommodation';
+import RoomSelection from './screens/roomSelection';
+import SavedJourneys from './screens/savedJourneys';
+import Summary from './screens/summary';
+import Vehicles from './screens/vehicles';
+import Destinations from './screens/destinationRecom';
 
 
 function App() {
@@ -25,13 +30,19 @@ function App() {
                     <Route exact path='sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
                     <Route exact path='register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
                     <Route exact path='register/sign_up' element={<AuthScreen activeScreen={'sign_up'}/>}></Route>
-                    <Route exact path='/destinations' element={<Destination/>}></Route>
+                    <Route exact path='/destinationForm' element={<Destination/>}></Route>
                     <Route exact path='/payment' element={<PaymentPage/>}></Route>
-                    <Route exact path='/accomodationForm' element={<AccomodationForm/>}></Route>
+                    <Route exact path='/accommodationForm' element={<AccomodationForm/>}></Route>
                     <Route exact path='/explore_your_ideal_ride' element={<Choose_ride/>}></Route>
                     <Route exact path='/sign_in' element={<AuthScreen isSignIn={true}/>}></Route>
                     <Route exact path='/sign_up' element={<AuthScreen isSignIn={false}/>}></Route>
-                    <Route exact path='/accomodation' element={<Accommodation/>}></Route>
+
+                    <Route path='/destinations' element={<Destinations/>}/>
+                    <Route path='/accommodations' element={<Accommodation/>}/>
+                    <Route path='/room-selection' element={<RoomSelection/>}/>
+                    <Route path='/saved-journeys' element={<SavedJourneys/>}/>
+                    <Route path='/summary' element={<Summary/>}/>
+                    <Route path='/vehicles' element={<Vehicles/>}/>
 
                 </Routes>
             </BrowserRouter>

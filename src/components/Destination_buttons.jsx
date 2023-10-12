@@ -5,12 +5,15 @@ import { useState } from "react";
 import Location_btn_component from "../components/Location_btn_component.jsx";
 import Date_box_component from "./Date_box_component.jsx";
 import PriceRange_component from '../components/PriceRange_component.jsx';
+import { useNavigate } from "react-router-dom";
 
 export default function Destination_buttons(){
   const [startDate, setStartDate] = useState(""); // State to store selected date
   const [endDate, setEndDate] = useState(""); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
+
+  const navigate = useNavigate();
 
 
   const destinationData = {
@@ -45,10 +48,8 @@ export default function Destination_buttons(){
     console.log(startDate)
     console.log(endDate)
     console.log(location)
-    // console.log("clicked")
-    // axios.post("http://localhost:5000/destination/api/tour/location", destinationData)
-    // .then(res => console.log(res.data))
     console.log(priceRange)
+    navigate(`/destinations?cin=${startDate}&cout=${endDate}&lc=${location}&pr=${priceRange}`)
   }
     return(
       <div >
@@ -72,7 +73,7 @@ export default function Destination_buttons(){
         
         <div>  
             <div className="d-flex justify-content-center">
-              <button className="explore-btn" onClick={onClick}><b>Explore</b></button>
+              <button className="lbtn explore-btn" onClick={onClick}><b>Explore</b></button>
             </div>
         </div>
       </div>  
