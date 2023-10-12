@@ -31,16 +31,18 @@ const Destinations = () => {
     return (
         <React.Fragment>
             <div className='dst'>
-                <h1 className='dst-heading'>Recommended places to visit in kandy</h1>
-                <div className='dst-btn'>
-                    <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
-                </div>
-                <div className='dst-cards'>
-                    <Pagination data={cardComponents} itemsPerPage={6}/>
-                </div>
-                <div className='dst-btn'>
-                    <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNexStep}></Button>
-                </div>
+                <div className='dst-container'>
+                    <h1 className='dst-heading'>Recommended places to visit in kandy</h1>
+                    <div className='dst-btn'>
+                        <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
+                    </div>
+                    <div className='dst-cards'>
+                        <Pagination data={cardComponents} itemsPerPage={6}/>
+                    </div>
+                    <div className='dst-btn'>
+                        <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNexStep}></Button>
+                    </div>
+                    </div>
             </div>
         </React.Fragment>
     );

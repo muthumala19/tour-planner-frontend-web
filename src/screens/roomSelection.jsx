@@ -4,19 +4,21 @@ import "./roomSelection.css"
 import RoomCard from '../components/roomCard';
 import { getRooms } from '../backend/roomGeneration';
 import Pic from "../images/hotel.jpg"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const RoomSelection = ({hotel, hotel_id}) => {
     const [cards, setCards] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
 
     useEffect(() => {
         const fetchData = async () => {
+            const hid = searchParams.get("hid");
             try {
-                const data = await getRooms();
+                const data = await getRooms(hid);
                 setLoading(false);
                 const cards = Object.values(data).map((item, index) => {
                     return <RoomCard

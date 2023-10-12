@@ -48,7 +48,7 @@ const Accommodation = () => {
 
 
     const handleClick = (id, hotel_id) => {
-        navigate("/room-selection")
+        navigate(`/room-selection?hid=${hotel_id}`)
     };
 
     const cardComponents = [
