@@ -5,6 +5,7 @@ import DestinationCard from '../components/Destinationcard';
 import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
 import { useNavigate } from 'react-router-dom';
+import NavBarComponent from '../components/navbar_component';
 
 const Destinations = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
@@ -15,7 +16,7 @@ const Destinations = () => {
     };
 
     const handleNexStep = () => {
-        navigate("/accommodations");
+        navigate("/accommodationForm");
     }
 
     const cardComponents = [
@@ -27,9 +28,15 @@ const Destinations = () => {
         <DestinationCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
     ];
 
+    const navbarItems = [
+        {label: 'Home', href: '/'},
+     
+    ];
+
 
     return (
         <React.Fragment>
+        <NavBarComponent items={navbarItems}/>
             <div className='dst'>
                 <div className='dst-container'>
                     <h1 className='dst-heading'>Recommended places to visit in kandy</h1>
