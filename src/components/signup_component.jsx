@@ -36,8 +36,10 @@ export default function SignUp() {
             const context = new AuthContext(new GoogleAuthStrategy());
             await context.signUp();
             resetForm(); // Reset the form after successful sign-up
+            window.location.href = '/';
         } catch (e) {
             console.log(e);
+            alert(e)
         } finally {
             setAuthenticating(false);
         }
@@ -67,10 +69,10 @@ export default function SignUp() {
         if (emailValidationResults.error || confirmPasswordValidationResults.error) {
             const errorDetails = confirmPasswordValidationResults.error.details.map((error) => error.message).join(', ');
             alert(errorDetails);
-            resetForm()
+            resetForm();
             return;
         }
-        await signUpWithEmailPassword(formData.get('email'), formData.get('password'));
+        await signUpWithEmailPassword(formData.email, formData.password);
     };
 
     return (
