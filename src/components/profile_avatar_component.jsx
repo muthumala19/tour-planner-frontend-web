@@ -12,11 +12,11 @@ import {useNavigate} from "react-router-dom";
 import {auth} from "../configurations/firebase_configurations";
 import {signOut} from "firebase/auth";
 
-export default function AvatarMenu() {
+export default function AvatarMenu({email}) {
     const navigate = useNavigate();
     return (
         <Dropdown>
-            <MenuButton variant={'plain'}>User</MenuButton>
+            <MenuButton variant={'plain'}>{email}</MenuButton>
             <Menu>
                 <MenuItem onClick={() => {
                     navigate('/user/profile')
@@ -46,7 +46,7 @@ export default function AvatarMenu() {
                 <MenuItem onClick={
                     () => {
                         signOut(auth).then(() => {
-                            navigate('/')
+                            window.location.href = ('/');
                         }).catch((error) => {
                             console.log(error)
                         });

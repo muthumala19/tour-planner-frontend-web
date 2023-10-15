@@ -4,16 +4,22 @@ import {Navigate} from "react-router-dom";
 
 export default function ProtectedRoute({element}) {
     const [authUser, setAuthUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const auth = getAuth();
-        return onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                setAuthUser(user);
-            }
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setAuthUser(user);
+            setLoading(false);
         });
+
+        return () => unsubscribe();
     }, []);
 
-    return authUser ? element : <Navigate to={'/sign_in'}/>;
+    if (loading) {
 
+        return null;
+    }
+
+    return authUser ? element : <Navigate to="/sign_in"/>;
 }

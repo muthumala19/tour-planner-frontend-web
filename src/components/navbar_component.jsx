@@ -33,7 +33,7 @@ export default function NavBarComponent({items}) {
                     >{items.map((item) => {
                         return <Nav.Link key={item.label} href={item.href} className="me-5">{item.label}</Nav.Link>
                     })}
-                        {authUser ? <AvatarMenu/> : null}
+                        {authUser ? <AvatarMenu email={authUser.email}/> : null}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

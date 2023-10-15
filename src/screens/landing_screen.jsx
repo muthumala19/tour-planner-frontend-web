@@ -12,24 +12,21 @@ export default function LandingScreen() {
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Explore', href: '#explore'},
+        // {label: 'Explore', href: '#explore'},
         {label: 'Register', href: '/register'},
         {label: 'Sign In', href: '/sign_in'},
     ];
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Explore', href: '#explore'},
+        // {label: 'Explore', href: '#explore'},
     ];
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user);
-            } else {
-                setAuthUser(null);
             }
-            console.log(user)
         });
     }, []);
 
@@ -77,7 +74,7 @@ export default function LandingScreen() {
 
             </div>
             <div id='about_us' className={'section about_us'}><AboutUs/></div>
-            <div id='explore' className={'section'}>Explore</div>
+            {/*<div id='explore' className={'section'}><DestinationForm/></div>*/}
             <div><Footer/></div>
         </div>);
 }
