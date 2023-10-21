@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    MDBBtn,
     MDBCard,
     MDBCardBody,
     MDBCardImage,
@@ -12,6 +11,7 @@ import {
     MDBRow
 } from 'mdb-react-ui-kit';
 import {BsFacebook, BsGithub, BsGlobe2, BsInstagram, BsTwitter} from "react-icons/bs";
+import Button from "@mui/material/Button";
 
 const borderRadius = '3vh';
 
@@ -30,10 +30,10 @@ function ProfileCard({profileCard}) {
                 <p className="text-muted mb-1">{profileCard.introduction}</p>
                 <p className="text-muted mb-4">{profileCard.address}</p>
                 <div className="d-flex justify-content-center mb-2">
-                    <MDBBtn>Follow</MDBBtn>
-                    <MDBBtn outline className="ms-1">
+                    <Button>Follow</Button>
+                    <Button outline className="ms-1">
                         Message
-                    </MDBBtn>
+                    </Button>
                 </div>
             </MDBCardBody>
         </MDBCard>
