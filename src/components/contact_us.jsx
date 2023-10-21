@@ -1,6 +1,11 @@
 import React, {useRef} from 'react';
 import './contact_us.css';
 import * as emailjs from "@emailjs/browser";
+import {
+    contact_us_templateId_EmailJS,
+    publicKey_EmailJS,
+    serviceId_EmailJS
+} from "../configurations/email_configurations";
 
 function ContactUs() {
     const form = useRef();
@@ -10,7 +15,7 @@ function ContactUs() {
         // You can implement the submission logic here.
         // Access the form data using formData.name, formData.email, and formData.message.
         // Reset the form fields after submission.
-        emailjs.sendForm('service_w3uj2ia', 'template_6bkzzcl', form.current, 'eXMIlaeqis_5mwStD')
+        emailjs.sendForm(serviceId_EmailJS, contact_us_templateId_EmailJS, form.current, publicKey_EmailJS)
             .then((result) => {
                 console.log(result.text);
             }, (error) => {
