@@ -1,14 +1,15 @@
 import axios from "axios";
 
-const options = {
+export const getRooms = async (hotel_id) => {
+  const options = {
   method: 'GET',
   url: 'https://booking-com.p.rapidapi.com/v1/hotels/room-list',
   params: {
-    hotel_id: '1115841',
+    hotel_id: hotel_id,
     currency: 'USD',
-    checkout_date: '2023-09-24',
+    checkout_date: '2023-10-24',
     locale: 'en-gb',
-    checkin_date: '2023-09-22',
+    checkin_date: '2023-10-22',
     adults_number_by_rooms: '4',
     units: 'metric'
   },
@@ -17,9 +18,7 @@ const options = {
     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
   }
 };
-
-export const getRooms = async () => {
-    try {
+  try {
 	const response = await axios.request(options);
     return response.data[0].rooms;
 } catch (error) {
