@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
 
 .acmd {
-    margin-top: 1%;
-    margin-bottom: 4%;
-    margin-left: 5%;
-    margin-right: 5%;
+    padding: 1%;
+    padding-bottom: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-image: url("../images/background_nil2.jpg");
+    background-size: contain;
+    background-repeat: repeat;
+    min-height: 100vh;
 }
 
 .acmd-heading {

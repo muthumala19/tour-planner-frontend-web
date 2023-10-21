@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+.dst {
+    background-image: url("../images/background_nil2.jpg");
+    background-size: contain;
+    background-repeat: repeat;
+}
+
+.dst {
+    padding-top: 1%;
+    padding: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.dst-heading {
+    color: #0C356A;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 280%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.dst-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dst-cards {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    transform: translate(0, 10px);
+    transition: transform 2.5s;
+}
+
+.dst-cards:hover {
+    transform: scale(1.01);
+}
+
+
+@media screen and (max-width: 768px) {
+    .dst-btn {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}
