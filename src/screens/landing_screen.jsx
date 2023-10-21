@@ -44,7 +44,7 @@ export default function LandingScreen() {
                         <div className={'get_started_button'}>
                             <Button
                                 onClick={() => {
-                                    window.location.href = '/accomodationForm'
+                                    window.location.href = '/accommodationForm'
                                 }}
                             >
                                 Get Started
