@@ -1,0 +1,15 @@
+.contact_us {
+    padding: 5vh 10vh 5vh 10vh;
+}
+
+@media (max-width: 500px) {
+    .contact_us {
+        flex-direction: column;
+        padding: 1vh 2vh 1vh 2vh
+    }
+
+    .contact-us-content {
+        flex-direction: column;
+    }
+
+}

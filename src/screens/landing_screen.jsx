@@ -6,30 +6,28 @@ import AboutUs from "../components/about_us_component";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../configurations/firebase_configurations";
+import ContactUs from "../components/contact_us";
 
 export default function LandingScreen() {
     const [authUser, setAuthUser] = useState(null);
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Explore', href: '#explore'},
+        {label: 'Contact Us', href: '#contact_us'},
         {label: 'Register', href: '/register'},
         {label: 'Sign In', href: '/sign_in'},
     ];
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Explore', href: '#explore'},
+        {label: 'Contact Us', href: '#contact_us'},
     ];
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user);
-            } else {
-                setAuthUser(null);
             }
-            console.log(user)
         });
     }, []);
 
@@ -77,7 +75,7 @@ export default function LandingScreen() {
 
             </div>
             <div id='about_us' className={'section about_us'}><AboutUs/></div>
-            <div id='explore' className={'section'}>Explore</div>
+            <div id='contact_us'><ContactUs/></div>
             <div><Footer/></div>
         </div>);
 }
