@@ -11,7 +11,6 @@ import Ride_choose_component from "./Ride_choose_component.jsx";
 export default function Explore_your_Ideal_ride() {
 
   const [DateRange, setDateRange] = useState([]); // State to store selected date
-  const [endDate, setEndDate] = useState(""); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
   const [adult, setAdult] = useState("");
