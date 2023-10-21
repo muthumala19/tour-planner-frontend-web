@@ -13,6 +13,9 @@ export default function Accomodation_page_btns(){
   const [endDate, setEndDate] = useState(""); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
+
+  const [adult, setAdult] = useState("");
+  const [child, setChild] = useState("");
   const navigation = useNavigate();
 
 
@@ -45,6 +48,14 @@ export default function Accomodation_page_btns(){
     setPriceRange(selectedPrice);
   };
 
+  const handleAdultChange = (val) => {
+    setAdult(val);
+  }
+
+  const handleChildChange = (val) => {
+    setChild(val);
+  }
+
 
   // Explore button
   function exploreClick(){
@@ -52,10 +63,8 @@ export default function Accomodation_page_btns(){
     console.log(startDate)
     console.log(endDate)
     console.log(location)
-    // axios.post("http://localhost:5000/destination/api/tour/location", destinationData)
-    // .then(res => console.log(res.data))
     console.log(priceRange)
-    navigation("/accomodation")
+    navigation(`/accommodations?cin=${startDate}&cout=${endDate}&adult=${adult}&child=${child}`)
   }
 
   // Skip Accomodation button
@@ -77,8 +86,8 @@ export default function Accomodation_page_btns(){
         <div className="col-12 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
       </div>
       <div className="row accomodation" >
-        <div className="col" ><Inc_Dec_btn text="No. of Adults"/></div>
-        <div className="col"><Inc_Dec_btn text="No. of Childs"/></div>    
+        <div className="col" ><Inc_Dec_btn onChange={handleAdultChange} text="No. of Adults"/></div>
+        <div className="col"><Inc_Dec_btn onChange={handleChildChange} text="No. of Childs"/></div>    
       </div>
 
       {/* Price Range Slider */}
@@ -89,14 +98,14 @@ export default function Accomodation_page_btns(){
       {/* Explore button */}
       <div className="row">
         <div className="d-flex justify-content-center">
-          <button className="explore-btn" onClick={exploreClick}>Explore</button>
+          <button className="lbtn explore-btn" onClick={exploreClick}>Explore</button>
         </div>  
       </div>
 
       {/* Skip Accomodation button */}
       <div className="row">
         <div className="d-flex justify-content-center">
-          <button className="Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
+          <button className="lbtn Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
         </div>   
       </div>
     </div>

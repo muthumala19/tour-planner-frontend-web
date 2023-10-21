@@ -18,7 +18,7 @@ const PriceRange_component = (props) => {
 
           <div style={{ display: 'flex', justifyContent: 'center',width:"100%" }}>
             <div>
-              <input style={{width:"90px"}}
+              <input className="linput" style={{width:"90px"}}
                 type="number"
                 id="minPrice"
                 value={values[0]}
@@ -34,6 +34,7 @@ const PriceRange_component = (props) => {
           />
             <div>
               <input
+              className="linput"
               style={{width:"90px"}}
               type="number"
               id="maxPrice"
