@@ -29,11 +29,13 @@ function App() {
                     <Route exact path='sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
                     <Route exact path='register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
                     <Route exact path='register/sign_up' element={<AuthScreen activeScreen={'sign_up'}/>}></Route>
-                    <Route exact path='/destinations' element={<Destination/>}></Route>
-                    <Route exact path='/payment' element={<PaymentPage/>}></Route>
-                    <Route exact path='/accomodationForm' element={<AccomodationForm/>}></Route>
-                    <Route exact path='/explore_your_ideal_ride' element={<Choose_ride/>}></Route>
-                    <Route exact path='/accomodation' element={<Accommodation/>}></Route>
+                    <Route exact path='/destinations' element={<ProtectedRoute element={<Destination/>}/>}></Route>
+                    <Route exact path='/payment' element={<ProtectedRoute element={<PaymentPage/>}/>}></Route>
+                    <Route exact path='/accomodationForm'
+                           element={<ProtectedRoute element={<AccomodationForm/>}/>}></Route>
+                    <Route exact path='/explore_your_ideal_ride'
+                           element={<ProtectedRoute element={<Choose_ride/>}/>}></Route>
+                    <Route exact path='/accomodation' element={<ProtectedRoute element={<Accommodation/>}/>}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
