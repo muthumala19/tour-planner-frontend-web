@@ -10,27 +10,24 @@ import Ride_choose_component from "./Ride_choose_component.jsx";
 
 export default function Explore_your_Ideal_ride() {
 
-  const [startDate, setStartDate] = useState(""); // State to store selected date
+  const [DateRange, setDateRange] = useState([]); // State to store selected date
   const [endDate, setEndDate] = useState(""); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
-
+  const [adult, setAdult] = useState("");
+  const [child, setChild] = useState("");
 
   const rideData = {
-    startDate: startDate,
-    endDate: endDate,
+    startDate: DateRange[0],
+    endDate: DateRange[1],
     location: location
     // add userID as well.
     // add trip ID 
   }
 
   // Callback function to handle date change and update state
-  const handleStartDateChange = (selectedDate) => {
-    setStartDate(selectedDate);
-  };
-
-  const handleEndDateChange = (selectedDate) => {
-    setEndDate(selectedDate);
+  const handleDateChange = (selectedDate) => {
+    setDateRange(selectedDate);
   };
 
   //Callback function to handle the location button
@@ -43,13 +40,21 @@ export default function Explore_your_Ideal_ride() {
   const handlePriceChange = (selectedPrice) => {
     setPriceRange(selectedPrice);
   };
+  
+  //Callback function to handle count
+  const handleAdultChange = (val) => {
+    setAdult(val);
+  }
+
+  const handleChildChange = (val) => {
+    setChild(val);
+  }
 
 
   // Explore button
   function exploreClick() {
     console.log("Explore clicked")
-    console.log(startDate)
-    console.log(endDate)
+    console.log(DateRange)
     console.log(location)
     // console.log("clicked")
     // axios.post("http://localhost:5000/destination/api/tour/location", destinationData)
@@ -71,13 +76,12 @@ export default function Explore_your_Ideal_ride() {
       {/* Date, Location, Accomodation, Price Range, Explore, Skip Accomodation buttons */}
 
       <div className='row'>
-        <div className="col-12 col-sm-6 col-lg-4"><Date_box_component text="Starting date" onDateChange={handleStartDateChange}/></div>
-        <div className="col-12 col-sm-6 col-lg-4"><Date_box_component text="End date" onDateChange={handleEndDateChange}/></div>
+        <div className="col-12 col-sm-12 col-lg-8"><Date_box_component onDateChange={handleDateChange}/></div>
         <div className="col-12 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div>
       </div>
       <div className="row accomodation" >
-        <div className="col"><Inc_Dec_btn text="No. of Adults" /></div>
-        <div className="col"><Inc_Dec_btn text="No. of Childs" /></div>
+        <div className="col"><Inc_Dec_btn text="No. of Adults" onChange={handleAdultChange}/></div>
+        <div className="col"><Inc_Dec_btn text="No. of Children" onChange={handleChildChange  }/></div>
       </div>
 
       {/* Ride Choose Component */}

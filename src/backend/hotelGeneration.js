@@ -1,6 +1,11 @@
 import axios from "axios";
 
+
 export const getHotels = async (cin, cout, adult, child) => {
+  const test1={
+    
+  };
+
     const options = {
         method: 'GET',
         url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
@@ -26,6 +31,8 @@ export const getHotels = async (cin, cout, adult, child) => {
             'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
         }
     };
+
+
     try {
         console.log("working");
         const response = await axios.request(options);
