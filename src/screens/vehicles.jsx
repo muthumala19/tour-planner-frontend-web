@@ -34,7 +34,7 @@ const Vehicles = () => {
                         onClick={handleClick}
                     />
             });
-                setCards(cards);
+                setCards(cards.slice(0,30));
             } catch (error) {
                 console.error('Error fetching hotel data:', error);
                 setLoading(false);
