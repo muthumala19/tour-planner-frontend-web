@@ -30,7 +30,6 @@ const Destinations = () => {
 
     const navbarItems = [
         {label: 'Home', href: '/'},
-     
     ];
 
 

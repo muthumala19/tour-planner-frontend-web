@@ -22,8 +22,11 @@ const RoomSelection = () => {
     useEffect(() => {
         const fetchData = async () => {
             const hid = searchParams.get("hid");
+            const cin = searchParams.get("cin");
+            const cout = searchParams.get("cout");
+            const adult = searchParams.get("adult");
             try {
-                const data = await getRooms(hid);
+                const data = await getRooms(hid, cin, cout, adult);
                 const hotelDetails = await getHotelData(hid);
 
                 setName(hotelDetails.name);
@@ -52,15 +55,23 @@ const RoomSelection = () => {
 
     const handleClick = (key) => {
         // Put to database {user:user_id, data:cards[key]} under Selected room
+        const cin = searchParams.get("cin");
+        const cout = searchParams.get("cout");
+        const location = searchParams.get("lc");
+        navigate(`/explore_your_ideal_ride?cin=${cin}&cout=${cout}&lc=${location}`)
     };
 
     const handleNextStep = () => {
         navigate("/vehicles");
     }
     
+    const navbarItems = [
+        {label: 'Home', href: '/'},
+    ];
 
     return (
         <React.Fragment>
+            <NavBarComponent items={navbarItems}/>
             <div className='rs'>
                 <h1 className='rs-heading'>{name}</h1>
                 <img className='rs-hotel-img' src={Pic} placeholder='hotel Picture'/>  
