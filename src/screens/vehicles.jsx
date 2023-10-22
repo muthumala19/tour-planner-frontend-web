@@ -3,9 +3,11 @@ import Button from '../components/button';
 import "./vehicles.css"
 import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import VehicleCard from '../components/vehicleCard';
 import { getVehicles } from '../backend/vehicleGeneration';
+import NavBarComponent from '../components/navbar_component';
+import Footer from '../components/footer_component';
 
 const Vehicles = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
@@ -14,12 +16,16 @@ const Vehicles = () => {
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
 
     useEffect(() => {
         const fetchData = async () => {
+            const cin = searchParams.get("cin");
+            const cout = searchParams.get("cout");
+            const location = searchParams.get("lc");
             try {
-                const data = await getVehicles();
+                const data = await getVehicles(cin, cout, location);
                 setLoading(false);
                 const cards = Object.values(data).map((item, index) => {
                     return  <VehicleCard
@@ -44,30 +50,22 @@ const Vehicles = () => {
         fetchData();
         }, []);
 
-
-
     const handleClick = (key) => {
         console.log("working", key);
+        navigate("/summary");
     };
-
-    const cardComponents = [
-        <VehicleCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={2} id={2} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={3} id={3} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={4} id={4} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={5} id={5} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <VehicleCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-    ];
 
     const handleNextStep = () => {
         navigate("/summary");
     }
 
-
-
+    const navbarItems = [
+        {label: 'Home', href: '/'},
+    ];
 
     return (
         <React.Fragment>
+            <NavBarComponent items={navbarItems}/>
             <div className='vh'>
                 <h1 className='vh-heading'>Recommended Vehicles For Your Ride</h1>
                 <div className='vh-btn'>
@@ -76,10 +74,11 @@ const Vehicles = () => {
                 <div className='vh-cards'>
                     <Pagination data={cards} itemsPerPage={6}/>
                 </div>
-                <div className='vh-btn'>
+                {/* <div className='vh-btn'>
                     <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNextStep}></Button>
-                </div>
+                </div> */}
             </div>
+            <Footer/>
         </React.Fragment>
     );
 }

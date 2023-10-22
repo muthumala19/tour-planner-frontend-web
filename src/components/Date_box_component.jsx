@@ -4,7 +4,7 @@ import "./Date_box_component.css";
 export default function Date_box_component(props) {
   const currentDate = new Date().toISOString().split("T")[0]; // Get current date in "YYYY-MM-DD" format
 
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState(currentDate);
   const [endDate, setEndDate] = useState("");
 
   // Function to update the start date

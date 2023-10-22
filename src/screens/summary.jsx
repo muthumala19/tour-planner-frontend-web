@@ -6,6 +6,8 @@ import Pic from "../images/demodara.jpg"
 import Pagination from '../components/pagination';
 import { FaHotel } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import NavBarComponent from '../components/navbar_component';
+import Footer from '../components/footer_component';
 
 const Summary = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
@@ -38,8 +40,13 @@ const Summary = () => {
         navigate("/vehicles");
     }
 
+    const navbarItems = [
+        {label: 'Home', href: '/'},
+    ];
+
     return (
         <React.Fragment>
+            <NavBarComponent items={navbarItems}/>
             <div className='smr'>
                 <h1 className='smr-heading'>Journey Preview</h1>
                 <div className='smr-btn'>
@@ -89,6 +96,7 @@ const Summary = () => {
                     <Button text="Proceed To Checkout" style={{padding:"6px 18px 6px 18px"}}></Button>
                 </div>
             </div>
+            <Footer/>
         </React.Fragment>
     );
 }

@@ -6,14 +6,16 @@
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-box-shadow: 0 0 6px rgb(160, 255, 246);
+    box-shadow: 0 0 6px rgb(160, 255, 246);
     color: black;
     position: relative;
     border-radius: 40px;
-        backdrop-filter: blur(20px);
-        transform: translate(0, 10px);
-        transition: transform 0.5s, box-shadow 0.2s;
+    backdrop-filter: blur(20px);
+    transform: translate(0, 10px);
+    transition: transform 0.5s, box-shadow 0.2s;
     margin: 40px 30px 40px 30px;
+    background-image: url("../images/card.jpg");
+    background-size: contain;
     
 }
 

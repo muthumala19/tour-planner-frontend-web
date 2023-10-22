@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getGeoLocation } from "./getGeoLocation";
 
-  export const getHotels = async (cin, cout, adult, child) => {
+  export const getHotels = async (cin, cout, adult, child, lc) => {
 
     const options = {
         method: 'GET',
@@ -23,26 +23,25 @@ import { getGeoLocation } from "./getGeoLocation";
             page_number: '0',
             categories_filter_ids: 'class::2,class::4,free_cancellation::1'
         },
-        headers: {
-            'X-RapidAPI-Key': 'eb62a4e22cmsh6fa4648e0b05b79p1e8afdjsnfdac33378d64',
-            'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
-        }
+          headers: {
+    'X-RapidAPI-Key': '750e4d0509msh16a3a30df25a4f1p1fe025jsn38e87ab350ff',
+    'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+  }
+        // headers: {
+        //     'X-RapidAPI-Key': 'eb62a4e22cmsh6fa4648e0b05b79p1e8afdjsnfdac33378d64',
+        //     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+        // }
     };
 
 
     try {
-        console.log("working");
-        
         //get the geo location of the destination
-        const geoLoc = await getGeoLocation("Tangalle");
+        const geoLoc = await getGeoLocation(lc);
         //console.log(geoLoc.longitude,geoLoc.latitude); 
 
         //update the options with the geo location
         options.params.longitude = geoLoc.longitude;
         options.params.latitude = geoLoc.latitude;
-
-        console.log(options.params.latitude);
-        console.log(options.params.longitude);
 
         const response = await axios.request(options);
         console.log(response.data);
@@ -62,7 +61,7 @@ const options = {
     locale: 'en-gb'
   },
   headers: {
-    'X-RapidAPI-Key': 'eb62a4e22cmsh6fa4648e0b05b79p1e8afdjsnfdac33378d64',
+    'X-RapidAPI-Key': '750e4d0509msh16a3a30df25a4f1p1fe025jsn38e87ab350ff',
     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
   }
 };
