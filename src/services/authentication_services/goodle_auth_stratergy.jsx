@@ -5,7 +5,6 @@ import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 
 export default class GoogleAuthStrategy extends AuthStrategy {
     constructor() {
-        3
         super();
     }
 
