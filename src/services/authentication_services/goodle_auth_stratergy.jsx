@@ -12,7 +12,8 @@ export default class GoogleAuthStrategy extends AuthStrategy {
         try {
             await signInWithPopup(auth, new GoogleAuthProvider());
         } catch (error) {
-            console.error("Google authentication error:", error);
+            console.error("Google authentication error:", error.toString());
+            alert("Google authentication error:" + error.toString())
         }
     }
 
@@ -20,7 +21,8 @@ export default class GoogleAuthStrategy extends AuthStrategy {
         try {
             await signInWithPopup(auth, new GoogleAuthProvider());
         } catch (error) {
-            console.error("Google authentication error:", error);
+            console.error("Google authentication error:", error.toString());
+            alert("Google authentication error:" + error.toString())
         }
     }
 

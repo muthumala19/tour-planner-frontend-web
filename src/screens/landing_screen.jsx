@@ -7,13 +7,17 @@ import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../configurations/firebase_configurations";
 import { useNavigate } from 'react-router';
+import ContactUs from "../components/contact_us";
+import PricingPlan from "./pricing_plans_screen";
+
 
 export default function LandingScreen() {
     const [authUser, setAuthUser] = useState(null);
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
+        {label: 'Pricing', href: '#pricing'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Explore', href: '#explore'},
+        {label: 'Contact Us', href: '#contact_us'},
         {label: 'Register', href: '/register'},
         {label: 'Sign In', href: '/sign_in'},
     ];
@@ -23,17 +27,14 @@ export default function LandingScreen() {
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'About Us', href: '#about_us'},
-        {label: 'Explore', href: '#explore'},
+        {label: 'Contact Us', href: '#contact_us'},
     ];
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user);
-            } else {
-                setAuthUser(null);
             }
-            console.log(user)
         });
     }, []);
 
@@ -51,6 +52,8 @@ export default function LandingScreen() {
                             <Button
                                 onClick={() => {
                                     navigate("/destinationForm")
+
+                                 
                                 }}
                             >
                                 Get Started
@@ -79,10 +82,10 @@ export default function LandingScreen() {
                         </p>
                     </div>
                 </div>
-
             </div>
+            <div id='pricing' className={''}><PricingPlan/></div>
             <div id='about_us' className={'section about_us'}><AboutUs/></div>
-            <div id='explore' className={'section'}>Explore</div>
+            <div id='contact_us'><ContactUs/></div>
             <div><Footer/></div>
         </div>);
 }
