@@ -7,11 +7,13 @@ import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../configurations/firebase_configurations";
 import ContactUs from "../components/contact_us";
+import PricingPlan from "./pricing_plans_screen";
 
 export default function LandingScreen() {
     const [authUser, setAuthUser] = useState(null);
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
+        {label: 'Pricing', href: '#pricing'},
         {label: 'About Us', href: '#about_us'},
         {label: 'Contact Us', href: '#contact_us'},
         {label: 'Register', href: '/register'},
@@ -44,6 +46,7 @@ export default function LandingScreen() {
                         <div className={'get_started_button'}>
                             <Button
                                 onClick={() => {
+                                    window.location.href = '/accommodationForm'
                                 }}
                             >
                                 Get Started
@@ -72,8 +75,8 @@ export default function LandingScreen() {
                         </p>
                     </div>
                 </div>
-
             </div>
+            <div id='pricing' className={''}><PricingPlan/></div>
             <div id='about_us' className={'section about_us'}><AboutUs/></div>
             <div id='contact_us'><ContactUs/></div>
             <div><Footer/></div>

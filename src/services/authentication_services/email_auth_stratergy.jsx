@@ -15,6 +15,7 @@ export default class EmailAuthStrategy extends AuthStrategy {
             await signInWithEmailAndPassword(auth, this.email, this.password);
         } catch (error) {
             console.error("Email authentication error:", error);
+            alert("Email authentication error:", error)
         }
     }
 
@@ -23,6 +24,7 @@ export default class EmailAuthStrategy extends AuthStrategy {
             await createUserWithEmailAndPassword(auth, this.email, this.password)
         } catch (error) {
             console.error("Email sign-up error:", error);
+            alert("Email sign-up error:", error)
         }
     }
 

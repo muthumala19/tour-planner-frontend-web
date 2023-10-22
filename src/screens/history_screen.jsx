@@ -1,8 +1,7 @@
 export default function HistoryScreen() {
     return (
         <div>
-            <h1>History</h1>
+            <h1>History Screen</h1>
         </div>
-    );
-
+    )
 }

@@ -16,12 +16,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {Image} from "react-bootstrap";
 import ProfileScreen from "./profile_screen";
-import {MdManageAccounts} from "react-icons/md";
 import {AiFillSetting} from "react-icons/ai";
 import {BiUserCircle} from "react-icons/bi";
 import {useNavigate} from "react-router-dom";
 import SettingsScreen from "./settings_screen";
-import AccountScreen from "./account_screen";
+import BillingScreen from "./billing_screen";
+import PricingPlansScreen from "./pricing_plans_screen";
+import JourneysScreen from "./journeysScreen";
+import HistoryScreen from "./history_screen";
 
 const drawerWidth = 240;
 
@@ -53,9 +55,24 @@ export default function User(props: Props) {
             href: 'profile'
         },
         {
-            text: 'Account',
-            icon: <MdManageAccounts size={30}/>,
-            href: 'account'
+            text: 'Journeys',
+            icon: <AiFillSetting size={30}/>,
+            href: 'journeys'
+        },
+        {
+            text: 'History',
+            icon: <AiFillSetting size={30}/>,
+            href: 'history'
+        },
+        {
+            text: 'Pricing Plans',
+            icon: <AiFillSetting size={30}/>,
+            href: 'pricing_plans'
+        },
+        {
+            text: 'Billing',
+            icon: <AiFillSetting size={30}/>,
+            href: 'billing'
         },
         {
             text: 'Settings',
@@ -129,11 +146,20 @@ export default function User(props: Props) {
         case 'Profile':
             screen = <ProfileScreen user={user}/>;
             break;
-        case 'Account':
-            screen = <AccountScreen/>;
+        case 'Billing':
+            screen = <BillingScreen/>;
             break;
         case 'Settings':
             screen = <SettingsScreen/>;
+            break;
+        case 'Pricing Plans':
+            screen = <PricingPlansScreen/>;
+            break;
+        case 'Journeys':
+            screen = <JourneysScreen/>;
+            break;
+        case 'History':
+            screen = <HistoryScreen/>;
             break;
         default:
             screen = <ProfileScreen/>;
