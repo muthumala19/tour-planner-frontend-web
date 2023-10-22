@@ -28,6 +28,7 @@ const Vehicles = () => {
                 const data = await getVehicles(cin, cout, location);
                 setLoading(false);
                 const cards = Object.values(data).map((item, index) => {
+                    console.log(item);
                     return  <VehicleCard
                         key={index}
                         id={index}
