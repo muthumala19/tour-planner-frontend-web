@@ -9,7 +9,7 @@ export default function Inc_Dec_btn(props){
     let incNum =()=> {
       if(num<20)
       {
-      setNum(Number(num)+1);
+      setNum(num+1);
       }
 
       props.onChange(num);

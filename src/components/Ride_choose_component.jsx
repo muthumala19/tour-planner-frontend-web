@@ -22,8 +22,6 @@ export default function Ride_choose_component(){
 
     return(
         <div  style={{display:"flex",gap:"10px" , justifyContent:"center"}}>
-            <input type="radio" className="btn-check" name="options" id="option1"  value="option1" onChange={Option1}/>
-            <label className="btn btn-primary" for="option1"><FontAwesomeIcon icon={faEnvelope} style={{fontSize:"30px",justifyContent:"left"}}/> </label>
 
             <input type="radio" className="btn-check" name="options" id="option2"  value="option2" onChange={Option2} />
             <label className="btn btn-primary" for="option2"><FontAwesomeIcon icon={faCarSide} style={{fontSize:"30px",justifyContent:"left"}}/></label>

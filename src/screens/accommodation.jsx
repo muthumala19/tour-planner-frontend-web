@@ -46,6 +46,8 @@ const Accommodation = () => {
                 console.error('Error fetching hotel data:', error);
                 setLoading(false);
             }
+
+            
         };
 
         fetchData();

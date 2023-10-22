@@ -1,13 +1,15 @@
 import axios from "axios";
+import { getGeoLocation } from "./getGeoLocation";
 
-export const getHotels = async (cin, cout, adult, child) => {
+  export const getHotels = async (cin, cout, adult, child) => {
+
     const options = {
         method: 'GET',
         url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
         params: {
             units: 'metric',
             room_number: '1',
-            longitude: '79.8612',
+            longitude: '80.8612',
             latitude: '6.9271',
             filter_by_currency: 'AED',
             order_by: 'class_descending',
@@ -26,8 +28,22 @@ export const getHotels = async (cin, cout, adult, child) => {
             'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
         }
     };
+
+
     try {
         console.log("working");
+        
+        //get the geo location of the destination
+        const geoLoc = await getGeoLocation("Tangalle");
+        //console.log(geoLoc.longitude,geoLoc.latitude); 
+
+        //update the options with the geo location
+        options.params.longitude = geoLoc.longitude;
+        options.params.latitude = geoLoc.latitude;
+
+        console.log(options.params.latitude);
+        console.log(options.params.longitude);
+
         const response = await axios.request(options);
         console.log(response.data);
         return response.data.result;
