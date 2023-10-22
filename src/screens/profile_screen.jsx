@@ -23,8 +23,8 @@ function ProfileCard({profileCard}) {
                 <MDBCardImage
                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                     alt="avatar"
-                    className="rounded-circle"
-                    style={{width: '150px'}}
+                    className="rounded-circle border border-black"
+                    style={{width: '150px', borderRadius: '50%'}} // Set border-radius to 50%
                     fluid
                 />
                 <p className="text-muted mb-1">{profileCard.introduction}</p>

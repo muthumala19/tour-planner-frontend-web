@@ -5,6 +5,7 @@ import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 
 export default class GoogleAuthStrategy extends AuthStrategy {
     constructor() {
+        3
         super();
     }
 
@@ -12,7 +13,8 @@ export default class GoogleAuthStrategy extends AuthStrategy {
         try {
             await signInWithPopup(auth, new GoogleAuthProvider());
         } catch (error) {
-            console.error("Google authentication error:", error);
+            console.error("Google authentication error:", error.toString());
+            alert("Google authentication error:" + error.toString())
         }
     }
 
@@ -20,7 +22,8 @@ export default class GoogleAuthStrategy extends AuthStrategy {
         try {
             await signInWithPopup(auth, new GoogleAuthProvider());
         } catch (error) {
-            console.error("Google authentication error:", error);
+            console.error("Google authentication error:", error.toString());
+            alert("Google authentication error:" + error.toString())
         }
     }
 

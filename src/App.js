@@ -25,10 +25,16 @@ function App() {
                     <Route exact path='user' element={<ProtectedRoute element={<User activeScreen={'Profile'}/>}/>}>
                         <Route path={'profile'}
                                element={<ProtectedRoute element={<User activeScreen={'Profile'}/>}/>}></Route>
-                        <Route path={'account'}
-                               element={<ProtectedRoute element={<User activeScreen={'Account'}/>}/>}></Route>
+                        <Route path={'billing'}
+                               element={<ProtectedRoute element={<User activeScreen={'Billing'}/>}/>}></Route>
                         <Route path={'settings'}
                                element={<ProtectedRoute element={<User activeScreen={'Settings'}/>}/>}></Route>
+                        <Route path={'pricing_plans'}
+                               element={<ProtectedRoute element={<User activeScreen={'Pricing Plans'}/>}/>}></Route>
+                        <Route path={'journeys'}
+                               element={<ProtectedRoute element={<User activeScreen={'Journeys'}/>}/>}></Route>
+                        <Route path={'history'}
+                               element={<ProtectedRoute element={<User activeScreen={'History'}/>}/>}></Route>
                     </Route>
                     <Route exact path='sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
                     <Route exact path='register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
