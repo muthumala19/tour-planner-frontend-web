@@ -1,7 +1,7 @@
 /* Styles for the slider component */
 .slider {
     height: 10px;
-    max-width: 100%;
+
     background-color: #0C356A;
     border-radius: 5px;
     margin-top: 10px;
@@ -37,13 +37,15 @@
 .test1 {
     display: flex;
     justify-content: center;
-    
     padding: 20px;
     border-radius: 5px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 400px) {
     .SliderDiv {
+      width: 400px;
+    }
+    .test1{
       width: 400px;
     }
   }

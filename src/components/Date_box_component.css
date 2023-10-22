@@ -13,6 +13,13 @@
   .grp {
     text-align: center;
     justify-content: center;
+    padding-top: 4vh;
+  }
+  .DateButtonGrp{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
   
 @media screen and (max-width: 760px) {
