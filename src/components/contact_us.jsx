@@ -1,78 +1,78 @@
 import React, {useRef} from 'react';
 import './contact_us.css';
-// import * as emailjs from "@emailjs/browser";
-// import {
-//     contact_us_templateId_EmailJS,
-//     publicKey_EmailJS,
-//     serviceId_EmailJS
-// } from "../configurations/email_configurations";
+import * as emailjs from "@emailjs/browser";
+import {
+    contact_us_templateId_EmailJS,
+    publicKey_EmailJS,
+    serviceId_EmailJS
+} from "../configurations/email_configurations";
 
 function ContactUs() {
-    // const form = useRef();
+    const form = useRef();
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // You can implement the submission logic here.
-    //     // Access the form data using formData.name, formData.email, and formData.message.
-    //     // Reset the form fields after submission.
-    //     emailjs.sendForm(serviceId_EmailJS, contact_us_templateId_EmailJS, form.current, publicKey_EmailJS)
-    //         .then((result) => {
-    //             console.log(result.text);
-    //         }, (error) => {
-    //             console.log(error.text);
-    //         });
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // You can implement the submission logic here.
+        // Access the form data using formData.name, formData.email, and formData.message.
+        // Reset the form fields after submission.
+        emailjs.sendForm(serviceId_EmailJS, contact_us_templateId_EmailJS, form.current, publicKey_EmailJS)
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
 
-    //     e.target.reset();
-    // }
+        e.target.reset();
+    }
 
-    // const containerStyle = {
-    //     display: 'flex',
-    //     justifyContent: 'space-between',
-    // };
+    const containerStyle = {
+        display: 'flex',
+        justifyContent: 'space-between',
+    };
 
-    // const leftColumnStyle = {
-    //     flex: '1',
-    //     padding: '20px',
-    //     borderRight: '1px solid #ccc',
-    // };
+    const leftColumnStyle = {
+        flex: '1',
+        padding: '20px',
+        borderRight: '1px solid #ccc',
+    };
 
-    // const rightColumnStyle = {
-    //     flex: '1',
-    //     padding: '20px',
-    // };
+    const rightColumnStyle = {
+        flex: '1',
+        padding: '20px',
+    };
 
-    // const formStyle = {
-    //     maxWidth: '400px',
-    //     margin: '0 auto',
-    //     padding: '20px',
-    //     border: '1px solid #ccc',
-    //     borderRadius: '2vh',
-    //     backgroundColor: '#f9f9f9',
-    // };
+    const formStyle = {
+        maxWidth: '400px',
+        margin: '0 auto',
+        padding: '20px',
+        border: '1px solid #ccc',
+        borderRadius: '2vh',
+        backgroundColor: '#f9f9f9',
+    };
 
-    // const inputStyle = {
-    //     width: '100%',
-    //     padding: '10px',
-    //     margin: '10px 0',
-    //     border: '1px solid #ccc',
-    //     borderRadius: '2vh',
-    //     outline: 'none',
-    // };
+    const inputStyle = {
+        width: '100%',
+        padding: '10px',
+        margin: '10px 0',
+        border: '1px solid #ccc',
+        borderRadius: '2vh',
+        outline: 'none',
+    };
 
-    // const buttonStyle = {
-    //     width: '100%',
-    //     padding: '10px',
-    //     backgroundColor: '#0056b3',
-    //     color: 'white',
-    //     border: 'none',
-    //     borderRadius: '2vh',
-    //     cursor: 'pointer',
-    // };
+    const buttonStyle = {
+        width: '100%',
+        padding: '10px',
+        backgroundColor: '#0056b3',
+        color: 'white',
+        border: 'none',
+        borderRadius: '2vh',
+        cursor: 'pointer',
+    };
 
     return (
         <div className={'contact_us'}>
             <h1 style={{textAlign: 'center', marginBottom: '20px'}}>Contact Us</h1>
-            {/* <div style={containerStyle} className={'contact-us-content'}>
+            <div style={containerStyle} className={'contact-us-content'}>
                 <div style={leftColumnStyle}>
                     <div className="contact-us-section">
                         <p>
@@ -141,7 +141,7 @@ function ContactUs() {
                         </div>
                     </form>
                 </div>
-            </div> */}
+            </div>
         </div>
     );
 }
