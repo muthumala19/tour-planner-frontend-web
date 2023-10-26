@@ -17,6 +17,8 @@ try {
           headers,
         });
 
+        return response.data.places;
+
       } catch (error) {
         console.error('Error:', error);
 }
