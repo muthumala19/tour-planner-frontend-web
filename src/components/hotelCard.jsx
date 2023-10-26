@@ -15,10 +15,10 @@ const HotelCard = ({id, title, location,  hotel_id, image, cost, ratings, onClic
             </div>
 
             <div className='hotel-crd-tags'>
-                <h2 className='hotel-crd-tags-title'>Ratings: {ratings[0]} </h2>
+                <h2 className='hotel-crd-tags-title'>Ratings: {ratings && ratings[0]} </h2>
 
                 <div className='tags'>
-                    <div className='hotel-crd-tag'>{ratings[1]}</div>
+                    <div className='hotel-crd-tag'>{ratings && ratings[1]}</div>
                 </div>
 
              </div>
@@ -29,7 +29,7 @@ const HotelCard = ({id, title, location,  hotel_id, image, cost, ratings, onClic
 
             <Link className='hotel-crd-maplink' to="https://www.google.com/maps/place/University+of+Moratuwa">explore location on map</Link>
 
-            <button className='hotel-crd-btn' onClick={() => onClick(id, hotel_id)}>View</button>
+            <button className='hotel-crd-btn' onClick={() => onClick(id, hotel_id, image, cost)}>View</button>
             
         </div>
     );

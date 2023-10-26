@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./pagination.css"
 
 const Pagination = ({ data, itemsPerPage }) => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  const pg = useRef();
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -12,7 +14,7 @@ const Pagination = ({ data, itemsPerPage }) => {
   const currentItems = data.slice(startIndex, endIndex);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0,0);
 };
 
 
@@ -25,7 +27,7 @@ const Pagination = ({ data, itemsPerPage }) => {
 
     <React.Fragment>
 
-    <div className='pagination-data'>
+    <div ref={pg} className='pagination-data'>
         {currentItems.map((item, index) => (
             <div key={index}>{item}</div>
         ))}

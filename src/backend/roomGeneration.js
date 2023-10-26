@@ -13,8 +13,8 @@ export const getRooms = async (hotel_id, cin, cout, adult) => {
     adults_number_by_rooms: adult,
     units: 'metric'
   },
-    headers: {
-    'X-RapidAPI-Key': '750e4d0509msh16a3a30df25a4f1p1fe025jsn38e87ab350ff',
+headers: {
+    'X-RapidAPI-Key': 'b2e87b87a2msh1f7b0873deee4f5p1e24f7jsnc8644af3ecda',
     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
   }
   // headers: {

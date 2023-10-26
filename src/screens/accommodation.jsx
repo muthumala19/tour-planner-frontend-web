@@ -4,7 +4,7 @@ import "./accommodation.css"
 import Pic from "../images/hotel.jpg"
 import Pagination from '../components/pagination';
 import HotelCard from '../components/hotelCard';
-import { getHotels } from '../backend/hotelGeneration';
+import { getHotels, postHotels } from '../backend/hotelGeneration';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import NavBarComponent from '../components/navbar_component';
 
@@ -22,7 +22,6 @@ const Accommodation = () => {
         const filterCards = (cards) => {
             const range = searchParams.get("pr").split(",");
             const filtered = cards.filter((card) => {
-                console.log(card);
                 return (Number(range[0]) < card.props.cost && card.props.cost < Number(range[1]))
             });
             setCards(filtered);
@@ -65,12 +64,16 @@ const Accommodation = () => {
         }, []);
 
 
-    const handleClick = (id, hotel_id) => {
+    const handleClick = async (id, hotel_id, image, cost) => {
         const cin = searchParams.get("cin");
         const cout = searchParams.get("cout");
         const adult = searchParams.get("ad");
         const location = searchParams.get("lc");
-        navigate(`/room-selection?hid=${hotel_id}&cin=${cin}&cout=${cout}&adult=${adult}&lc=${location}`)
+        navigate(`/room-selection?hid=${hotel_id}&cin=${cin}&cout=${cout}&adult=${adult}&lc=${location}`);
+
+        const hotel = {id: hotel_id, uid: "11221122", url: image, cost:cost}
+
+        const data = await postHotels(hotel);
     };
 
     const navbarItems = [

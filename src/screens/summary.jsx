@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Button from '../components/button';
 import "./summary.css"
 import DestinationCard from '../components/Destinationcard';
@@ -12,11 +12,32 @@ import NavBarComponent from '../components/navbar_component';
 import Footer from '../components/footer_component';
 import HotelCard from '../components/hotelCard';
 import VehicleCard from '../components/vehicleCard';
+import { getHotelData, getUserHotel } from '../backend/hotelGeneration';
 
 const Summary = () => {
+    const [hotel, setHotel] = useState(null);
+    const [hotelData, setHotelData] = useState(null);
     const tag1 = ['Religious', 'History'];
     const tag2 = ['Nature', 'Adventure'];
     const tag3 = ['History', 'Knowladge'];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getUserHotel("11221122");
+                const value = await getHotelData(data[0].id);
+                setHotel(data[0]);
+                setHotelData(value)
+                console.log("here", value)
+            } catch (error) {
+                console.error('Error fetching hotel data:', error);
+            }
+
+            
+        };
+
+        fetchData();
+        }, []);
 
     const navigate = useNavigate();
 
@@ -34,13 +55,13 @@ const Summary = () => {
         <HotelCard
                         key={1}
                         id={1}
-                        hotel_id={1}
-                        title={"The Steuart by Citrus"}
-                        location={"Colombo"}
-                        ratings={[9.4, "Very Good"]}
-                        cost={Math.ceil(400 * 320)}
+                        hotel_id={hotel && hotel.id}
+                        title={hotelData && hotelData.name}
+                        location={hotelData && hotelData.city}
+                        ratings={hotelData && [hotelData.review_score, hotelData.review_score_word]}
+                        cost={hotel && hotel.cost}
                         tagLabel="Location tags"
-                        image={"https://cf.bstatic.com/xdata/images/hotel/max1280x900/344223041.jpg?k=ddb694a31297ff1d47d4dbe1cb3306cd7c65ac7d797c8d809eda0f4fd49e45ae&o="}
+                        image={hotel && hotel.url}
                     />
     ];
 
@@ -98,9 +119,9 @@ const Summary = () => {
                 <div className='smr-divider'></div>
 
                 <h2 className='smr-sub-heading'>Picked Hotels</h2>
-                <div className='smr-cards'>
+                {hotel && <div className='smr-cards'>
                     <Pagination data={cardComponents2} itemsPerPage={3}/>
-                </div>
+                </div>}
                 <div className='smr-btn'>
                     <button className='smr-btn-item' onClick={handleHotelChange}>Change Selection</button>
                 </div>

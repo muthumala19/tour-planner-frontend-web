@@ -78,9 +78,9 @@ const RoomSelection = () => {
                 <div className='rs-cards'>
                     {cards}
                 </div>
-                <div className='rs-btn'>
+                {/* <div className='rs-btn'>
                     <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNextStep}></Button>
-                </div>
+                </div> */}
             </div>
             <Footer/>
         </React.Fragment>
