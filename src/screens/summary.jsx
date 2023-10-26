@@ -1,14 +1,43 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import Button from '../components/button';
 import "./summary.css"
 import DestinationCard from '../components/Destinationcard';
-import Pic from "../images/demodara.jpg"
+import pic1 from "../images/templeoftooth.jpg"
+import pic2 from "../images/garden.jpg"
+import pic3 from "../images/musium.jpg"
 import Pagination from '../components/pagination';
 import { FaHotel } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import NavBarComponent from '../components/navbar_component';
+import Footer from '../components/footer_component';
+import HotelCard from '../components/hotelCard';
+import VehicleCard from '../components/vehicleCard';
+import { getHotelData, getUserHotel } from '../backend/hotelGeneration';
 
 const Summary = () => {
-    const tags = ['Nature', 'Adventure', 'Hiking'];
+    const [hotel, setHotel] = useState(null);
+    const [hotelData, setHotelData] = useState(null);
+    const tag1 = ['Religious', 'History'];
+    const tag2 = ['Nature', 'Adventure'];
+    const tag3 = ['History', 'Knowladge'];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getUserHotel("11221122");
+                const value = await getHotelData(data[0].id);
+                setHotel(data[0]);
+                setHotelData(value)
+                console.log("here", value)
+            } catch (error) {
+                console.error('Error fetching hotel data:', error);
+            }
+
+            
+        };
+
+        fetchData();
+        }, []);
 
     const navigate = useNavigate();
 
@@ -17,12 +46,36 @@ const Summary = () => {
     };
 
     const cardComponents = [
-        <DestinationCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <DestinationCard key={2} id={2} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <DestinationCard key={3} id={3} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <DestinationCard key={4} id={4} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <DestinationCard key={5} id={5} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <DestinationCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+        <DestinationCard key={1} id={1} title="Temple of Tooth" location="Kandy" tags={tag1} tagLabel="Location tags" image={pic1} onClick={handleClick} />,
+        <DestinationCard key={2} id={2} title="Royal Gardens" location="Peradeniya" tags={tag2} tagLabel="Location tags" image={pic2} onClick={handleClick} />,
+        <DestinationCard key={3} id={3} title="National Museum" location="Kandy" tags={tag3} tagLabel="Location tags" image={pic3} onClick={handleClick} />,
+    ];
+
+    const cardComponents2 = [
+        <HotelCard
+                        key={1}
+                        id={1}
+                        hotel_id={hotel && hotel.id}
+                        title={hotelData && hotelData.name}
+                        location={hotelData && hotelData.city}
+                        ratings={hotelData && [hotelData.review_score, hotelData.review_score_word]}
+                        cost={hotel && hotel.cost}
+                        tagLabel="Location tags"
+                        image={hotel && hotel.url}
+                    />
+    ];
+
+    const cardComponents3 = [
+        <VehicleCard
+                        key={1}
+                        id={1}
+                        vh_id={1}
+                        title={"AWM Rents"}
+                        car={"Toyota Prius"}
+                        ratings={9.7}
+                        cost={Math.ceil(400 * 320)}
+                        image={"https://cdn.rcstatic.com/images/car_images/web/skoda/citigo_lrg.png"}
+                    />
     ];
 
     const handlePlaceChange = () => {
@@ -34,12 +87,21 @@ const Summary = () => {
 
     }
 
+    const handleClicks = () => {
+        navigate("")
+    }
+
     const handleVehicleChange = () => {
         navigate("/vehicles");
     }
 
+    const navbarItems = [
+        {label: 'Home', href: '/'},
+    ];
+
     return (
         <React.Fragment>
+            <NavBarComponent items={navbarItems}/>
             <div className='smr'>
                 <h1 className='smr-heading'>Journey Preview</h1>
                 <div className='smr-btn'>
@@ -57,9 +119,9 @@ const Summary = () => {
                 <div className='smr-divider'></div>
 
                 <h2 className='smr-sub-heading'>Picked Hotels</h2>
-                <div className='smr-cards'>
-                    <Pagination data={cardComponents} itemsPerPage={3}/>
-                </div>
+                {hotel && <div className='smr-cards'>
+                    <Pagination data={cardComponents2} itemsPerPage={3}/>
+                </div>}
                 <div className='smr-btn'>
                     <button className='smr-btn-item' onClick={handleHotelChange}>Change Selection</button>
                 </div>
@@ -68,7 +130,7 @@ const Summary = () => {
 
                 <h2 className='smr-sub-heading'>Picked Vehicles</h2>
                 <div className='smr-cards'>
-                    <Pagination data={cardComponents} itemsPerPage={3}/>
+                    <Pagination data={cardComponents3} itemsPerPage={3}/>
                 </div>
                 <div className='smr-btn'>
                     <button className='smr-btn-item' onClick={handleVehicleChange}>Change Selection</button>
@@ -86,9 +148,10 @@ const Summary = () => {
                     </div>
                 </div>
                 <div className='smr-btn smr-btn-last'>
-                    <Button text="Proceed To Checkout" style={{padding:"6px 18px 6px 18px"}}></Button>
+                    <Button text="Proceed To Checkout" style={{padding:"6px 18px 6px 18px"}} onClick={handleClicks}></Button>
                 </div>
             </div>
+            <Footer/>
         </React.Fragment>
     );
 }

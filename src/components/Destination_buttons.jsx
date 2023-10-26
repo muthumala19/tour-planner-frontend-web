@@ -1,36 +1,30 @@
 import React from "react";
-import axios from "axios";
+//import axios from "axios";
 import "../components/Destination_buttons.css";
 import { useState } from "react";
 import Location_btn_component from "../components/Location_btn_component.jsx";
 import Date_box_component from "./Date_box_component.jsx";
-import PriceRange_component from '../components/PriceRange_component.jsx';
 import { useNavigate } from "react-router-dom";
+// import LocationBttn from "./LocationSeacrhAPI";
 
 export default function Destination_buttons(){
-  const [startDate, setStartDate] = useState(""); // State to store selected date
-  const [endDate, setEndDate] = useState(""); // State to store selected date
+  const [DateRange, setDateRange] = useState([]); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
-  const [priceRange, setPriceRange] = useState(""); // State to store selected price range
 
   const navigate = useNavigate();
 
-
-  const destinationData = {
-    startDate: startDate,
-    endDate: endDate,
-    location: location
-    // add userID as well.
-    // add trip ID 
-  }
+  // const destinationData = {
+  //   startDate: startDate,
+  //   endDate: endDate,
+  //   location: location
+  //   // add userID as well.
+  //   // add trip ID 
+  // }
 
   // Callback function to handle date change and update state
-  const handleStartDateChange = (selectedDate) => {
-    setStartDate(selectedDate);
-  };
+  const handleDateChange = (selectedDate) => {
+    setDateRange(selectedDate);
 
-  const handleEndDateChange = (selectedDate) => {
-    setEndDate(selectedDate);
   };
 
   //Callback function to handle the location button
@@ -38,40 +32,32 @@ export default function Destination_buttons(){
     setLocation(selectedLocation);
   };
 
-  //Callback function to handle the price range
-  const handlePriceChange = (selectedPrice) => {
-    setPriceRange(selectedPrice);
-  };
+  const isFormValid = location && DateRange.length >0;
 
   // when explore button is clicked the data is sent to the backend
   function onClick(){
-    console.log(startDate)
-    console.log(endDate)
+    if(isFormValid){
+    console.log(DateRange)
     console.log(location)
-    console.log(priceRange)
-    navigate(`/destinations?cin=${startDate}&cout=${endDate}&lc=${location}&pr=${priceRange}`)
+    navigate(`/destinations?cin=${DateRange[0]}&cout=${DateRange[1]}&lc=${location}`)
+    }
+    else{
+      alert("Please enter all the details")
+    }
   }
     return(
       <div >
 
         <div className="row">
-          <div className="col-12 col-sm-6 col-lg-4">
-            <Date_box_component text="starting date" onDateChange={handleStartDateChange} />
+          <div className="col-12 col-sm-12 col-lg-12">
+            <Date_box_component text="starting date" onDateChange={handleDateChange} />
           </div>
-          <div className="col-12 col-sm-6 col-lg-4">
-            <Date_box_component text="end date" onDateChange={handleEndDateChange} />
-          </div>
-          <div className="col-12 col-sm-12 col-lg-4">
+          <div className="col-12 col-sm-12 col-lg-12 locationDropdown" >
             <Location_btn_component onLocationChange={handleLocationChange}/>
           </div>
-          {/* Display the selected date
-            {startDate && <p>Selected Start Date: {startDate}</p>} */}
         </div>
-  
-
-        <PriceRange_component onPriceChange={handlePriceChange} />
         
-        <div>  
+        <div style={{paddingTop:'80px'}}>  
             <div className="d-flex justify-content-center">
               <button className="lbtn explore-btn" onClick={onClick}><b>Explore</b></button>
             </div>

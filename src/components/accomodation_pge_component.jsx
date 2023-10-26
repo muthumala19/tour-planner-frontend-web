@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Accomodation_page_btns(){
 
-  const [startDate, setStartDate] = useState(""); // State to store selected date
-  const [endDate, setEndDate] = useState(""); // State to store selected date
+  const [DateRange, setDateRange] = useState([]); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
 
@@ -21,21 +20,18 @@ export default function Accomodation_page_btns(){
 
 
   const rideData = {
-    startDate: startDate,
-    endDate: endDate,
+    startDate: DateRange[0],
+    endDate: DateRange[1],
     location: location
     // add userID as well.
     // add trip ID 
   }
 
   // Callback function to handle date change and update state
-  const handleStartDateChange = (selectedDate) => {
-    setStartDate(selectedDate);
+  const handleDateChange = (selectedDate) => {
+    setDateRange(selectedDate);
   };
 
-  const handleEndDateChange = (selectedDate) => {
-    setEndDate(selectedDate);
-  };
 
   //Callback function to handle the location button
   const handleLocationChange = (selectedLocation) => {
@@ -60,11 +56,10 @@ export default function Accomodation_page_btns(){
   // Explore button
   function exploreClick(){
     console.log("Explore clicked")
-    console.log(startDate)
-    console.log(endDate)
+    console.log(DateRange)
     console.log(location)
     console.log(priceRange)
-    navigation(`/accommodations?cin=${startDate}&cout=${endDate}&adult=${adult}&child=${child}`)
+    navigation(`/accommodations?cin=${DateRange[0]}&cout=${DateRange[1]}&ad=${adult}&ch=${child}&lc=${location}&pr=${priceRange}`);
   }
 
   // Skip Accomodation button
@@ -81,9 +76,8 @@ export default function Accomodation_page_btns(){
       {/* Date, Location, Accomodation, Price Range, Explore, Skip Accomodation buttons */}
 
       <div className='row'>
-        <div className="col-12 col-sm-6 col-lg-4"><Date_box_component text="starting date" onDateChange={handleStartDateChange}/></div> 
-        <div className="col-12 col-sm-6 col-lg-4"><Date_box_component text="end date" onDateChange={handleEndDateChange}/></div>
-        <div className="col-12 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
+        <div className="col-8 col-sm-6 col-lg-8"><Date_box_component onDateChange={handleDateChange}/></div> 
+        <div className="col-8 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
       </div>
       <div className="row accomodation" >
         <div className="col" ><Inc_Dec_btn onChange={handleAdultChange} text="No. of Adults"/></div>

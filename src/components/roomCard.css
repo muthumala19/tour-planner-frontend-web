@@ -62,7 +62,7 @@
 .room-crd-btn:hover {
     background: #FFA500;
     color: black;
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 @keyframes scrollEffect {
