@@ -54,6 +54,7 @@ export default function SignIn() {
             window.location.href = '/';
         } catch (e) {
             console.log(e);
+            alert(e)
         } finally {
             setAuthenticating(false);
         }

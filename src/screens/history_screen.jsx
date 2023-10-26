@@ -1,7 +1,9 @@
-export default function HistoryScreen() {
+import NoDataToDisplay from "./no_data";
+
+export default function HistoryScreen({history}) {
     return (
-        <div>
-            <h1>History Screen</h1>
-        </div>
+        history.length === 0 ? <div>
+            <NoDataToDisplay/>
+        </div> : null
     )
 }

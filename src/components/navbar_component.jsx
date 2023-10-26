@@ -11,6 +11,7 @@ export default function NavBarComponent({items}) {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user);
+                console.log(user.uid)
             } else {
                 setAuthUser(null);
             }

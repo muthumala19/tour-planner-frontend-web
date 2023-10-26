@@ -6,13 +6,14 @@ import AboutUs from "../components/about_us_component";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../configurations/firebase_configurations";
-import { useNavigate } from 'react-router';
 import ContactUs from "../components/contact_us";
 import PricingPlan from "./pricing_plans_screen";
+import {Link} from "react-router-dom";
 
 
 export default function LandingScreen() {
     const [authUser, setAuthUser] = useState(null);
+    // const navigate = useNavigate();
     const navbarItemsForNotLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'Pricing', href: '#pricing'},
@@ -22,10 +23,10 @@ export default function LandingScreen() {
         {label: 'Sign In', href: '/sign_in'},
     ];
 
-    const navigate = useNavigate();
-    
+
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
+        {label: 'Pricing', href: '#pricing'},
         {label: 'About Us', href: '#about_us'},
         {label: 'Contact Us', href: '#contact_us'},
     ];
@@ -49,15 +50,10 @@ export default function LandingScreen() {
                         {"|NAVIGATE THE WORLD'S MARVELOUS."}
                     </h1>
                         <div className={'get_started_button'}>
-                            <Button
-                                onClick={() => {
-                                    navigate("/destinationForm")
-
-                                 
-                                }}
+                            <Link to={'/destinationForm'}> <Button
                             >
                                 Get Started
-                            </Button>
+                            </Button></Link>
                         </div>
                     </div>
                     <div className={'paragraphs'}>
