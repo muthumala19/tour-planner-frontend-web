@@ -14,6 +14,7 @@ export default function Register() {
     const formRef = useRef(null);
     const navigate = useNavigate();
 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(formRef.current);
@@ -29,7 +30,7 @@ export default function Register() {
             resetForm();
             return;
         }
-        navigate('/register/sign_up');
+        navigate(`/register/sign_up?fullname=${data.get('first_name') + ' ' + data.get('last_name')}&age=${data.get('age')}&username=${data.get('username')} }`);
         resetForm(); // Reset the form after submission
     };
 

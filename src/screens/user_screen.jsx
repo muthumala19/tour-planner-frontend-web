@@ -2,7 +2,6 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -108,7 +107,6 @@ export default function User(props: Props) {
             <Divider/>
             <List>
                 {drawerItems.map((item) => (
-
                     <ListItem key={item.text} disablePadding>
                         <ListItemButton
                             selected={selectedItem === item.text}
@@ -160,10 +158,10 @@ export default function User(props: Props) {
             screen = <PricingPlansScreen/>;
             break;
         case 'Journeys':
-            screen = <JourneysScreen/>;
+            screen = <JourneysScreen journeys={[]}/>;
             break;
         case 'History':
-            screen = <HistoryScreen/>;
+            screen = <HistoryScreen history={[]}/>;
             break;
         default:
             screen = <ProfileScreen/>;
@@ -219,7 +217,7 @@ export default function User(props: Props) {
     }, [uid]);// The empty dependency array ensures this effect runs once when the component mounts
     return (
         <Box sx={{display: 'flex'}}>
-            <CssBaseline/>
+            {/*<CssBaseline/>*/}
             <AppBar
                 style={{backgroundColor: '#0C356A'}}
                 position="fixed"

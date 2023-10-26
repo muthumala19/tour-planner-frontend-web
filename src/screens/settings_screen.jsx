@@ -8,6 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 export default function SettingsScreen() {
     const [loading, setLoading] = useState(false);
     const [uid, setUid] = useState(null);
+    const [email, setEmail] = useState('');
     const [profile, setProfile] = useState({
         fullname: '',
         email: '',
@@ -36,7 +37,7 @@ export default function SettingsScreen() {
     const clearProfile = () => {
         setProfile({
             fullname: '',
-            email: '',
+            email: email,
             mobile: '',
             phone: '',
             address: '',
@@ -65,7 +66,7 @@ export default function SettingsScreen() {
                 const data = docSnap.data();
                 setProfile({
                     fullname: data.fullname,
-                    email: data.email,
+                    email: email,
                     mobile: data.mobile,
                     phone: data.phone,
                     address: data.address,
@@ -138,6 +139,7 @@ export default function SettingsScreen() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUid(user.uid);
+                setEmail(user.email);
             }
         });
     }, []);
@@ -167,6 +169,7 @@ export default function SettingsScreen() {
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input
+                        disabled
                         type="email"
                         id="email"
                         className="input-field"
