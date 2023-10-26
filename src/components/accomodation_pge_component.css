@@ -1,0 +1,35 @@
+.accomodation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Skip-accomodation-btn {
+    background-color:#0C356A;
+    size: auto;
+    width: auto;
+    font-weight: 400;
+    font-size: x-large;
+    color: white;
+    outline: 2px solid black;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+.explore-btn {
+    background-color:#E7BB41;
+    
+    width: auto;
+    font-weight: 400;
+    font-size: x-large;
+    color: white;
+    outline: 2px solid black;
+    border-radius: 30px; 
+}
+
+.FindYourPerfectStay {
+    text-align: center;
+    color:#0C356A;
+    font-size: 70px;
+    font-style: italic;
+    width:fit-content
+}
