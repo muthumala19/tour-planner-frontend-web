@@ -7,14 +7,13 @@
   .LocationBtn {
 
     text-align: center;
-    
     align-items: center;
-    
     width: 20vw;
     justify-content: center;
     margin: auto;
-    padding-top: 4px;
-   
+    padding-top: 5vh ;
+    padding-bottom: 0;
+    z-index: 50;
   }
   
   .search-container {
@@ -24,17 +23,21 @@
     /* dropdown search color */
     color: rgb(0, 0, 0);  
     border-radius: 20px;
+    border: 2px solid #000000;
+
     
   }
-  .dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center{
-    position: absolute;
-  }
+  /* .dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center{
+
+    z-index: 100;
+  } */
   .dropdown {
+    position: relative;
     background-color: white;
     display: flex;
     flex-direction: column;
     border: 1px solid white;
-    position: absolute;
+    z-index: 100 !important; 
   }
   
   .dropdown:empty {
@@ -47,21 +50,23 @@
     margin: 2px 0;
     background-color: none;
     display: flex;
-
   }
   
-  input {
-    width: 60%;
+  .linput {
+    width: 100%;
     color: black;
     outline: none;
+    border:0px;
+    border-radius: 20px;
+    background-color: #E7E5DF;
   }
   
   .search-inner {
     display: flex;
     color: black;
-    border:2px solid #000000;
+    /* border:2px solid #000000; */
     border-radius: 20px;
-    height:8vh
+    height:8vh;
   }
 
   .search-btn {

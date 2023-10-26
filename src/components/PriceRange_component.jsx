@@ -16,7 +16,7 @@ const PriceRange_component = (props) => {
           <h2>Price Range</h2>
           
 
-          <div style={{ display: 'flex', justifyContent: 'center',width:"100%" }}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div>
               <input className="linput" style={{width:"90px"}}
                 type="number"

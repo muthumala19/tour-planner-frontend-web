@@ -6,8 +6,10 @@ import AboutUs from "../components/about_us_component";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../configurations/firebase_configurations";
+import { useNavigate } from 'react-router';
 import ContactUs from "../components/contact_us";
 import PricingPlan from "./pricing_plans_screen";
+
 
 export default function LandingScreen() {
     const [authUser, setAuthUser] = useState(null);
@@ -19,6 +21,9 @@ export default function LandingScreen() {
         {label: 'Register', href: '/register'},
         {label: 'Sign In', href: '/sign_in'},
     ];
+
+    const navigate = useNavigate();
+    
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
         {label: 'Pricing', href: '#pricing'},
@@ -47,7 +52,9 @@ export default function LandingScreen() {
                         <div className={'get_started_button'}>
                             <Button
                                 onClick={() => {
-                                    window.location.href = '/accommodationForm'
+                                    navigate("/destinationForm")
+
+                                 
                                 }}
                             >
                                 Get Started

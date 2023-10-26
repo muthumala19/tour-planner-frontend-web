@@ -8,6 +8,7 @@
     background-image: url("../images/background_nil2.jpg");
     background-size: contain;
     background-repeat: repeat;
+    min-height: 100vh;
 }
 
 .vh-heading {
@@ -33,6 +34,12 @@
 .vh-cards {
     margin-top: 2%;
     margin-bottom: 3%;
+    transform: translate(0, 10px);
+    transition: transform 2.5s;
+}
+
+.vh-cards:hover {
+    transform: scale(1.01);
 }
 
 

@@ -34,6 +34,12 @@
 .acmd-cards {
     margin-top: 2%;
     margin-bottom: 2%;
+    transform: translate(0, 10px);
+    transition: transform 2.5s;
+}
+
+.acmd-cards:hover {
+    transform: scale(1.01);
 }
 
 
