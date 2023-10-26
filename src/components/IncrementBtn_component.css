@@ -4,14 +4,14 @@
   width: 5%;
   outline: none;
   border-radius: 20px;
-  background-color:#E7E5DF ;
+  background-color:transparent ;
 }
 
 .input-btn {
   outline: none;
-  width:80%;
+  width:40%;
   min-width: 50px;
-  background-color: #E7E5DF;
+  background-color: transparent;
   border:0px;
 }
 
@@ -28,6 +28,9 @@ h5 {
   justify-content: center;
   border-radius: 20px;
   outline: none;
+  height: 6vh;
+  width: 12vw;
+  max-width: 130px;
   background-color: #E7E5DF;
 
 }
@@ -45,8 +48,8 @@ h5 {
   align-items: center;
 }
 
-@media screen and (max-width: 700px) {
-  .test6{
-    width: 120px;
+@media screen and (max-width: 900px) {
+  .incr-btn{
+    width: 130px;
   }
 }

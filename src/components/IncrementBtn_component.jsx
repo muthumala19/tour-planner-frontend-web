@@ -31,7 +31,7 @@ export default function Inc_Dec_btn(props){
           <div className="inc-btn-component" >
             
             <div className="inc-btn-withHeader">
-            <div><h5>{props.text}</h5></div>
+            <div><h6>{props.text}</h6></div>
             <div className="incr-btn">
                     <div className="input-group-prepend">
                         <button className="lbtn btn2" type="button" onClick={decNum}>-</button>

@@ -13,12 +13,12 @@ const PriceRange_component = (props) => {
     return (
       <div className="test1">
         <div className="SliderDiv">
-          <h2>Price Range</h2>
+          <h2>Price Range (LKR) </h2>
           
 
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div>
-              <input className="linput" style={{width:"90px"}}
+              <input className="linput" style={{width:"100px"}}
                 type="number"
                 id="minPrice"
                 value={values[0]}
