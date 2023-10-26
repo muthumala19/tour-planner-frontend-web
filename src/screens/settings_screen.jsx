@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import React, {useEffect, useState} from 'react';
 import './settings_screen.css';
+import {db} from "../configurations/firebase_configurations";
+import {doc, getDoc, setDoc} from "firebase/firestore";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function SettingsScreen() {
-    // State variables to store form data
+    const [loading, setLoading] = useState(false);
+    const [uid, setUid] = useState(null);
     const [profile, setProfile] = useState({
         fullname: '',
         email: '',
@@ -10,26 +15,24 @@ export default function SettingsScreen() {
         phone: '',
         address: '',
     });
-
     const [socialMedia, setSocialMedia] = useState({
         twitter: '',
+        website: '',
         instagram: '',
         facebook: '',
     });
-
     const [payment, setPayment] = useState({
         creditCard: '',
         expiration: '',
         cvv: '',
     });
 
-    // Function to handle changes in the profile section
+
     const handleProfileChange = (e) => {
         const {id, value} = e.target;
         setProfile({...profile, [id]: value});
     };
 
-    // Function to clear the profile section
     const clearProfile = () => {
         setProfile({
             fullname: '',
@@ -40,28 +43,55 @@ export default function SettingsScreen() {
         });
     };
 
-    // Function to handle changes in the social media section
     const handleSocialMediaChange = (e) => {
         const {id, value} = e.target;
         setSocialMedia({...socialMedia, [id]: value});
     };
 
-    // Function to clear the social media section
     const clearSocialMedia = () => {
         setSocialMedia({
             twitter: '',
             instagram: '',
+            website: '',
             facebook: '',
         });
     };
 
-    // Function to handle changes in the payment section
+    const fetchData = async () => {
+        try {
+            const docRef = doc(db, "userData", uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                setProfile({
+                    fullname: data.fullname,
+                    email: data.email,
+                    mobile: data.mobile,
+                    phone: data.phone,
+                    address: data.address,
+                });
+                setSocialMedia({
+                    twitter: data.twitter,
+                    instagram: data.instagram,
+                    facebook: data.facebook,
+                    website: data.website,
+                });
+                setPayment({
+                    creditCard: data.creditCard,
+                    expiration: data.expiration,
+                    cvv: data.cvv,
+                });
+            }
+        } catch (e) {
+            console.error("Error fetching document: ", e);
+        }
+    };
+
     const handlePaymentChange = (e) => {
         const {id, value} = e.target;
         setPayment({...payment, [id]: value});
     };
 
-    // Function to clear the payment section
     const clearPayment = () => {
         setPayment({
             creditCard: '',
@@ -69,6 +99,55 @@ export default function SettingsScreen() {
             cvv: '',
         });
     };
+
+    async function saveDetails() {
+        if (!uid) {
+            console.error("User is not authenticated.");
+            alert("User is not authenticated.");
+            return;
+        }
+        setLoading(true);
+        try {
+            const ref = doc(db, "userData", uid);
+            await setDoc(ref, {
+                fullname: profile.fullname,
+                email: profile.email,
+                mobile: profile.mobile,
+                phone: profile.phone,
+                address: profile.address,
+                twitter: socialMedia.twitter,
+                instagram: socialMedia.instagram,
+                facebook: socialMedia.facebook,
+                website: socialMedia.website,
+                creditCard: payment.creditCard,
+                expiration: payment.expiration,
+                cvv: payment.cvv,
+            });
+            console.log("Document written with ID: ", uid);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            alert("Error adding document: " + e.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    useEffect(() => {
+        // Use an effect to retrieve the user's UID when the component mounts
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUid(user.uid);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        // Use another effect to fetch user data when the UID changes
+        if (uid) {
+            fetchData().then(r => console.log("Data fetched"));
+        }
+    }, [uid]);// The empty dependency array ensures this effect runs once when the component mounts
 
     return (
         <div className="settings-container">
@@ -133,9 +212,10 @@ export default function SettingsScreen() {
                     >
                         Clear
                     </button>
-                    <button className="save-button profile-button" type="submit">
-                        Save
-                    </button>
+                    {loading ? <CircularProgress/> :
+                        <button className="save-button profile-button" type="submit" onClick={saveDetails}>
+                            Save
+                        </button>}
                 </div>
             </section>
             <hr className="section-divider"/>
@@ -171,6 +251,16 @@ export default function SettingsScreen() {
                         onChange={handleSocialMediaChange}
                     />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="website">Website URL :</label>
+                    <input
+                        type="url"
+                        id="website"
+                        className="input-field"
+                        value={socialMedia.website}
+                        onChange={handleSocialMediaChange}
+                    />
+                </div>
                 <div className="button-group">
                     <button
                         className="clear-button social-media-button"
@@ -179,9 +269,10 @@ export default function SettingsScreen() {
                     >
                         Clear
                     </button>
-                    <button className="save-button social-media-button" type="submit">
-                        Save
-                    </button>
+                    {loading ? <CircularProgress/> :
+                        <button className="save-button profile-button" type="submit" onClick={saveDetails}>
+                            Save
+                        </button>}
                 </div>
             </section>
             <hr className="section-divider"/>
@@ -225,9 +316,10 @@ export default function SettingsScreen() {
                     >
                         Clear
                     </button>
-                    <button className="save-button payment-button" type="submit">
-                        Save
-                    </button>
+                    {loading ? <CircularProgress/> :
+                        <button className="save-button profile-button" type="submit" onClick={saveDetails}>
+                            Save
+                        </button>}
                 </div>
             </section>
         </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -24,6 +24,9 @@ import BillingScreen from "./billing_screen";
 import PricingPlansScreen from "./pricing_plans_screen";
 import JourneysScreen from "./journeysScreen";
 import HistoryScreen from "./history_screen";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../configurations/firebase_configurations";
 
 const drawerWidth = 240;
 
@@ -35,8 +38,26 @@ interface Props {
 export default function User(props: Props) {
 
     const {window, activeScreen} = props;
+    const [uid, setUid] = useState(null);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(activeScreen);
+    const [data, setData] = useState({
+            profileDetails: {
+                address: "",
+                fullName: '',
+                email: "",
+                mobile: '',
+                phone: '',
+                introduction: "",
+            },
+            socialLinks: {
+                website: '',
+                facebook: '',
+                twitter: '',
+                instagram: '',
+            },
+        }
+    ); // data is null at first, then it will be an array [
     const navigate = useNavigate();
 
     const handleDrawerToggle = () => {
@@ -123,28 +144,11 @@ export default function User(props: Props) {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
-    const user = {
-        profileDetails: {
-            address: "Lake area,Matara Sri Lanka.",
-            fullName: 'Pasindu Muthumala',
-            email: "muthumala@gmail.com",
-            mobile: '0771234567',
-            phone: '0778921895',
-            introduction: "Solo Traveller",
-        },
-        socialLinks: {
-            website: 'www.muthumala.com',
-            facebook: 'www.facebook.com/muthumala',
-            twitter: 'www.twitter.com/muthumala',
-            instagram: 'www.instagram.com/muthumala',
-            github: 'www.github.com/muthumala',
-        },
 
-    }
     let screen;
     switch (selectedItem) {
         case 'Profile':
-            screen = <ProfileScreen user={user}/>;
+            screen = <ProfileScreen user={data}/>;
             break;
         case 'Billing':
             screen = <BillingScreen/>;
@@ -165,6 +169,54 @@ export default function User(props: Props) {
             screen = <ProfileScreen/>;
             break
     }
+
+    const fetchData = async () => {
+        try {
+            const docRef = doc(db, "userData", uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const documentRef = docSnap.data();
+                setData(
+                    {
+                        profileDetails: {
+                            address: documentRef.address,
+                            fullName: documentRef.fullname,
+                            email: documentRef.email,
+                            mobile: documentRef.mobile,
+                            phone: documentRef.phone,
+                            introduction: documentRef.introduction,
+                        },
+                        socialLinks: {
+                            website: documentRef.website,
+                            facebook: documentRef.facebook,
+                            twitter: documentRef.twitter,
+                            instagram: documentRef.instagram,
+                        },
+                    }
+                );
+
+            }
+        } catch (e) {
+            console.error("Error fetching document: ", e);
+        }
+    };
+
+    useEffect(() => {
+        // Use an effect to retrieve the user's UID when the component mounts
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUid(user.uid);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        // Use another effect to fetch user data when the UID changes
+        if (uid) {
+            fetchData().then(r => console.log("Data fetched"));
+        }
+    }, [uid]);// The empty dependency array ensures this effect runs once when the component mounts
     return (
         <Box sx={{display: 'flex'}}>
             <CssBaseline/>

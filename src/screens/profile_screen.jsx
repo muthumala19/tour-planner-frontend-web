@@ -10,7 +10,7 @@ import {
     MDBListGroupItem,
     MDBRow
 } from 'mdb-react-ui-kit';
-import {BsFacebook, BsGithub, BsGlobe2, BsInstagram, BsTwitter} from "react-icons/bs";
+import {BsFacebook, BsGlobe2, BsInstagram, BsTwitter} from "react-icons/bs";
 import Button from "@mui/material/Button";
 
 const borderRadius = '3vh';
@@ -44,7 +44,7 @@ function ProfileCard({profileCard}) {
 function SocialLinks({socialLinks}) {
     const links = [
         {icon: <BsGlobe2/>, text: socialLinks.website},
-        {icon: <BsGithub/>, text: socialLinks.github, color: '#333333'},
+        // {icon: <BsGithub/>, text: socialLinks.github, color: '#333333'},
         {icon: <BsTwitter/>, text: socialLinks.twitter, color: '#55acee'},
         {icon: <BsInstagram/>, text: socialLinks.instagram, color: '#ac2bac'},
         {icon: <BsFacebook/>, text: socialLinks.facebook, color: '#3b5998'}
