@@ -217,7 +217,6 @@ export default function User(props: Props) {
     }, [uid]);// The empty dependency array ensures this effect runs once when the component mounts
     return (
         <Box sx={{display: 'flex'}}>
-            {/*<CssBaseline/>*/}
             <AppBar
                 style={{backgroundColor: '#0C356A'}}
                 position="fixed"
