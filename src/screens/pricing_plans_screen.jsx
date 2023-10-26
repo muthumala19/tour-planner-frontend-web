@@ -2,6 +2,9 @@ import React from 'react';
 import './pricing_plans.css'; // Link to your CSS file
 
 export default function PricingPlanScreen() {
+    function handleClick() {
+    }
+
     return (
         <div className="pricing-plans">
             <h1 className="plan-heading">Our Pricing Plans</h1>
@@ -29,7 +32,7 @@ export default function PricingPlanScreen() {
                         <li>Customized Itineraries</li>
                     </ul>
                     <div className="plan-button-group">
-                        <button className="select-button">Select Plan</button>
+                        <button className="select-button" onClick={handleClick}>Select Plan</button>
                     </div>
                 </div>
 

@@ -26,6 +26,7 @@ export default function LandingScreen() {
     
     const navbarItemsForLoggedInUser = [
         {label: 'Home', href: '#home'},
+        {label: 'Pricing', href: '#pricing'},
         {label: 'About Us', href: '#about_us'},
         {label: 'Contact Us', href: '#contact_us'},
     ];

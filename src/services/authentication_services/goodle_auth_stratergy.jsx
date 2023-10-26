@@ -2,7 +2,6 @@ import {auth} from '../../configurations/firebase_configurations';
 import AuthStrategy from "./auth_stratergy";
 import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 
-
 export default class GoogleAuthStrategy extends AuthStrategy {
     constructor() {
         super();

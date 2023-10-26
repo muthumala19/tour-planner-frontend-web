@@ -1,7 +1,9 @@
-export default function JourneysScreen() {
+import NoDataToDisplay from "./no_data";
+
+export default function JourneysScreen({journeys}) {
     return (
-        <div>
-            <h1>Journeys</h1>
-        </div>
+        journeys.length === 0 ? <div>
+            <NoDataToDisplay/>
+        </div> : null
     );
 }
