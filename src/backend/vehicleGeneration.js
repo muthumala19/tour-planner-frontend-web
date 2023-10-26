@@ -18,8 +18,8 @@ export const getVehicles = async (cin, cout, lc) => {
     drop_off_longitude: '79.8612',
     pick_up_longitude: '79.8612'
   },
-  headers: {
-    'X-RapidAPI-Key': '750e4d0509msh16a3a30df25a4f1p1fe025jsn38e87ab350ff',
+headers: {
+    'X-RapidAPI-Key': 'b2e87b87a2msh1f7b0873deee4f5p1e24f7jsnc8644af3ecda',
     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
   }
   // headers: {
@@ -29,7 +29,7 @@ export const getVehicles = async (cin, cout, lc) => {
 };
     try {
               const geoLoc = await getGeoLocation(lc);
-        //console.log(geoLoc.longitude,geoLoc.latitude); 
+        //console.log(geoLoc.longitude,geoLoc.latitude);
 
         //update the options with the geo location
         options.params.drop_off_longitude = geoLoc.longitude;
@@ -39,6 +39,7 @@ export const getVehicles = async (cin, cout, lc) => {
         options.params.pick_up_latitude = geoLoc.latitude;
 
         const response = await axios.request(options);
+        console.log("working");
         return response.data.search_results;
     } catch (error) {
         console.error(error);

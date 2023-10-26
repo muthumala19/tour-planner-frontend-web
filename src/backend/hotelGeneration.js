@@ -1,8 +1,9 @@
 import axios from "axios";
 import { getGeoLocation } from "./getGeoLocation";
 
-  export const getHotels = async (cin, cout, adult, child, lc) => {
+const endPoint = "http://localhost:5000/api/hotel/"
 
+export const getHotels = async (cin, cout, adult, child, lc) => {
     const options = {
         method: 'GET',
         url: 'https://booking-com.p.rapidapi.com/v1/hotels/search-by-coordinates',
@@ -24,7 +25,7 @@ import { getGeoLocation } from "./getGeoLocation";
             categories_filter_ids: 'class::2,class::4,free_cancellation::1'
         },
           headers: {
-    'X-RapidAPI-Key': '750e4d0509msh16a3a30df25a4f1p1fe025jsn38e87ab350ff',
+    'X-RapidAPI-Key': 'b2e87b87a2msh1f7b0873deee4f5p1e24f7jsnc8644af3ecda',
     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
   }
         // headers: {
@@ -53,22 +54,44 @@ import { getGeoLocation } from "./getGeoLocation";
 
 
 export const getHotelData = async (hotel_id) => {
-const options = {
-  method: 'GET',
-  url: 'https://booking-com.p.rapidapi.com/v1/hotels/data',
-  params: {
-    hotel_id: hotel_id,
-    locale: 'en-gb'
-  },
-  headers: {
-    'X-RapidAPI-Key': '750e4d0509msh16a3a30df25a4f1p1fe025jsn38e87ab350ff',
+  const options = {
+    method: 'GET',
+    url: 'https://booking-com.p.rapidapi.com/v1/hotels/data',
+    params: {
+      hotel_id: hotel_id,
+      locale: 'en-gb'
+    },
+headers: {
+    'X-RapidAPI-Key': 'b2e87b87a2msh1f7b0873deee4f5p1e24f7jsnc8644af3ecda',
     'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
   }
-};
-  try {
-	const response = await axios.request(options);
-    return response.data;
-} catch (error) {
-	console.error(error);
+  };
+    try {
+    const response = await axios.request(options);
+      return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
+
+
+export const getUserHotel = async (id) => {
+      try {
+      const response = await axios.get(`${endPoint}/getAllhotels/${id}`);
+      console.log(response)
+      return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+export const postHotels = async (hotel) => {
+      try {
+      const response = await axios.post(endPoint, hotel);
+      console.log(response)
+      return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }
