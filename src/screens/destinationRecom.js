@@ -17,10 +17,22 @@ import { getDestinations } from '../backend/destinationGeneration';
 const Destinations = () => {
     const tags = ['Nature', 'Adventure', 'Hiking'];
     const [dests, setDest] = useState();
+    const [cards, setCards] = useState(null);
 
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const lc = searchParams.get("lc");
+
+    function replaceThumbnailUrl(originalUrl) {
+    // Use the replace method to replace "w92-h92" with the replacement string
+    const updatedUrl = originalUrl.replace("w92-h92","w800-h800");
+    return updatedUrl;
+  }
+
+      
+    const handleClick = (key) => {
+
+    };
 
     
     useEffect(() => {
@@ -28,6 +40,11 @@ const Destinations = () => {
             try {
                 const data = await getDestinations(lc);
                 setDest(data);
+                const values = data.map((value, index) => {
+                    const tags = [`${value.rating} from ${value.ratingCount}`];
+                    return <DestinationCard key={1} id={1} title={value.title} location={lc} tags={tags} tagLabel="Ratings" image={replaceThumbnailUrl(value.thumbnailUrl)} onClick={handleClick} />
+                });
+                setCards(values);
             } catch (error) {
                 console.error('Error fetching hotel data:', error);
             }
@@ -37,11 +54,6 @@ const Destinations = () => {
 
         fetchData();
         }, []);
-
-    
-    const handleClick = (key) => {
-
-    };
 
     const handleNexStep = () => {
         navigate("/accommodationForm");
@@ -79,7 +91,7 @@ const Destinations = () => {
                         <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}} onClick={handleTripChange}></Button>
                     </div>
                     <div className='dst-cards'>
-                        <Pagination data={cardComponents} itemsPerPage={6}/>
+                        {cards && <Pagination data={cards} itemsPerPage={6}/>}
                     </div>
                     <div className='dst-btn'>
                         <Button text="Next Step" style={{padding:"6px 18px 6px 18px"}} onClick={handleNexStep}></Button>

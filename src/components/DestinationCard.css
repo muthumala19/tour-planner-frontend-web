@@ -15,8 +15,8 @@
     transform: translate(0, 10px);
     transition: transform 0.5s, box-shadow 0.2s;
     margin: 40px 30px 40px 30px;
-        background-image: url("../images/card.jpg");
-            background-size: contain;
+    background-image: url("../images/card.jpg");
+    background-size: contain;
 }
 
 .crd-containter:hover {
@@ -36,10 +36,12 @@
 .crd-title {
     font-family: 'Lato', sans-serif;
     font-weight: 700;
-    font-size: 150%;
+    font-size: 120%;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .crd-location {
