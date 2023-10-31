@@ -13,8 +13,8 @@ export default function Accomodation_page_btns(){
   const [location, setLocation] = useState(""); // State to store selected location
   const [priceRange, setPriceRange] = useState(""); // State to store selected price range
 
-  const [adult, setAdult] = useState("");
-  const [child, setChild] = useState("");
+  const [adult, setAdult] = useState(1);
+  const [child, setChild] = useState(1);
   const navigation = useNavigate();
 
 
@@ -45,11 +45,11 @@ export default function Accomodation_page_btns(){
   };
 
   const handleAdultChange = (val) => {
-    setAdult(val);
+    setAdult(val+1);
   }
 
   const handleChildChange = (val) => {
-    setChild(val);
+    setChild(val+1);
   }
 
 
