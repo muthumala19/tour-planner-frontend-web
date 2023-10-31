@@ -59,7 +59,11 @@ export default function Accomodation_page_btns(){
     console.log(DateRange)
     console.log(location)
     console.log(priceRange)
+
+    //navigation(`/accommodations?cin=${DateRange[0]}&cout=${DateRange[1]}&adult=${adult}&child=${child}`) - Ludeesha
+
     navigation(`/accommodations?cin=${DateRange[0]}&cout=${DateRange[1]}&ad=${adult}&ch=${child}&lc=${location}&pr=${priceRange}`);
+
   }
 
   // Skip Accomodation button
@@ -70,14 +74,14 @@ export default function Accomodation_page_btns(){
   return(
     <div>
       <div className="row">
-        <h1 className="FindYourPerfectStay" style={{}}>Find your Perfect stay</h1>
+        <h1 className="FindYourPerfectStay">Find your Perfect stay</h1>
       </div>
       
       {/* Date, Location, Accomodation, Price Range, Explore, Skip Accomodation buttons */}
 
       <div className='row'>
-        <div className="col-8 col-sm-6 col-lg-8"><Date_box_component onDateChange={handleDateChange}/></div> 
-        <div className="col-8 col-sm-12 col-lg-4"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
+        <div className="col-12 col-sm-8 col-lg-8 col-md-12"><Date_box_component onDateChange={handleDateChange}/></div> 
+        <div className="col-12 col-sm-4 col-lg-4 col-md-12"><Location_btn_component onLocationChange={handleLocationChange}/></div> 
       </div>
       <div className="row accomodation" >
         <div className="col" ><Inc_Dec_btn onChange={handleAdultChange} text="No. of Adults"/></div>
@@ -99,7 +103,7 @@ export default function Accomodation_page_btns(){
       {/* Skip Accomodation button */}
       <div className="row">
         <div className="d-flex justify-content-center">
-          <button className="lbtn Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
+          <button className="Skip-accomodation-btn" onClick={skipAcmdClick}>Skip Accomodation</button>
         </div>   
       </div>
     </div>

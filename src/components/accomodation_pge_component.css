@@ -2,16 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 50px;
 }
 
 .Skip-accomodation-btn {
     background-color:#0C356A;
     size: auto;
     width: auto;
-    font-weight: 400;
-    font-size: x-large;
+    font-weight: 300;
+    font-size: large !important;
     color: white;
-    outline: 2px solid black;
     border-radius: 30px;
     margin-bottom: 30px;
 }

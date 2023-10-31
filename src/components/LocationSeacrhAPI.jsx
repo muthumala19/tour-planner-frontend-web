@@ -3,7 +3,7 @@ import './LocationSeacrhAPI.css'
 import SearchIcon from '@mui/icons-material/Search';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
-const apiKey = 'AIzaSyD1odBkCEc5ChAQ9bKbQqlZGr9ruvKg1tk';
+const apiKey = 'API KEY';
 const mapApiJs = 'https://maps.googleapis.com/maps/api/js';
 const geocodeJson = 'https://maps.googleapis.com/maps/api/geocode/json';
 

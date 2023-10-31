@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getGeoLocation = async (location) => {
     const params={
-        api_key: "BA3979C577B645AE88935E80128740AD",
+        api_key: "API KEY",
         q: location,
         type: "city",
         country_code: "lk"

@@ -1,39 +1,40 @@
 .box {
-    height: 8vh;
-    justify-content: center;
-    text-align: center;
-    width: 20vw;
-    margin: auto;
-    border:2px solid #000000;
-    color:rgb(145, 145, 145);
-    border-radius: 20px;
-    background-color: #E7E5DF;
-  }
+  height: 7vh;
+  width: 12vw;
+  margin: auto;
+  border:2px solid #000000;
+  color:rgb(0, 0, 0);
+  border-radius: 20px;
+  background-color: #E7E5DF;
+  font-weight: 400;
 
-  .grp {
-    text-align: center;
-    justify-content: center;
-    padding-top: 4vh;
-  }
-  .DateButtonGrp{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
+}
+
+.grp {
+  text-align: center;
+  padding-top: 2vh;
+  align-items: center;
+}
+.grp.h5{
+  font-size: 1.5rem;
+  color: aqua;
+}
+.DateButtonGrp{
+  display: flex;
+  flex-direction: row;
+}
+
 @media screen and (max-width: 760px) {
-  .box{
-    width: 160px;
-  }
+.box{
+  width: 160px;
+}
 }
 
 @media screen and (min-height: 720px) {
-  .box{
-    height: 58px;
-  }
+.box{
+  height: 58px;
+}
 }
 
-  
 
-  
+

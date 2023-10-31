@@ -26,7 +26,7 @@ export default function Location_btn_component(props) {
 
   return (
     <div className="LocationBtn">
-      <h4 style={{ textAlign: "center" }}>Destination Town</h4>
+      <h6 style={{ textAlign: "center" }}>Destination Town</h6>
       <div className="search-container">
         <div className="search-inner">
           <input className="linput" type="text" value={value} onChange={onChange} placeholder="Search" />

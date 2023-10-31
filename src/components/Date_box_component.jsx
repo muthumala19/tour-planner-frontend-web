@@ -28,9 +28,9 @@ export default function Date_box_component(props) {
   };
 
   return (
-    <div className="DateButtonGrp row">
-      <div className="grp col-12 col-sm-6 ">
-        <h4>Start Date</h4>
+    <div className="DateButtonGrp row ">
+      <div className="grp col-12 col-sm-6">
+        <h6>Start Date</h6>
         <input
           className="linput box"
           type="date"
@@ -40,7 +40,7 @@ export default function Date_box_component(props) {
         />
       </div>
       <div className="grp col-12 col-sm-6">
-        <h4>End Date</h4>
+        <h6>End Date</h6>
         <input
           className="linput box"
           type="date"

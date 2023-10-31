@@ -1,17 +1,17 @@
 import React from "react";
 //import axios from "axios";
-import "../components/Destination_buttons.css";
+import "./Destination_buttons.css";
 import { useState } from "react";
 import Location_btn_component from "../components/Location_btn_component.jsx";
 import Date_box_component from "./Date_box_component.jsx";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 // import LocationBttn from "./LocationSeacrhAPI";
 
 export default function Destination_buttons(){
   const [DateRange, setDateRange] = useState([]); // State to store selected date
   const [location, setLocation] = useState(""); // State to store selected location
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   // const destinationData = {
   //   startDate: startDate,
@@ -47,9 +47,11 @@ export default function Destination_buttons(){
   }
     return(
       <div >
-
         <div className="row">
-          <div className="col-12 col-sm-12 col-lg-12">
+        <h1 className="PlanYourNextTrip">Plan your next trip</h1>
+        </div>
+        <div className="row">
+          <div className="col-12 col-sm-12 col-lg-12 ">
             <Date_box_component text="starting date" onDateChange={handleDateChange} />
           </div>
           <div className="col-12 col-sm-12 col-lg-12 locationDropdown" >
@@ -57,11 +59,12 @@ export default function Destination_buttons(){
           </div>
         </div>
         
-        <div style={{paddingTop:'80px'}}>  
+        <div style={{paddingTop:'150px', paddingBottom:'40px'}}>  
             <div className="d-flex justify-content-center">
-              <button className="lbtn explore-btn" onClick={onClick}><b>Explore</b></button>
+              <button className="explore-btn" onClick={onClick}>Explore</button>
             </div>
         </div>
+
       </div>  
     )
 }
