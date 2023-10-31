@@ -16,6 +16,8 @@ const Accommodation = () => {
 
     const navigate = useNavigate();
     const [ searchParams ] = useSearchParams();
+    const location = searchParams.get("lc");
+    const [lcv, setlcv] = useState(location);
 
 
     useEffect(() => {
@@ -85,7 +87,7 @@ const Accommodation = () => {
         <React.Fragment>
             <NavBarComponent items={navbarItems}/>
             <div className='acmd'>
-                <h1 className='acmd-heading'>Recommended Hotels To Stay In Kandy</h1>
+                <h1 className='acmd-heading'>Recommended Hotels To Stay In ${lcv}</h1>
                 <div className='acmd-btn'>
                     <Button text="Change Trip Data" style={{padding:"6px 18px 6px 18px"}}></Button>
                 </div>
