@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const PaymentModal = ({orderId, name, amount}) => {
 
     // Put the payment variables here
@@ -24,10 +23,10 @@ const PaymentModal = ({orderId, name, amount}) => {
         delivery_address: 'No. 46, Galle road, Kalutara South', // optional field
         delivery_city: 'Kalutara', // optional field
         delivery_country: 'Sri Lanka', // optional field
-        custom_1: '', // optional field
-        custom_2: '', // optional field
+        custom_1: '',
+        custom_2: '',
     };
-
+    
     // Called when user completed the payment. It can be a successful payment or failure
     window.payhere.onCompleted = function onCompleted(orderId) {
         console.log("Payment completed. OrderID:" + orderId);

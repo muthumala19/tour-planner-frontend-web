@@ -4,8 +4,9 @@ import "./accommodation.css"
 import Pic from "../images/hotel.jpg"
 import Pagination from '../components/pagination';
 import HotelCard from '../components/hotelCard';
-import { getHotels } from '../backend/hotelGeneration';
+import { getHotels, postHotels } from '../backend/hotelGeneration';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import NavBarComponent from '../components/navbar_component';
 
 const Accommodation = () => {
     const [hotels, setHotels] = useState([]);
@@ -18,17 +19,26 @@ const Accommodation = () => {
 
 
     useEffect(() => {
+        const filterCards = (cards) => {
+            const range = searchParams.get("pr").split(",");
+            const filtered = cards.filter((card) => {
+                return (Number(range[0]) < card.props.cost && card.props.cost < Number(range[1]))
+            });
+            setCards(filtered);
+        }
+
         const fetchData = async () => {
             const cin = searchParams.get("cin");
             const cout = searchParams.get("cout");
-            const adult = searchParams.get("adult");
-            const child = searchParams.get("child");
+            const adult = searchParams.get("ad");
+            const child = searchParams.get("ch");
+            const location = searchParams.get("lc");
             try {
-                const data = await getHotels(cin, cout, adult, child);
+                const data = await getHotels(cin, cout, adult, child, location);
                 setHotels(data);
                 setLoading(false);
-                const cards = data.map((item, index) => (
-                    <HotelCard
+                const cards = data.map((item, index) => {
+                    return <HotelCard
                         key={index}
                         id={index}
                         hotel_id={item.hotel_id}
@@ -40,8 +50,8 @@ const Accommodation = () => {
                         image={item.max_photo_url}
                         onClick={handleClick}
                     />
-                ));
-                setCards(cards);
+            });
+                filterCards(cards);
             } catch (error) {
                 console.error('Error fetching hotel data:', error);
                 setLoading(false);
@@ -54,23 +64,26 @@ const Accommodation = () => {
         }, []);
 
 
-    const handleClick = (id, hotel_id) => {
-        navigate(`/room-selection?hid=${hotel_id}`)
+    const handleClick = async (id, hotel_id, image, cost) => {
+        const cin = searchParams.get("cin");
+        const cout = searchParams.get("cout");
+        const adult = searchParams.get("ad");
+        const location = searchParams.get("lc");
+        navigate(`/room-selection?hid=${hotel_id}&cin=${cin}&cout=${cout}&adult=${adult}&lc=${location}`);
+
+        const hotel = {id: hotel_id, uid: "11221122", url: image, cost:cost}
+
+        const data = await postHotels(hotel);
     };
 
-    const cardComponents = [
-        <HotelCard key={1} id={1} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <HotelCard key={2} id={2} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <HotelCard key={3} id={3} title="Nine Arches Tunnels" location="Demodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <HotelCard key={4} id={4} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <HotelCard key={5} id={5} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
-        <HotelCard key={6} id={6} title="Nine Arches Tunnels" location="Dodara" tags={tags} tagLabel="Location tags" image={Pic} onClick={handleClick} />,
+    const navbarItems = [
+        {label: 'Home', href: '/'},
     ];
-
 
 
     return (
         <React.Fragment>
+            <NavBarComponent items={navbarItems}/>
             <div className='acmd'>
                 <h1 className='acmd-heading'>Recommended Hotels To Stay In Kandy</h1>
                 <div className='acmd-btn'>

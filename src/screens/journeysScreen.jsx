@@ -1,9 +1,9 @@
 import NoDataToDisplay from "./no_data";
 
-export default function HistoryScreen({history}) {
+export default function JourneysScreen({journeys}) {
     return (
-        history.length === 0 ? <div>
+        journeys.length === 0 ? <div>
             <NoDataToDisplay/>
         </div> : null
-    )
+    );
 }

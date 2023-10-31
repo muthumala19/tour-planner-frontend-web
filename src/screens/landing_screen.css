@@ -3,17 +3,22 @@
     width: 100%;
 }
 
-
 .section {
     min-height: 100vh;
     height: auto;
+}
 
+.explore {
+    background-color: #0C956A;
+    justify-content: center;
+    text-align: center;
 }
 
 .about_us {
     background-color: #0C356A;
     justify-content: center;
     text-align: center;
+    margin: auto auto auto auto;
 }
 
 .first {
@@ -81,7 +86,6 @@
     border: 0.2vh solid white;
 }
 
-
 @media screen and (max-width: 500px) {
     .first {
         background-image: url('../images/portrait/landing_background_portrait.jpg');
@@ -109,7 +113,6 @@
         margin-bottom: 1vh;
 
     }
-
 
     .paragraphs {
         margin: 1vh auto auto; /* Set the maximum height for scrolling */

@@ -59,7 +59,11 @@ export default function Accomodation_page_btns(){
     console.log(DateRange)
     console.log(location)
     console.log(priceRange)
-    navigation(`/accommodations?cin=${DateRange[0]}&cout=${DateRange[1]}&adult=${adult}&child=${child}`)
+
+    //navigation(`/accommodations?cin=${DateRange[0]}&cout=${DateRange[1]}&adult=${adult}&child=${child}`) - Ludeesha
+
+    navigation(`/accommodations?cin=${DateRange[0]}&cout=${DateRange[1]}&ad=${adult}&ch=${child}&lc=${location}&pr=${priceRange}`);
+
   }
 
   // Skip Accomodation button

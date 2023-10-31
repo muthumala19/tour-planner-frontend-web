@@ -39,7 +39,7 @@ export default function Destination_buttons(){
     if(isFormValid){
     console.log(DateRange)
     console.log(location)
-    //navigate(`/destinations?cin=${DateRange}&cout=${endDate}&lc=${location}`)
+    navigate(`/destinations?cin=${DateRange[0]}&cout=${DateRange[1]}&lc=${location}`)
     }
     else{
       alert("Please enter all the details")

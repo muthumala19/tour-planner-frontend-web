@@ -14,9 +14,20 @@ import AuthContext from "../services/authentication_services/auth_context";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
 import {CircularProgress} from "@mui/joy";
 import {validateConfirmPassword, validateEmail} from "../validators/form_validators";
+import {useSearchParams} from "react-router-dom";
+import {doc, setDoc} from "firebase/firestore";
+import {db} from "../configurations/firebase_configurations";
 
 export default function SignUp() {
     const [authenticating, setAuthenticating] = useState(false);
+    const [uid, setUid] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const [searchParams] = useSearchParams();
+
+    const age = searchParams.get('age');
+    const fullname = searchParams.get('fullname')
+    const username = searchParams.get('username')
 
     const initialFormState = {
         email: "",
@@ -72,8 +83,37 @@ export default function SignUp() {
             resetForm();
             return;
         }
-        await signUpWithEmailPassword(formData.email, formData.password);
+        const credential = await signUpWithEmailPassword(formData.email, formData.password);
+        console.log(credential.user.uid);
+        await saveDetails(uid)
     };
+
+    const saveDetails = async (uid) => {
+        setLoading(true);
+        try {
+            const ref = doc(db, "userData", uid);
+            await setDoc(ref, {
+                fullname: fullname,
+                email: formData.email,
+                mobile: '',
+                phone: '',
+                address: '',
+                twitter: '',
+                instagram: '',
+                facebook: '',
+                website: '',
+                creditCard: '',
+                expiration: '',
+                cvv: '',
+            });
+            console.log("Document written with ID: ", uid);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            alert("Error adding document: " + e.message);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     return (
         <Container component="main" maxWidth="sm">

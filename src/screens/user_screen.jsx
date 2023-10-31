@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -16,12 +15,17 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {Image} from "react-bootstrap";
 import ProfileScreen from "./profile_screen";
-import {MdManageAccounts} from "react-icons/md";
 import {AiFillSetting} from "react-icons/ai";
 import {BiUserCircle} from "react-icons/bi";
 import {useNavigate} from "react-router-dom";
 import SettingsScreen from "./settings_screen";
-import AccountScreen from "./account_screen";
+import BillingScreen from "./billing_screen";
+import PricingPlansScreen from "./pricing_plans_screen";
+import JourneysScreen from "./journeysScreen";
+import HistoryScreen from "./history_screen";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {doc, getDoc} from "firebase/firestore";
+import {db} from "../configurations/firebase_configurations";
 
 const drawerWidth = 240;
 
@@ -33,8 +37,26 @@ interface Props {
 export default function User(props: Props) {
 
     const {window, activeScreen} = props;
+    const [uid, setUid] = useState(null);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(activeScreen);
+    const [data, setData] = useState({
+            profileDetails: {
+                address: "",
+                fullName: '',
+                email: "",
+                mobile: '',
+                phone: '',
+                introduction: "",
+            },
+            socialLinks: {
+                website: '',
+                facebook: '',
+                twitter: '',
+                instagram: '',
+            },
+        }
+    ); // data is null at first, then it will be an array [
     const navigate = useNavigate();
 
     const handleDrawerToggle = () => {
@@ -53,9 +75,24 @@ export default function User(props: Props) {
             href: 'profile'
         },
         {
-            text: 'Account',
-            icon: <MdManageAccounts size={30}/>,
-            href: 'account'
+            text: 'Journeys',
+            icon: <AiFillSetting size={30}/>,
+            href: 'journeys'
+        },
+        {
+            text: 'History',
+            icon: <AiFillSetting size={30}/>,
+            href: 'history'
+        },
+        {
+            text: 'Pricing Plans',
+            icon: <AiFillSetting size={30}/>,
+            href: 'pricing_plans'
+        },
+        {
+            text: 'Billing',
+            icon: <AiFillSetting size={30}/>,
+            href: 'billing'
         },
         {
             text: 'Settings',
@@ -70,7 +107,6 @@ export default function User(props: Props) {
             <Divider/>
             <List>
                 {drawerItems.map((item) => (
-
                     <ListItem key={item.text} disablePadding>
                         <ListItemButton
                             selected={selectedItem === item.text}
@@ -106,42 +142,84 @@ export default function User(props: Props) {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
-    const user = {
-        profileDetails: {
-            address: "Lake area,Matara Sri Lanka.",
-            fullName: 'Pasindu Muthumala',
-            email: "muthumala@gmail.com",
-            mobile: '0771234567',
-            phone: '0778921895',
-            introduction: "Solo Traveller",
-        },
-        socialLinks: {
-            website: 'www.muthumala.com',
-            facebook: 'www.facebook.com/muthumala',
-            twitter: 'www.twitter.com/muthumala',
-            instagram: 'www.instagram.com/muthumala',
-            github: 'www.github.com/muthumala',
-        },
 
-    }
     let screen;
     switch (selectedItem) {
         case 'Profile':
-            screen = <ProfileScreen user={user}/>;
+            screen = <ProfileScreen user={data}/>;
             break;
-        case 'Account':
-            screen = <AccountScreen/>;
+        case 'Billing':
+            screen = <BillingScreen/>;
             break;
         case 'Settings':
             screen = <SettingsScreen/>;
+            break;
+        case 'Pricing Plans':
+            screen = <PricingPlansScreen/>;
+            break;
+        case 'Journeys':
+            screen = <JourneysScreen journeys={[]}/>;
+            break;
+        case 'History':
+            screen = <HistoryScreen history={[]}/>;
             break;
         default:
             screen = <ProfileScreen/>;
             break
     }
+
+    const fetchData = async () => {
+        try {
+            const docRef = doc(db, "userData", uid);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                const documentRef = docSnap.data();
+                setData(
+                    {
+                        profileDetails: {
+                            address: documentRef.address,
+                            fullName: documentRef.fullname,
+                            email: documentRef.email,
+                            mobile: documentRef.mobile,
+                            phone: documentRef.phone,
+                            introduction: documentRef.introduction,
+                        },
+                        socialLinks: {
+                            website: documentRef.website,
+                            facebook: documentRef.facebook,
+                            twitter: documentRef.twitter,
+                            instagram: documentRef.instagram,
+                        },
+                    }
+                );
+
+            }
+        } catch (e) {
+            console.error("Error fetching document: ", e);
+        }
+    };
+
+    useEffect(() => {
+        // Use an effect to retrieve the user's UID when the component mounts
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUid(user.uid);
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        // Use another effect to fetch user data when the UID changes
+        if (uid) {
+            fetchData().then(r => console.log("Data fetched"));
+        }
+    }, [uid]);// The empty dependency array ensures this effect runs once when the component mounts
     return (
         <Box sx={{display: 'flex'}}>
-            <CssBaseline/>
+main
+            {/*<CssBaseline/>*/}
+ development_from_main
             <AppBar
                 style={{backgroundColor: '#0C356A'}}
                 position="fixed"
