@@ -7,7 +7,6 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
 import CircularProgress from "@mui/material/CircularProgress";
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
@@ -15,6 +14,7 @@ import AuthContext from "../services/authentication_services/auth_context";
 import GoogleAuthStrategy from "../services/authentication_services/goodle_auth_stratergy";
 import {validateEmail, validatePassword} from "../validators/form_validators";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
+import {Link} from "react-router-dom";
 
 
 export default function SignIn() {
@@ -152,7 +152,7 @@ export default function SignIn() {
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="/register" variant="body2" style={{color: '#0C356A'}}>
+                            <Link to="/register" variant="body2" style={{color: '#0C356A'}}>
                                 {"Don't have an account? Register"}
                             </Link>
                         </Grid>
