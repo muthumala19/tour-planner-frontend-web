@@ -4,6 +4,7 @@ import AvatarMenu from "./profile_avatar_component";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../configurations/firebase_configurations";
+import {Link} from "react-router-dom";
 
 export default function NavBarComponent({items}) {
     const [authUser, setAuthUser] = useState(null);
@@ -32,7 +33,9 @@ export default function NavBarComponent({items}) {
                         style={{maxHeight: '50vh', fontWeight: 'bold'}}
                         navbarScroll
                     >{items.map((item) => {
-                        return <NavLink key={item.label} href={item.href} className="me-5">{item.label}</NavLink>
+                        return item.label === 'Register' || item.label === 'Sign In' ?
+                            <Link to={item.href} key={item.label} className="me-5">{item.label}</Link> :
+                            <NavLink key={item.label} href={item.href} className="me-5">{item.label}</NavLink>;
                     })}
                         {authUser ? <AvatarMenu email={authUser.email}/> : null}
                     </Nav>

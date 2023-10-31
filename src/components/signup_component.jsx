@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -14,7 +13,7 @@ import AuthContext from "../services/authentication_services/auth_context";
 import EmailAuthStrategy from "../services/authentication_services/email_auth_stratergy";
 import {CircularProgress} from "@mui/joy";
 import {validateConfirmPassword, validateEmail} from "../validators/form_validators";
-import {useSearchParams} from "react-router-dom";
+import {Link, useSearchParams} from "react-router-dom";
 import {doc, setDoc} from "firebase/firestore";
 import {db} from "../configurations/firebase_configurations";
 
@@ -202,7 +201,7 @@ export default function SignUp() {
                     </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="/sign_in" variant="body2" style={{color: '#0C356A'}}>
+                            <Link t="/sign_in" variant="body2" style={{color: '#0C356A'}}>
                                 {"Already have an account? Sign In"}
                             </Link>
                         </Grid>
