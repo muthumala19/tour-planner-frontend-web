@@ -1,5 +1,5 @@
 import './navbar_component.css'
-import {Container, Image, Nav, Navbar} from "react-bootstrap";
+import {Container, Image, Nav, Navbar, NavLink} from "react-bootstrap";
 import AvatarMenu from "./profile_avatar_component";
 import {useEffect, useState} from "react";
 import {onAuthStateChanged} from "firebase/auth";
@@ -32,7 +32,7 @@ export default function NavBarComponent({items}) {
                         style={{maxHeight: '50vh', fontWeight: 'bold'}}
                         navbarScroll
                     >{items.map((item) => {
-                        return <Nav.Link key={item.label} href={item.href} className="me-5">{item.label}</Nav.Link>
+                        return <NavLink key={item.label} href={item.href} className="me-5">{item.label}</NavLink>
                     })}
                         {authUser ? <AvatarMenu email={authUser.email}/> : null}
                     </Nav>

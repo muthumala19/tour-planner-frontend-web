@@ -36,9 +36,9 @@ function App() {
                         <Route path={'history'}
                                element={<ProtectedRoute element={<User activeScreen={'History'}/>}/>}></Route>
                     </Route>
-                    <Route exact path='sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
-                    <Route exact path='register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
-                    <Route exact path='register/sign_up' element={<AuthScreen activeScreen={'sign_up'}/>}></Route>
+                    <Route exact path='/sign_in' element={<AuthScreen activeScreen={'sign_in'}/>}></Route>
+                    <Route exact path='/register' element={<AuthScreen activeScreen={'register'}/>}> </Route>
+                    <Route exact path='/register/sign_up' element={<AuthScreen activeScreen={'sign_up'}/>}></Route>
 
                     <Route exact path='/destinationForm' element={<ProtectedRoute element={<Destination/>}/>}></Route>
                     <Route exact path='/payment' element={<ProtectedRoute element={<PaymentPage/>}/>}></Route>
@@ -47,7 +47,6 @@ function App() {
                     <Route exact path='/explore_your_ideal_ride'
                            element={<ProtectedRoute element={<Choose_ride/>}/>}></Route>
                     <Route exact path='/accomodation' element={<ProtectedRoute element={<Accommodation/>}/>}></Route>
-
                     <Route path='/destinations' element={<ProtectedRoute element={<Destinations/>}/>}/>
                     <Route path='/accommodations' element={<ProtectedRoute element={<Accommodation/>}/>}/>
                     <Route path='/room-selection' element={<ProtectedRoute element={<RoomSelection/>}/>}/>
