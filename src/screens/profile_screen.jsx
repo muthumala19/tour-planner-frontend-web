@@ -19,12 +19,12 @@ const borderRadius = '3vh';
 function ProfileCard({profileCard}) {
     return (
         <MDBCard className="mb-4" style={{borderRadius: borderRadius}}>
-            <MDBCardBody className="text-center">
+            <MDBCardBody className="text-center" style={{padding: 0, margin: 0}}>
                 <MDBCardImage
                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                     alt="avatar"
                     className="rounded-circle border border-black"
-                    style={{width: '150px', borderRadius: '50%'}} // Set border-radius to 50%
+                    style={{width: '150px', borderRadius: '50%'}}
                     fluid
                 />
                 <p className="text-muted mb-1">{profileCard.introduction}</p>
@@ -44,7 +44,6 @@ function ProfileCard({profileCard}) {
 function SocialLinks({socialLinks}) {
     const links = [
         {icon: <BsGlobe2/>, text: socialLinks.website},
-        // {icon: <BsGithub/>, text: socialLinks.github, color: '#333333'},
         {icon: <BsTwitter/>, text: socialLinks.twitter, color: '#55acee'},
         {icon: <BsInstagram/>, text: socialLinks.instagram, color: '#ac2bac'},
         {icon: <BsFacebook/>, text: socialLinks.facebook, color: '#3b5998'}
@@ -52,13 +51,10 @@ function SocialLinks({socialLinks}) {
 
     return (
         <MDBCard className="mb-4 mb-lg-0" style={{borderRadius: borderRadius}}>
-            <MDBCardBody className="p-0">
+            <MDBCardBody className="p-0" style={{padding: 0, margin: 0}}>
                 <MDBListGroup style={{borderRadius: borderRadius}}>
                     {links.map((link, index) => (
-                        <MDBListGroupItem
-                            key={index}
-                            className="d-flex justify-content-between align-items-center p-3"
-                        >
+                        <MDBListGroupItem key={index} className="d-flex justify-content-between align-items-center p-2">
                             {link.icon}
                             <MDBCardText>{link.text}</MDBCardText>
                         </MDBListGroupItem>
@@ -85,8 +81,8 @@ function ProfileDetail({label, value}) {
 
 export default function ProfileScreen({user}) {
     return (
-        <div style={{backgroundColor: ' rgba(217, 217, 217, 0.7)'}}>
-            <MDBContainer className="py-5">
+        <div style={{backgroundColor: 'rgba(217, 217, 217, 0.7)'}}>
+            <MDBContainer className="p-5">
                 <MDBRow>
                     <MDBCol lg="4">
                         <ProfileCard profileCard={user.profileDetails}/>
@@ -109,7 +105,6 @@ export default function ProfileScreen({user}) {
                         {/* Add your Project Status components here */}
                     </MDBCol>
                 </MDBRow>
-
             </MDBContainer>
         </div>
     );
