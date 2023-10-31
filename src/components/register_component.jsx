@@ -1,13 +1,12 @@
 import React, {useRef} from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import '../screens/auth_screen.css'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {validateUserData} from "../validators/form_validators";
 
 export default function Register() {
@@ -125,7 +124,7 @@ export default function Register() {
                     />
                     <Grid container>
                         <Grid item>
-                            <Link href="/sign_in" variant="body2" style={{color: '#0C356A'}}>
+                            <Link to="/sign_in" variant="body2" style={{color: '#0C356A'}}>
                                 {"Already have an account? Sign In"}
                             </Link>
                         </Grid>
